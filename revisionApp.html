@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta author="Saul Theohari" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>COM2109: Advanced Complexity & Algorithm Simulator</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<style>
+			.perspective {
+				perspective: 1000px;
+			}
+			.flip-card-inner {
+				transition: transform 0.6s;
+				transform-style: preserve-3d;
+			}
+			.flipped {
+				transform: rotateY(180deg);
+			}
+			.backface-hidden {
+				backface-visibility: hidden;
+			}
+			.rotate-y-180 {
+				transform: rotateY(180deg);
+			}
+			.checkbox-custom:checked + div {
+				background-color: #4f46e5;
+				border-color: #818cf8;
+				color: white;
+			}
+		</style>
+	</head>
+	<body class="bg-slate-900 text-slate-100 min-h-screen font-sans pb-12">
+		<header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50 shadow-md">
+			<div
+				class="max-w-7xl mx-auto px-4 py-4 flex flex-col flex-wrap lg:flex-row justify-between items-start gap-4"
+			>
+				<div>
+					<h1
+						class="text-2xl font-bold bg-indigo-400 bg-clip-text text-transparent"
+					>
+						COM2109 - Automata, Computation & Complexity
+					</h1>
+					<p class="text-xs text-slate-400">
+						Comprehensive Ultra-Revision Suite • Lectures 1-10 & Exam Mechanics
+					</p>
+				</div>
+
+				<nav class="flex flex-wrap gap-1 bg-slate-900 p-1 rounded-xl border border-slate-700">
+					<button
+						onclick="switchTab('flashcards')"
+						id="tab-flashcards"
+						class="px-3 py-2 rounded-lg text-xs font-medium transition nav-tab bg-indigo-600 text-white"
+					>
+						Flashcards
+					</button>
+					<button
+						onclick="switchTab('matcher')"
+						id="tab-matcher"
+						class="px-3 py-2 rounded-lg text-xs font-medium transition nav-tab text-slate-400 hover:text-white"
+					>
+						Class Matcher
+					</button>
+					<button
+						onclick="switchTab('quest')"
+						id="tab-quest"
+						class="px-3 py-2 rounded-lg text-xs font-medium transition nav-tab text-slate-400 hover:text-white"
+					>
+						Algorithm Steps & Proofs Quest
+					</button>
+					<button
+						onclick="switchTab('quiz')"
+						id="tab-quiz"
+						class="px-3 py-2 rounded-lg text-xs font-medium transition nav-tab text-slate-400 hover:text-white"
+					>
+						Quiz
+					</button>
+                    <button
+                        onclick="switchTab('upload')"
+                        id="tab-upload"
+                        class="px-3 py-2 rounded-lg text-xs font-medium transition nav-tab text-slate-400 hover:text-white"
+                    >
+                        Dataset Upload/Export
+                    </button>
+				</nav>
+            
+                
+
+				<div class="flex items-center gap-2">
+					<label for="lecture-filter" class="text-sm font-medium text-slate-300"
+						>Target Lecture(s):</label
+					>
+					<select
+						id="lecture-filter"
+						onchange="applyGlobalFilter()"
+						class="bg-slate-900 border border-slate-600 text-slate-100 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block p-2"
+					>
+						<option value="all">All Lectures (1-10)</option>
+						<option value="1">Lec 1: Computational Problems</option>
+						<option value="2">Lec 2: Decision Problems & P vs EXP</option>
+						<option value="3">Lec 3: Complexity Class NP & Karp Reductions</option>
+						<option value="4">Lec 4: NP-Completeness & Cook-Levin</option>
+						<option value="5">Lec 5: Optimisation & Pseudo-Polynomial Time</option>
+						<option value="6">Lec 6: Approximation Algorithms & Vertex Cover</option>
+						<option value="7">Lec 7: Metric TSP & Knapsack PTAS</option>
+						<option value="8">Lec 8: Randomisation & Monte Carlo Algorithms</option>
+						<option value="9">Lec 9: Expected Performance & Las Vegas Algorithms</option>
+						<option value="10">Lec 10: Probabilistic Complexity & LP Rounding</option>
+					</select>
+				</div>
+			</div>
+		</header>
+
+		<main class="max-w-5xl mx-auto px-4 py-8">
+			<section id="panel-flashcards" class="tab-panel block">
+				<div class="text-center mb-6">
+					<h2 class="text-xl font-bold text-slate-200">Revision Flashcards</h2>
+					<p class="text-sm text-slate-400">Review underlying theorems, bounds, and definitions.</p>
+				</div>
+
+				<div class="flex justify-center items-center gap-4 md:gap-6 min-h-[320px]">
+					<button
+						onclick="prevCard()"
+						class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-3 rounded-full text-xl transition"
+					>
+						❮
+					</button>
+
+					<div class="w-full max-w-lg h-80 perspective cursor-pointer" onclick="flipCard()">
+						<div
+							id="flashcard-inner"
+							class="w-full h-full flip-card-inner relative rounded-2xl shadow-xl border border-indigo-500/30"
+						>
+							<div
+								id="card-front"
+								class="absolute inset-0 bg-slate-800 rounded-2xl backface-hidden flex flex-col justify-between p-6"
+							>
+								<span
+									class="text-xs font-semibold tracking-wider text-indigo-400 uppercase"
+									id="card-topic"
+									>Topic</span
+								>
+								<div class="flex items-center justify-center flex-grow">
+									<p
+										class="text-base md:text-lg font-medium text-center text-slate-100 px-4"
+										id="card-question"
+									>
+										Loading question...
+									</p>
+								</div>
+								<span class="text-xs text-slate-500 text-center"
+									>Click card body to flip and view formal proof/answer</span
+								>
+							</div>
+							<div
+								id="card-back"
+								class="absolute inset-0 bg-slate-950 rounded-2xl backface-hidden rotate-y-180 flex flex-col justify-between p-6 border border-indigo-500"
+							>
+								<span class="text-xs font-semibold tracking-wider text-emerald-400 uppercase"
+									>Theoretical Formulation & Proof Insights</span
+								>
+								<div class="flex items-center justify-center flex-grow overflow-y-auto my-2">
+									<p class="text-sm text-slate-300 text-center font-normal px-2" id="card-answer">
+										Loading answer...
+									</p>
+								</div>
+								<span class="text-xs text-indigo-400 text-center"
+									>Click to flip back to question</span
+								>
+							</div>
+						</div>
+					</div>
+
+					<button
+						onclick="nextCard()"
+						class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-3 rounded-full text-xl transition"
+					>
+						❯
+					</button>
+				</div>
+				<div class="text-center mt-4 text-xs text-slate-400" id="card-indicator">Card 1 of X</div>
+			</section>
+
+			<section id="panel-matcher" class="tab-panel hidden">
+				<div class="text-center mb-6">
+					<h2 class="text-xl font-bold text-slate-200">Granular Boundary Matcher</h2>
+					<p class="text-sm text-slate-400">
+						Classify the target algorithm/problem to its tightest known structural complexity
+						classification (Assuming P ≠ NP).
+					</p>
+				</div>
+
+				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+					<div id="bucket-P" class="bg-emerald-950/10 border-2 border-dashed border-emerald-500/30 rounded-2xl p-4 min-h-[180px]">
+						<h3 class="text-emerald-400 font-bold text-center border-b border-emerald-500/20 pb-2 mb-2 text-sm">
+							Class P (Deterministic Poly)
+						</h3>
+						<div id="items-P" class="space-y-1.5 min-h-[120px]"></div>
+					</div>
+
+					<div id="bucket-ZPP" class="bg-teal-950/10 border-2 border-dashed border-teal-500/30 rounded-2xl p-4 min-h-[180px]">
+						<h3 class="text-teal-400 font-bold text-center border-b border-teal-500/20 pb-2 mb-2 text-sm">
+							Class ZPP (Las Vegas Poly)
+						</h3>
+						<div id="items-ZPP" class="space-y-1.5 min-h-[120px]"></div>
+					</div>
+
+					<div id="bucket-BPP" class="bg-cyan-950/10 border-2 border-dashed border-cyan-500/30 rounded-2xl p-4 min-h-[180px]">
+						<h3 class="text-cyan-400 font-bold text-center border-b border-cyan-500/20 pb-2 mb-2 text-sm">
+							Class BPP (Monte Carlo Bounded)
+						</h3>
+						<div id="items-BPP" class="space-y-1.5 min-h-[120px]"></div>
+					</div>
+
+					<div id="bucket-NP_CO_NP" class="bg-amber-950/10 border-2 border-dashed border-amber-500/30 rounded-2xl p-4 min-h-[180px]">
+						<h3 class="text-amber-400 font-bold text-center border-b border-amber-500/20 pb-2 mb-2 text-sm">
+							NP ∩ co-NP / BQP
+						</h3>
+						<div id="items-NP_CO_NP" class="space-y-1.5 min-h-[120px]"></div>
+					</div>
+
+					<div id="bucket-NP" class="bg-rose-950/10 border-2 border-dashed border-rose-500/30 rounded-2xl p-4 min-h-[180px]">
+						<h3 class="text-rose-400 font-bold text-center border-b border-rose-500/20 pb-2 mb-2 text-sm">
+							NP-Complete / NP-Hard
+						</h3>
+						<div id="items-NP" class="space-y-1.5 min-h-[120px]"></div>
+					</div>
+
+					<div id="bucket-UNDECIDABLE" class="bg-purple-950/10 border-2 border-dashed border-purple-500/30 rounded-2xl p-4 min-h-[180px]">
+						<h3 class="text-purple-400 font-bold text-center border-b border-purple-500/20 pb-2 mb-2 text-sm">
+							Undecidable / Uncomputable
+						</h3>
+						<div id="items-UNDECIDABLE" class="space-y-1.5 min-h-[120px]"></div>
+					</div>
+				</div>
+
+				<div class="mt-6 bg-slate-800 border border-slate-700 p-5 rounded-2xl text-center shadow-lg">
+					<p class="text-xs tracking-wide text-slate-400 uppercase mb-2">
+						Active Challenge Target:
+					</p>
+					<div id="current-matching-item" class="inline-block bg-indigo-600 text-white font-bold px-6 py-3 rounded-xl shadow-md border border-indigo-400/40 text-lg transition duration-200"></div>
+
+					<div class="flex flex-wrap justify-center gap-2 mt-5">
+						<button onclick="sortItem('P')" class="bg-emerald-700 hover:bg-emerald-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md">
+							P
+						</button>
+						<button onclick="sortItem('ZPP')" class="bg-teal-700 hover:bg-teal-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md">
+							ZPP (Las Vegas)
+						</button>
+						<button onclick="sortItem('BPP')" class="bg-cyan-700 hover:bg-cyan-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md">
+							BPP (Monte Carlo)
+						</button>
+						<button onclick="sortItem('NP_CO_NP')" class="bg-amber-700 hover:bg-amber-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md">
+							NP ∩ co-NP
+						</button>
+						<button onclick="sortItem('NP')" class="bg-rose-700 hover:bg-rose-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md">
+							NP-Hard/Complete
+						</button>
+						<button onclick="sortItem('UNDECIDABLE')" class="bg-purple-700 hover:bg-purple-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md">
+							Undecidable
+						</button>
+					</div>
+					<div id="matcher-feedback" class="mt-4 font-semibold text-sm h-6 transition-all duration-200"></div>
+				</div>
+			</section>
+
+			<section id="panel-quest" class="tab-panel hidden">
+				<div class="text-center mb-6">
+					<h2 class="text-xl font-bold text-slate-200">
+						Algorithm Steps & Proof Reconstruction Quest
+					</h2>
+					<p class="text-sm text-slate-400">
+						Algorithms and validation proofs have been scrambled. Reconstruct their precise pipeline
+						execution order to evaluate correctness logic.
+					</p>
+				</div>
+
+				<div class="bg-slate-800 border border-slate-700 rounded-2xl p-4 md:p-6 mb-6 shadow-xl">
+					<div
+						class="flex flex-col md:flex-row items-center justify-between gap-4 border-b border-slate-700 pb-4 mb-4"
+					>
+						<div>
+							<label
+								for="quest-selector"
+								class="block text-xs font-semibold text-slate-400 uppercase mb-1"
+								>Select Target System/Proof:</label
+							>
+							<select
+								id="quest-selector"
+								onchange="loadQuest()"
+								class="bg-slate-900 border border-slate-600 text-slate-200 text-sm rounded-xl p-2.5 w-64 md:w-80 focus:ring-2 focus:ring-indigo-500"
+							></select>
+						</div>
+						<div class="flex gap-2">
+							<button
+								onclick="resetCurrentQuest()"
+								class="bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs px-4 py-2 rounded-xl transition"
+							>
+								Clear Pipeline
+							</button>
+							<button
+								onclick="verifyQuestOrder()"
+								class="bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold px-5 py-2 rounded-xl transition shadow-md"
+							>
+								Verify Order
+							</button>
+						</div>
+					</div>
+
+					<div class="mb-6">
+						<h4 class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-2">
+							Your Assembled Execution Sequence:
+						</h4>
+						<div
+							id="quest-assembly-zone"
+							class="bg-slate-950/60 rounded-xl p-4 min-h-[100px] border border-slate-800 flex flex-col gap-2"
+						>
+							<p id="quest-empty-tip" class="text-slate-500 text-xs italic text-center my-4">
+								Click pieces from the pool below in chronological/logical order to build the
+								algorithm or proof pipeline...
+							</p>
+						</div>
+					</div>
+
+					<div>
+						<h4 class="text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">
+							Scrambled Logical Components:
+						</h4>
+						<div id="quest-scrambled-pool" class="grid grid-cols-1 gap-2.5"></div>
+					</div>
+
+					<div id="quest-feedback-container" class="mt-6 p-4 rounded-xl hidden border">
+						<h4 id="quest-feedback-title" class="font-bold text-sm mb-1">Status</h4>
+						<p id="quest-feedback-body" class="text-xs leading-relaxed opacity-90"></p>
+					</div>
+				</div>
+			</section>
+
+			<section id="panel-quiz" class="tab-panel hidden">
+				<div
+					id="quiz-start-screen"
+					class="text-center p-8 bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl"
+				>
+					<h2 class="text-2xl font-bold text-slate-200 mb-2">Mock Examination Suite</h2>
+					<button
+						onclick="startQuiz()"
+						class="bg-indigo-500 text-white font-bold px-8 py-3 rounded-xl hover:scale-105 transition shadow-lg text-sm tracking-wide uppercase"
+					>
+						Launch Assessment
+					</button>
+				</div>
+
+				<div
+					id="quiz-play-screen"
+					class="hidden bg-slate-800 border border-slate-700 rounded-2xl p-4 md:p-6 shadow-2xl"
+				>
+					<div
+						class="w-full bg-slate-950 rounded-full h-2 mb-6 border border-slate-700 overflow-hidden"
+					>
+						<div
+							id="quiz-progress"
+							class="bg-indigo-500 h-2 rounded-full transition-all duration-300"
+							style="width: 0%"
+						></div>
+					</div>
+
+					<div
+						class="flex justify-between items-center text-xs text-slate-400 mb-4 border-b border-slate-700/50 pb-3"
+					>
+						<span id="quiz-question-number" class="font-medium">Question 1 of X</span>
+						<span
+							id="quiz-score-tracker"
+							class="bg-slate-900 border border-slate-700 px-3 py-1 rounded-md text-cyan-400 font-mono"
+							>Running Score: 0.0</span
+						>
+					</div>
+
+					<div class="mb-3">
+						<span
+							id="quiz-type-badge"
+							class="px-2.5 py-1 bg-indigo-900 text-indigo-300 rounded text-[10px] font-bold uppercase tracking-widest border border-indigo-700"
+							>Type</span
+						>
+					</div>
+					<h3
+						id="quiz-question-text"
+						class="text-base md:text-lg font-semibold text-slate-100 mb-6 leading-relaxed"
+					>
+						Question text template?
+					</h3>
+
+					<div id="quiz-options-container" class="grid grid-cols-1 gap-3 mb-6"></div>
+
+					<button
+						id="quiz-submit-btn"
+						onclick="submitMultipleAnswer()"
+						class="hidden w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition duration-150 shadow-md"
+					>
+						Submit Selected Answers
+					</button>
+
+					<div
+						id="quiz-feedback-box"
+						class="mt-6 p-4 rounded-xl hidden border transition-all duration-200"
+					>
+						<p id="quiz-feedback-text" class="font-bold text-sm mb-1.5"></p>
+						<p
+							id="quiz-explanation-text"
+							class="text-xs leading-relaxed opacity-95 text-slate-300"
+						></p>
+						<button
+							onclick="advanceQuiz()"
+							class="mt-4 bg-slate-700 hover:bg-slate-600 border border-slate-600 text-white px-4 py-2 rounded-lg text-xs font-semibold transition tracking-wide"
+						>
+							Advance to Next Question ➔
+						</button>
+					</div>
+				</div>
+
+				<div
+					id="quiz-result-screen"
+					class="hidden text-center p-8 bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl"
+				>
+					<h2 class="text-2xl font-bold text-emerald-400 mb-2">Assessment Matrix Completed</h2>
+					<p class="text-slate-300 mb-5 text-base" id="quiz-final-score-text">
+						Final adjusted raw score: X out of Y
+					</p>
+					<button
+						onclick="resetQuiz()"
+						class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-slate-200 font-semibold px-6 py-2 rounded-xl transition text-xs"
+					>
+						Re-test Core Competency Bounds
+					</button>
+				</div>
+			</section>
+            
+            <section id="panel-upload" class="tab-panel hidden">
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 shadow-sm mt-4">
+                    <h2 class="text-sm font-semibold text-indigo-400 uppercase tracking-wider mb-2">Dynamic Dataset Injector</h2>
+                    <p class="text-xs text-slate-400 mb-3">
+                        Extend your revision app dynamically. Upload a <code>.json</code> file to inject custom assets.
+                    </p>
+                    
+                    <label class="flex flex-col items-center justify-center border-2 border-dashed border-slate-600 rounded-xl p-4 cursor-pointer hover:border-indigo-500 hover:bg-slate-750 transition group">
+                        <svg class="w-6 h-6 text-slate-400 group-hover:text-indigo-400 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                        </svg>
+                        <span class="text-xs font-medium text-slate-300 group-hover:text-indigo-300">Choose custom JSON map</span>
+                        <input type="file" id="json-importer" accept=".json" class="hidden" onchange="handleJsonUpload(event)" />
+                    </label>
+                    <div id="import-status" class="mt-2 text-center text-[11px] font-medium hidden"></div>
+                </div>
+
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 shadow-sm mt-4">
+                    <h2 class="text-sm font-semibold text-emerald-400 uppercase tracking-wider mb-2">Dataset Exporter</h2>
+                    <p class="text-xs text-slate-400 mb-4">
+                        Download your current active datasets as formatted <code>.json</code> files for backup or sharing.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-1 gap-3">
+                        <button onclick="downloadDataset('all')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2">
+                            Download Full Dataset
+                        </button>
+                        <button onclick="downloadDataset('flashcards')" class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-slate-200 font-semibold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2">
+                            Download Flashcards
+                        </button>
+                        <button onclick="downloadDataset('matcher')" class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-slate-200 font-semibold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2">
+                            Download Matcher Data
+                        </button>
+                        <button onclick="downloadDataset('quest')" class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-slate-200 font-semibold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2">
+                            Download Proof Quests
+                        </button>
+                        <button onclick="downloadDataset('quiz')" class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-slate-200 font-semibold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2">
+                            Download Quiz Data
+                        </button>
+                    </div>
+                </div>
+            </section>
+		</main>
+
+        <footer>
+            <div class="text-center mt-12 text-xs text-slate-500">
+                2026 Saul Theohari | Designed for COM2109 - Automata, Computation & Complexity, University of Sheffield.
+            </div>
+        </footer>
+
+		<script src="./script.js" />
+	</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "flashcards": [
+    {
+      "group": "4",
+      "topic": "My New Reducibility Definition",
+      "q": "My New Poly-Time Reducibility Definition",
+      "a": "Language A is polynomial-time mapping reducible to language B if there exists a deterministic polynomial computable function f mapping instances cleanly."
+    }
+  ],
+  "proofs": [
+    {
+      "id": "decidability-bndry-prf",
+      "group": "10",
+      "title": "Decidability Boundary Proof",
+      "explanation": "Demonstrating structural undecidability constraints using self-reference loops.",
+      "steps": [
+        "Suppose a structural decider machine H handles all input programs.",
+        "Construct a malicious evaluator program D that runs H on itself.",
+        "Design D to do the structural opposite of what H predicts.",
+        "Observe a direct logical contradiction, completing the reduction."
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "group": "1",
+      "type": "single",
+      "q": "What core parameters distinguish optimization problems from decision algorithms?",
+      "options": [
+        "Decision models output a single binary verification bit; optimization structures target an absolute maximum/minimum bounds metric.",
+        "Optimization tasks use non-deterministic configurations exclusively.",
+        "There are no functional differences between them."
+      ],
+      "correct": [0],
+      "feedback": "Decision bounds limit output criteria to YES/NO, whereas operational optimization strategies balance objective evaluation metrics."
+    }
+  ]
+}

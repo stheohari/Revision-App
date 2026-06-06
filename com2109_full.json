@@ -1,0 +1,2328 @@
+{
+    "flashcards": [
+        {
+            "group": "1",
+            "topic": "Lecture 1: Computational Problems [Card 1]",
+            "q": "What is the primary difference between a program and an algorithm?",
+            "a": "An algorithm is an abstract, mathematically precise step-by-step description of a procedure to solve a problem. A program is a concrete implementation of an algorithm in a specific programming language, constrained by actual hardware architecture."
+        },
+        {
+            "group": "1",
+            "topic": "Lecture 1: Computational Problems [Card 2]",
+            "q": "How is time complexity measured uniformly across varying hardware platforms?",
+            "a": "Time complexity is measured as a function of the input instance size, tracking the number of primitive operations (like additions or memory reads) executed on an abstract computational model, such as a Turing machine, rather than tracking wall-clock seconds."
+        },
+        {
+            "group": "1",
+            "topic": "Lecture 1: Computational Problems [Card 3]",
+            "q": "Why is the method of representing input data (encoding) crucial in complexity theory?",
+            "a": "Because the length of the input string, measured in bits, determines the baseline for polynomial or exponential runtimes. An identical parameter passed via unary encoding versus binary encoding yields vastly different structural bounds."
+        },
+        {
+            "group": "1",
+            "topic": "Lecture 1: Computational Problems [Card 4]",
+            "q": "What conditions specify an Eulerian Tour in graph properties?",
+            "a": "A connected undirected graph contains an Eulerian Tour if and only if every single vertex in the graph has an even degree parameter. This condition can be verified in linear time O(|V| + |E|)."
+        },
+        {
+            "group": "1",
+            "topic": "Lecture 1: Computational Problems [Card 5]",
+            "q": "What conditions specify a Hamiltonian Cycle in graph properties?",
+            "a": "A Hamiltonian Cycle requires a closed loop that visits every vertex exactly once. Unlike Eulerian Tours, it lacks a simple local parameter verification, making it NP-complete."
+        },
+        {
+            "group": "1",
+            "topic": "Lecture 1: Computational Problems [Card 6]",
+            "q": "What is a bipartite graph and its connection to 2-Coloring?",
+            "a": "A graph is bipartite if its vertices can be partitioned into two disjoint sets such that no two vertices within the same set share an edge. This structural configuration is exactly equivalent to being 2-colorable."
+        },
+        {
+            "group": "1",
+            "topic": "Lecture 1: Computational Problems [Card 7]",
+            "q": "How can 2-Colorability be determined in linear time?",
+            "a": "By applying a standard Breadth-First Search (BFS) algorithm. We greedily assign alternating layer colors to unvisited vertices. If we detect any edge connecting vertices of the identical layer classification, a conflict exists and the graph is not 2-colorable."
+        },
+        {
+            "group": "1",
+            "topic": "Lecture 1: Computational Problems [Card 8]",
+            "q": "What structural configuration renders a graph non-bipartite?",
+            "a": "A graph is non-bipartite if and only if it contains at least one cycle of odd length."
+        },
+        {
+            "group": "1",
+            "topic": "Lecture 1: Computational Problems [Card 9]",
+            "q": "Define a matching in a graph.",
+            "a": "A matching is a subset of edges in a graph such that no two edges share a common vertex endpoint."
+        },
+        {
+            "group": "1",
+            "topic": "Lecture 1: Computational Problems [Card 10]",
+            "q": "What distinguishes an independent set from a vertex cover?",
+            "a": "An independent set is a set of vertices with no edges between them. A vertex cover is a set of vertices such that every edge in the graph has at least one endpoint in the set. The complement of any independent set is a vertex cover."
+        },
+        {
+            "group": "2",
+            "topic": "Lecture 2: Decision Problems & P vs EXP [Card 1]",
+            "q": "Define a decision problem formally as a language recognition task.",
+            "a": "A decision problem is represented as a language L ⊆ {0,1}^*. The algorithmic objective is to take an input string x and output YES if x ∈ L, and NO if x ∉ L."
+        },
+        {
+            "group": "2",
+            "topic": "Lecture 2: Decision Problems & P vs EXP [Card 2]",
+            "q": "Why does repeated squaring for power(x, k) run in polynomial time, while naive multiplication fails?",
+            "a": "Input size is O(log x + log k). Naive multiplication takes k steps, which is O(2^(log k)), an exponential function of input size. Repeated squaring reduces this to O(log k) operations, which is strictly polynomial in input length."
+        },
+        {
+            "group": "2",
+            "topic": "Lecture 2: Decision Problems & P vs EXP [Card 3]",
+            "q": "What is the formal definition of the complexity class P?",
+            "a": "P is the class of all languages decidable by a deterministic Turing machine in polynomial time. P = ⋃_(c≥1) TIME(n^c)."
+        },
+        {
+            "group": "2",
+            "topic": "Lecture 2: Decision Problems & P vs EXP [Card 4]",
+            "q": "What is the formal definition of the complexity class EXP?",
+            "a": "EXP is the class of all languages decidable by a deterministic Turing machine in exponential time. EXP = ⋃_(c≥1) TIME(2^(n^c))."
+        },
+        {
+            "group": "2",
+            "topic": "Lecture 2: Decision Problems & P vs EXP [Card 5]",
+            "q": "State the Time Hierarchy Theorem in the context of P and EXP.",
+            "a": "The Time Hierarchy Theorem proves that giving a Turing machine more time allows it to solve strictly more problems. It establishes that P ⊂ EXP and P ≠ EXP."
+        },
+        {
+            "group": "2",
+            "topic": "Lecture 2: Decision Problems & P vs EXP [Card 6]",
+            "q": "Where does the Boolean Satisfiability problem (SAT) live?",
+            "a": "SAT can be solved by brute-forcing all 2^n assignments for n variables, which takes exponential time. Therefore, SAT is definitively in EXP, but whether it is in P remains unproven."
+        },
+        {
+            "group": "2",
+            "topic": "Lecture 2: Decision Problems & P vs EXP [Card 7]",
+            "q": "What is the main purpose of Karp reductions?",
+            "a": "To map instances of one decision problem to another in polynomial time, allowing us to show that one problem is at least as hard as another."
+        },
+        {
+            "group": "2",
+            "topic": "Lecture 2: Decision Problems & P vs EXP [Card 8]",
+            "q": "Define a polynomial-time Karp reduction formally.",
+            "a": "A language A is Karp-reducible to B (A ≤_Karp B) if there is a polynomial-time computable function f: {0,1}^* → {0,1}^* such that for all x, x ∈ A ⟺ f(x) ∈ B."
+        },
+        {
+            "group": "2",
+            "topic": "Lecture 2: Decision Problems & P vs EXP [Card 9]",
+            "q": "If A ≤_Karp B and B is decidable in polynomial time, what can we conclude about A?",
+            "a": "We can conclude that A is also decidable in polynomial time (A ∈ P), as the composition of two polynomial functions remains polynomial."
+        },
+        {
+            "group": "2",
+            "topic": "Lecture 2: Decision Problems & P vs EXP [Card 10]",
+            "q": "What happens to problem hardness classifications under a Karp reduction chain?",
+            "a": "Karp reductions are transitive. If A ≤_Karp B and B ≤_Karp C, then A ≤_Karp C. This transitivity forms the basis for hardness hierarchies."
+        },
+        {
+            "group": "3",
+            "topic": "Lecture 3: Complexity Class NP & Karp Reductions [Card 1]",
+            "q": "What is the core definition of the complexity class NP?",
+            "a": "NP is the class of languages verifiable in polynomial time by a deterministic Turing machine given a polynomial-sized certificate, or equivalently, languages decidable by a non-deterministic Turing machine in polynomial time."
+        },
+        {
+            "group": "3",
+            "topic": "Lecture 3: Complexity Class NP & Karp Reductions [Card 2]",
+            "q": "What is a certificate (witness) in the context of NP verification?",
+            "a": "A string 'c' of polynomial length relative to the input x that provides a checkable proof that x belongs to the language L."
+        },
+        {
+            "group": "3",
+            "topic": "Lecture 3: Complexity Class NP & Karp Reductions [Card 3]",
+            "q": "Contrast the verification and decision paths for 3-Coloring (3COL).",
+            "a": "Deciding 3COL requires searching an exponential number of color assignments. Verifying 3COL simply checks a given color mapping to ensure no adjacent vertices share a color, which takes linear time O(|V| + |E|)."
+        },
+        {
+            "group": "3",
+            "topic": "Lecture 3: Complexity Class NP & Karp Reductions [Card 4]",
+            "q": "What is the language formulation of the Independent Set problem?",
+            "a": "IS = { (G, k) : G contains an independent set of size at least k }."
+        },
+        {
+            "group": "3",
+            "topic": "Lecture 3: Complexity Class NP & Karp Reductions [Card 5]",
+            "q": "What are the components of the graph constructed in the 3SAT to Independent Set reduction?",
+            "a": "For a formula with m clauses, the graph contains m distinct triangle gadgets (one per clause). Each vertex in a triangle corresponds to a literal in that clause."
+        },
+        {
+            "group": "3",
+            "topic": "Lecture 3: Complexity Class NP & Karp Reductions [Card 6]",
+            "q": "What is the total number of vertices in the graph constructed from a 3SAT instance with m clauses?",
+            "a": "The graph contains exactly 3m vertices, with each clause mapping to a 3-vertex clique gadget."
+        },
+        {
+            "group": "3",
+            "topic": "Lecture 3: Complexity Class NP & Karp Reductions [Card 7]",
+            "q": "What role do external consistency edges play in the 3SAT to Independent Set reduction?",
+            "a": "They connect any vertex representing a literal x_j to any vertex representing its negation ¬x_j across different clause gadgets, preventing both from being selected in the independent set."
+        },
+        {
+            "group": "3",
+            "topic": "Lecture 3: Complexity Class NP & Karp Reductions [Card 8]",
+            "q": "What is the target size of the independent set in the 3SAT reduction?",
+            "a": "The target size is exactly m, the number of clauses in the boolean formula."
+        },
+        {
+            "group": "3",
+            "topic": "Lecture 3: Complexity Class NP & Karp Reductions [Card 9]",
+            "q": "Why does an independent set of size m in the reduction graph guarantee satisfiability?",
+            "a": "Because the set must select exactly one vertex per clause triangle, and the external consistency edges ensure these selected vertices represent a valid, conflict-free truth assignment."
+        },
+        {
+            "group": "3",
+            "topic": "Lecture 3: Complexity Class NP & Karp Reductions [Card 10]",
+            "q": "Is the class P a subset of NP?",
+            "a": "Yes, P is a subset of NP. Any language in P can be verified in polynomial time by simply running its polynomial-time decision algorithm and ignoring the certificate string."
+        },
+        {
+            "group": "4",
+            "topic": "Lecture 4: NP-Completeness & Cook-Levin [Card 1]",
+            "q": "What defines an NP-hard language?",
+            "a": "A language L is NP-hard if every language L' in NP is polynomial-time Karp-reducible to L (L' ≤_Karp L). NP-hard problems do not have to be in NP themselves."
+        },
+        {
+            "group": "4",
+            "topic": "Lecture 4: NP-Completeness & Cook-Levin [Card 2]",
+            "q": "What defines an NP-complete language?",
+            "a": "A language L is NP-complete if it is in NP and it is also NP-hard."
+        },
+        {
+            "group": "4",
+            "topic": "Lecture 4: NP-Completeness & Cook-Levin [Card 3]",
+            "q": "State the foundational significance of the Cook-Levin Theorem.",
+            "a": "The Cook-Levin Theorem proved that the Boolean Satisfiability problem (SAT) is NP-complete, establishing the existence of a hardest problem in NP."
+        },
+        {
+            "group": "4",
+            "topic": "Lecture 4: NP-Completeness & Cook-Levin [Card 4]",
+            "q": "How do you prove a new language L is NP-complete?",
+            "a": "1. Prove L is in NP by showing a polynomial-time verifier. 2. Select a known NP-complete language L' and show a polynomial-time Karp reduction L' ≤_Karp L."
+        },
+        {
+            "group": "4",
+            "topic": "Lecture 4: NP-Completeness & Cook-Levin [Card 5]",
+            "q": "What is the structural composition of the decision factoring problem (FACT)?",
+            "a": "FACT = { (x, d) : integer x has a non-trivial factor k such that 2 ≤ k ≤ d }."
+        },
+        {
+            "group": "4",
+            "topic": "Lecture 4: NP-Completeness & Cook-Levin [Card 6]",
+            "q": "Why is FACT in the intersection of NP and co-NP?",
+            "a": "A factor k ≤ d serves as an NP certificate. If no such factor exists, a full prime factorisation with all prime factors > d serves as a co-NP certificate, verifiable via polynomial-time primality tests."
+        },
+        {
+            "group": "4",
+            "topic": "Lecture 4: NP-Completeness & Cook-Levin [Card 7]",
+            "q": "What would FACT being NP-complete imply for complexity classes?",
+            "a": "It would imply NP = co-NP, which is considered highly unlikely in structural complexity theory."
+        },
+        {
+            "group": "4",
+            "topic": "Lecture 4: NP-Completeness & Cook-Levin [Card 8]",
+            "q": "What classical algorithm solves FACT in polynomial time on a quantum computer?",
+            "a": "Shor's Algorithm solves factoring in polynomial time on quantum architectures, placing FACT in the class BQP."
+        },
+        {
+            "group": "4",
+            "topic": "Lecture 4: NP-Completeness & Cook-Levin [Card 9]",
+            "q": "What does it mean for a problem to be co-NP?",
+            "a": "A language L is in co-NP if its complement language L_complement = { x : x ∉ L } is in NP. It means there are short, verifiable proofs for 'NO' instances."
+        },
+        {
+            "group": "4",
+            "topic": "Lecture 4: NP-Completeness & Cook-Levin [Card 10]",
+            "q": "If an NP-complete problem is shown to be in P, what is the consequence?",
+            "a": "It would prove that P = NP, as every problem in NP could be reduced to that problem and solved in polynomial time."
+        },
+        {
+            "group": "5",
+            "topic": "Lecture 5: Optimisation & Pseudo-Polynomial Time [Card 1]",
+            "q": "What is the relationship between search and decision variants of Independent Set?",
+            "a": "They are polynomial-time equivalent. A polynomial-time decision oracle can be used to construct the actual independent set iteratively by testing vertex removals (self-reduction)."
+        },
+        {
+            "group": "5",
+            "topic": "Lecture 5: Optimisation & Pseudo-Polynomial Time [Card 2]",
+            "q": "Explain the self-reduction strategy for finding an independent set using a decision oracle.",
+            "a": "Query the oracle for (G, k). If YES, remove a vertex v. Query the oracle for (G \\ {v}, k). If YES, v is not required; proceed with G \\ {v}. If NO, v must be in the solution; proceed by removing v and its neighbors, reducing k by 1."
+        },
+        {
+            "group": "5",
+            "topic": "Lecture 5: Optimisation & Pseudo-Polynomial Time [Card 3]",
+            "q": "What distinguishes an optimisation problem from a search problem?",
+            "a": "A search problem asks for any valid solution satisfying a baseline constraint. An optimisation problem requires finding a valid solution that maximizes or minimizes an objective function."
+        },
+        {
+            "group": "5",
+            "topic": "Lecture 5: Optimisation & Pseudo-Polynomial Time [Card 4]",
+            "q": "How do we convert an optimisation problem into a decision problem?",
+            "a": "By introducing a threshold parameter k and asking if there exists a valid solution with an objective value ≥ k (for maximisation) or ≤ k (for minimisation)."
+        },
+        {
+            "group": "5",
+            "topic": "Lecture 5: Optimisation & Pseudo-Polynomial Time [Card 5]",
+            "q": "What is the time complexity of the dynamic programming algorithm for Knapsack?",
+            "a": "The standard DP algorithm for Knapsack runs in O(nW) time, where n is the number of items and W is the max weight capacity."
+        },
+        {
+            "group": "5",
+            "topic": "Lecture 5: Optimisation & Pseudo-Polynomial Time [Card 6]",
+            "q": "Why is O(nW) runtime for Knapsack classified as pseudo-polynomial time?",
+            "a": "Because the parameter W is a numeric value. The input bit length to encode W is O(log W). Thus, a runtime linear in W scales exponentially with the number of input bits (2^(log W))."
+        },
+        {
+            "group": "5",
+            "topic": "Lecture 5: Optimisation & Pseudo-Polynomial Time [Card 7]",
+            "q": "What defines a pseudo-polynomial time algorithm?",
+            "a": "An algorithm whose running time is polynomial in the numeric values of the input parameters, but exponential in the bit lengths of those numbers."
+        },
+        {
+            "group": "5",
+            "topic": "Lecture 5: Optimisation & Pseudo-Polynomial Time [Card 8]",
+            "q": "Define strong NP-hardness.",
+            "a": "A problem is strongly NP-hard if it remains NP-hard even when all numeric parameters in the input instance are bounded by a polynomial function of the input length."
+        },
+        {
+            "group": "5",
+            "topic": "Lecture 5: Optimisation & Pseudo-Polynomial Time [Card 9]",
+            "q": "Is Knapsack strongly NP-hard?",
+            "a": "No, Knapsack is weakly NP-hard because bounding its numeric parameter W by a polynomial in n transforms its pseudo-polynomial DP algorithm into a standard polynomial-time algorithm."
+        },
+        {
+            "group": "5",
+            "topic": "Lecture 5: Optimisation & Pseudo-Polynomial Time [Card 10]",
+            "q": "Name a problem that is strongly NP-hard.",
+            "a": "3-Coloring or Vertex Cover are strongly NP-hard because they lack numeric weight values; their hardness depends entirely on their graph structure."
+        },
+        {
+            "group": "6",
+            "topic": "Lecture 6: Approximation Algorithms & Vertex Cover [Card 1]",
+            "q": "What is an approximation algorithm?",
+            "a": "A polynomial-time algorithm that solves an NP-hard optimisation problem approximately, with a provable guarantee on the quality of the returned solution relative to the absolute optimum."
+        },
+        {
+            "group": "6",
+            "topic": "Lecture 6: Approximation Algorithms & Vertex Cover [Card 2]",
+            "q": "Define the approximation ratio α for a minimisation problem.",
+            "a": "An algorithm has an approximation ratio α if for all instances, Sol_alg ≤ α * OPT, where α ≥ 1."
+        },
+        {
+            "group": "6",
+            "topic": "Lecture 6: Approximation Algorithms & Vertex Cover [Card 3]",
+            "q": "Define the approximation ratio α for a maximisation problem.",
+            "a": "An algorithm has an approximation ratio α if for all instances, Sol_alg ≥ α * OPT, where α ≤ 1 (or 1/α if inverted)."
+        },
+        {
+            "group": "6",
+            "topic": "Lecture 6: Approximation Algorithms & Vertex Cover [Card 4]",
+            "q": "Describe the greedy matching-based approximation algorithm for Minimum Vertex Cover.",
+            "a": "Select an arbitrary edge (u, v), add both endpoints u and v to the vertex cover, remove all edges incident to u or v from the graph, and repeat until no edges remain."
+        },
+        {
+            "group": "6",
+            "topic": "Lecture 6: Approximation Algorithms & Vertex Cover [Card 5]",
+            "q": "What is the approximation factor of the matching-based Vertex Cover algorithm?",
+            "a": "It is a factor-2 approximation algorithm."
+        },
+        {
+            "group": "6",
+            "topic": "Lecture 6: Approximation Algorithms & Vertex Cover [Card 6]",
+            "q": "Why does selecting both endpoints of a matching edge guarantee a factor-2 bound?",
+            "a": "The selected edges form a matching M, meaning they share no endpoints. Any valid vertex cover must pick at least one vertex from each edge in M, so OPT ≥ |M|. The algorithm selects exactly 2 vertices per edge in M, picking 2|M| vertices total. Thus, Sol = 2|M| ≤ 2 * OPT."
+        },
+        {
+            "group": "6",
+            "topic": "Lecture 6: Approximation Algorithms & Vertex Cover [Card 7]",
+            "q": "Describe the greedy algorithm for the Minimum Set Cover problem.",
+            "a": "Iteratively select the subset that contains the largest number of remaining uncovered elements until all elements are covered."
+        },
+        {
+            "group": "6",
+            "topic": "Lecture 6: Approximation Algorithms & Vertex Cover [Card 8]",
+            "q": "What is the approximation factor of the greedy Set Cover algorithm?",
+            "a": "It achieves an O(log n) approximation factor, where n is the number of elements in the base universe."
+        },
+        {
+            "group": "6",
+            "topic": "Lecture 6: Approximation Algorithms & Vertex Cover [Card 9]",
+            "q": "Can Maximum Independent Set be approximated to a constant factor?",
+            "a": "No, assuming P ≠ NP, Maximum Independent Set cannot be approximated within a constant factor, despite its close relationship to Vertex Cover."
+        },
+        {
+            "group": "6",
+            "topic": "Lecture 6: Approximation Algorithms & Vertex Cover [Card 10]",
+            "q": "What happens to approximation guarantees when an exact algorithm is impossible?",
+            "a": "Approximation algorithms trade absolute optimality for polynomial-time execution, providing predictable solution bounds for NP-hard optimisation problems."
+        },
+        {
+            "group": "7",
+            "topic": "Lecture 7: Metric TSP & Knapsack PTAS [Card 1]",
+            "q": "What constraint distinguishes Metric TSP from General TSP?",
+            "a": "Metric TSP requires that edge costs satisfy the triangle inequality: c(u, w) ≤ c(u, v) + c(v, w) for all vertices u, v, w."
+        },
+        {
+            "group": "7",
+            "topic": "Lecture 7: Metric TSP & Knapsack PTAS [Card 2]",
+            "q": "What is the approximation status of General Traveling Salesperson Problem (General TSP)?",
+            "a": "General TSP is completely inapproximable within any constant factor or polynomial function unless P = NP, as it can be used to decide the Hamiltonian Cycle problem."
+        },
+        {
+            "group": "7",
+            "topic": "Lecture 7: Metric TSP & Knapsack PTAS [Card 3]",
+            "q": "Describe the double-tree constant-factor approximation algorithm for Metric TSP.",
+            "a": "1. Compute a Minimum Spanning Tree (MST) of the graph. 2. Double every edge of the MST to create an Eulerian graph. 3. Find an Eulerian tour. 4. Output a Hamiltonian tour by shortcutting repeated vertices."
+        },
+        {
+            "group": "7",
+            "topic": "Lecture 7: Metric TSP & Knapsack PTAS [Card 4]",
+            "q": "What is the approximation factor of the double-tree Metric TSP algorithm?",
+            "a": "It provides a factor-2 approximation guarantee."
+        },
+        {
+            "group": "7",
+            "topic": "Lecture 7: Metric TSP & Knapsack PTAS [Card 5]",
+            "q": "Why is the weight of an MST bounded by the optimal TSP tour cost (OPT)?",
+            "a": "Removing any single edge from an optimal TSP tour leaves a spanning path. Since an MST is the minimum-weight spanning tree, its weight must be less than or equal to the weight of this spanning path, which is less than OPT. Thus, Cost(MST) ≤ OPT."
+        },
+        {
+            "group": "7",
+            "topic": "Lecture 7: Metric TSP & Knapsack PTAS [Card 6]",
+            "q": "How does the triangle inequality protect the shortcutting step in Metric TSP?",
+            "a": "It guarantees that a direct edge connecting two vertices is always less than or equal to the cost of any multi-hop path between them, ensuring that shortcuts never increase the total tour length."
+        },
+        {
+            "group": "7",
+            "topic": "Lecture 7: Metric TSP & Knapsack PTAS [Card 7]",
+            "q": "What does PTAS stand for?",
+            "a": "Polynomial Time Approximation Scheme."
+        },
+        {
+            "group": "7",
+            "topic": "Lecture 7: Metric TSP & Knapsack PTAS [Card 8]",
+            "q": "Define the performance and runtime guarantees of a PTAS.",
+            "a": "A PTAS provides an approximation factor of (1 + ε) for minimisation (or 1 - ε for maximisation) for any fixed user-selected parameter ε > 0. Its running time must be polynomial in the input size n for any fixed ε, though it can scale exponentially with 1/ε (e.g., O(n^(1/ε)))."
+        },
+        {
+            "group": "7",
+            "topic": "Lecture 7: Metric TSP & Knapsack PTAS [Card 9]",
+            "q": "How does the Knapsack PTAS achieve its approximation guarantee?",
+            "a": "By finding the exact optimal solution for the k most valuable items via dynamic programming after rounding down item values, and using a greedy approach for the remaining items."
+        },
+        {
+            "group": "7",
+            "topic": "Lecture 7: Metric TSP & Knapsack PTAS [Card 10]",
+            "q": "What distinguishes a Fully Polynomial Time Approximation Scheme (FPTAS) from a PTAS?",
+            "a": "An FPTAS requires the running time to be polynomial in both the input size n *and* the parameter 1/ε, preventing exponential scaling like O(n^(1/ε))."
+        },
+        {
+            "group": "8",
+            "topic": "Lecture 8: Randomisation & Monte Carlo Algorithms [Card 1]",
+            "q": "What defines a randomized algorithm?",
+            "a": "An algorithm that can make random choices during its execution by accessing a source of random bits (e.g., tossing coins)."
+        },
+        {
+            "group": "8",
+            "topic": "Lecture 8: Randomisation & Monte Carlo Algorithms [Card 2]",
+            "q": "What is a Monte Carlo algorithm?",
+            "a": "A randomized algorithm whose running time is deterministic and bounded by a polynomial, but whose output is correct only within a given probability margin."
+        },
+        {
+            "group": "8",
+            "topic": "Lecture 8: Randomisation & Monte Carlo Algorithms [Card 3]",
+            "q": "Define a one-sided error Monte Carlo algorithm.",
+            "a": "An algorithm that is always correct on one type of input instance (e.g., always outputs NO correctly for negative instances) but can output the wrong answer with some error probability on the other type."
+        },
+        {
+            "group": "8",
+            "topic": "Lecture 8: Randomisation & Monte Carlo Algorithms [Card 4]",
+            "q": "Describe Freivalds' algorithm for matrix product verification.",
+            "a": "Given matrices A, B, and C, select a random binary vector r ∈ {0,1}^n. Check if A * (B * r) = C * r. If they are equal, output YES; otherwise, output NO."
+        },
+        {
+            "group": "8",
+            "topic": "Lecture 8: Randomisation & Monte Carlo Algorithms [Card 5]",
+            "q": "What is the time complexity of Freivalds' algorithm compared to standard matrix multiplication?",
+            "a": "Freivalds' algorithm computes matrix-vector products, running in O(n^2) time. This is much faster than standard matrix multiplication, which takes O(n^3) or O(n^2.373) time."
+        },
+        {
+            "group": "8",
+            "topic": "Lecture 8: Randomisation & Monte Carlo Algorithms [Card 6]",
+            "q": "What is the maximum error probability of a single iteration of Freivalds' algorithm?",
+            "a": "If A * B ≠ C, Freivalds' algorithm outputs YES (an error) with a probability of at most 1/2."
+        },
+        {
+            "group": "8",
+            "topic": "Lecture 8: Randomisation & Monte Carlo Algorithms [Card 7]",
+            "q": "How does independent repetition reduce error probability in Monte Carlo algorithms?",
+            "a": "Running a one-sided error algorithm with error probability ≤ 1/2 independently T times reduces the cumulative error probability to (1/2)^T."
+        },
+        {
+            "group": "8",
+            "topic": "Lecture 8: Randomisation & Monte Carlo Algorithms [Card 8]",
+            "q": "Using the inequality 1 - z ≤ e^-z, bound the error probability after T independent repetitions of an algorithm with success probability p.",
+            "a": "The probability of failing T times is (1 - p)^T. Substituting 1 - p ≤ e^-p yields an error bound of e^(-pT)."
+        },
+        {
+            "group": "8",
+            "topic": "Lecture 8: Randomisation & Monte Carlo Algorithms [Card 9]",
+            "q": "How many repetitions T are needed to reduce error below a threshold ε given success probability p?",
+            "a": "We set e^(-pT) ≤ ε, which yields T ≥ (1/p) * ln(1/ε) repetitions."
+        },
+        {
+            "group": "8",
+            "topic": "Lecture 8: Randomisation & Monte Carlo Algorithms [Card 10]",
+            "q": "If an algorithm has a success probability of 1/n, how many repetitions are needed to achieve an exponentially small error probability of e^-n?",
+            "a": "T = (1 / (1/n)) * ln(1 / e^-n) = n * n = n^2 repetitions."
+        },
+        {
+            "group": "9",
+            "topic": "Lecture 9: Expected Performance & Las Vegas Algorithms [Card 1]",
+            "q": "What is a Las Vegas algorithm?",
+            "a": "A randomized algorithm that *always* returns the correct answer, but whose running time is a random variable with a bounded expected value."
+        },
+        {
+            "group": "9",
+            "topic": "Lecture 9: Expected Performance & Las Vegas Algorithms [Card 2]",
+            "q": "Contrast Monte Carlo and Las Vegas algorithms regarding accuracy and runtime.",
+            "a": "Monte Carlo algorithms have a fixed polynomial runtime but can output incorrect results with a certain error probability. Las Vegas algorithms are always correct, but their runtime varies probabilistically."
+        },
+        {
+            "group": "9",
+            "topic": "Lecture 9: Expected Performance & Las Vegas Algorithms [Card 3]",
+            "q": "Define a random variable formally.",
+            "a": "A random variable X is a function from the sample space Ω of a random experiment to the real numbers R (X: Ω → R)."
+        },
+        {
+            "group": "9",
+            "topic": "Lecture 9: Expected Performance & Las Vegas Algorithms [Card 4]",
+            "q": "What is the linearity of expectation?",
+            "a": "A fundamental property stating that for any random variables X and Y, E[X + Y] = E[X] + E[Y], regardless of whether they are independent."
+        },
+        {
+            "group": "9",
+            "topic": "Lecture 9: Expected Performance & Las Vegas Algorithms [Card 5]",
+            "q": "Describe the randomized selection algorithm for finding the k-th smallest element in an array.",
+            "a": "Select a pivot element 'a' uniformly at random. Partition the array into elements smaller than 'a' (S_less) and larger than 'a' (S_greater). Recursively search the appropriate partition based on the size of S_less."
+        },
+        {
+            "group": "9",
+            "topic": "Lecture 9: Expected Performance & Las Vegas Algorithms [Card 6]",
+            "q": "What is the expected running time of the randomized k-th element selection algorithm?",
+            "a": "The expected running time is linear, O(n), where n is the number of elements in the array."
+        },
+        {
+            "group": "9",
+            "topic": "Lecture 9: Expected Performance & Las Vegas Algorithms [Card 7]",
+            "q": "What is the worst-case running time of the randomized selection algorithm?",
+            "a": "The worst-case running time is quadratic, O(n^2), which occurs if the algorithm repeatedly picks the worst possible pivot (e.g., the minimum or maximum element)."
+        },
+        {
+            "group": "9",
+            "topic": "Lecture 9: Expected Performance & Las Vegas Algorithms [Card 8]",
+            "q": "Why does picking a pivot uniformly at random ensure a good expected runtime?",
+            "a": "Because a random pivot is highly likely to fall near the middle of the sorted array, splitting the remaining search space into roughly equal halves and avoiding the worst-case O(n^2) behavior."
+        },
+        {
+            "group": "9",
+            "topic": "Lecture 9: Expected Performance & Las Vegas Algorithms [Card 9]",
+            "q": "If an algorithm runs in expected O(n) time, can it take O(n^2) time on some coin-toss sequences?",
+            "a": "Yes, the runtime is a random variable. The expected value is small, but specific unluckly coin-toss sequences can trigger the worst-case runtime."
+        },
+        {
+            "group": "9",
+            "topic": "Lecture 9: Expected Performance & Las Vegas Algorithms [Card 10]",
+            "q": "Can any Las Vegas algorithm be turned into a Monte Carlo algorithm?",
+            "a": "Yes, by stopping the Las Vegas algorithm after a fixed number of steps and returning an arbitrary answer if it hasn't finished, trading its variable runtime for an error probability."
+        },
+        {
+            "group": "10",
+            "topic": "Lecture 10: Probabilistic Complexity & LP Rounding [Card 1]",
+            "q": "What defines an Linear Programming (LP) Relaxation?",
+            "a": "An LP relaxation removes the discrete integer constraints of an Integer Linear Program (ILP) (e.g., changing x_v ∈ {0,1} to 0 ≤ x_v ≤ 1), creating a continuous optimisation problem that can be solved in polynomial time."
+        },
+        {
+            "group": "10",
+            "topic": "Lecture 10: Probabilistic Complexity & LP Rounding [Card 2]",
+            "q": "What is the relationship between the optimal value of an LP relaxation (LP-OPT) and the true ILP optimum (OPT) for a minimisation problem?",
+            "a": "Because the LP relaxation searches over a broader continuous region that contains all integer solutions, its optimal value is always less than or equal to the true integer optimum: LP-OPT ≤ OPT."
+        },
+        {
+            "group": "10",
+            "topic": "Lecture 10: Probabilistic Complexity & LP Rounding [Card 3]",
+            "q": "Describe the threshold rounding rule used for the Minimum Vertex Cover LP relaxation.",
+            "a": "Solve the LP relaxation to get fractional values x_v^* for each vertex. If x_v^* ≥ 1/2, round x_v to 1 and include v in the vertex cover. If x_v^* < 1/2, round x_v to 0."
+        },
+        {
+            "group": "10",
+            "topic": "Lecture 10: Probabilistic Complexity & LP Rounding [Card 4]",
+            "q": "Why does the threshold rounding rule for Vertex Cover produce a valid cover?",
+            "a": "Every edge (u, v) enforces the constraint x_u + x_v ≥ 1 in the LP. For this constraint to hold, at least one of the variables must be ≥ 1/2. The rounding rule will therefore select at least one endpoint for every edge, guaranteeing a valid cover."
+        },
+        {
+            "group": "10",
+            "topic": "Lecture 10: Probabilistic Complexity & LP Rounding [Card 5]",
+            "q": "What is the approximation factor achieved by the LP rounding algorithm for Minimum Vertex Cover?",
+            "a": "It achieves a factor-2 approximation guarantee."
+        },
+        {
+            "group": "10",
+            "topic": "Lecture 10: Probabilistic Complexity & LP Rounding [Card 6]",
+            "q": "Prove the approximation factor bound for the LP rounding Vertex Cover algorithm.",
+            "a": "Sol = ∑_(v∈Sol) 1 ≤ ∑_(v∈Sol) 2*x_v^* ≤ 2 * ∑_(v∈V) x_v^* = 2 * LP-OPT. Since LP-OPT ≤ OPT, Sol ≤ 2 * OPT."
+        },
+        {
+            "group": "10",
+            "topic": "Lecture 10: Probabilistic Complexity & LP Rounding [Card 7]",
+            "q": "What does the complexity class PP represent?",
+            "a": "PP (Probabilistic Polynomial-time) is the class of languages decidable by a probabilistic Turing machine in polynomial time with an error probability strictly less than 1/2 for all instances."
+        },
+        {
+            "group": "10",
+            "topic": "Lecture 10: Probabilistic Complexity & LP Rounding [Card 8]",
+            "q": "What defines the complexity class BPP?",
+            "a": "BPP (Bounded-error Probabilistic Polynomial-time) is the class of languages decidable by a probabilistic Turing machine in polynomial time with an error probability bounded by a constant strictly less than 1/2 (typically ≤ 1/3) for both YES and NO instances."
+        },
+        {
+            "group": "10",
+            "topic": "Lecture 10: Probabilistic Complexity & LP Rounding [Card 9]",
+            "q": "What is the operational definition of the class RP?",
+            "a": "RP (Randomized Polynomial-time) is the class of languages decidable in polynomial time by a probabilistic Turing machine with one-sided error: it is 100% correct on NO instances, and has a success probability of at least 1/2 on YES instances."
+        },
+        {
+            "group": "10",
+            "topic": "Lecture 10: Probabilistic Complexity & LP Rounding [Card 10]",
+            "q": "What is the relationship between BPP and P?",
+            "a": "P is a subset of BPP (P ⊆ BPP). It is a major open question in complexity theory whether P = BPP, which would mean randomness can always be removed from polynomial-time algorithms without an exponential slowdown."
+        }
+    ],
+    "matcher": [
+        {
+            "group": "1",
+            "item": "Eulerian Tour Search",
+            "type": "P",
+            "desc": "Solvable in deterministic linear time O(|V| + |E|) by ensuring connectivity and checking that all vertices display an even degree profile."
+        },
+        {
+            "group": "1",
+            "item": "Graph 2-Coloring Language",
+            "type": "P",
+            "desc": "Directly solved deterministically using standard Breadth-First Search (BFS) to validate the absence of odd length cycle structures."
+        },
+        {
+            "group": "1",
+            "item": "Hamiltonian Cycle Recognition",
+            "type": "NP",
+            "desc": "Classic NP-Complete problem; exhibits no local degree obstructions or clear polynomial-time structural characterisations."
+        },
+        {
+            "group": "2",
+            "item": "Repeated Squaring power(x, k)",
+            "type": "P",
+            "desc": "Runs deterministically in O(log k) operations, rendering it strictly polynomial relative to binary input bit-length."
+        },
+        {
+            "group": "4",
+            "item": "Graph 3-Coloring Language",
+            "type": "NP",
+            "desc": "NP-Complete. Adding even one extra layer color completely removes the clean bipartite layer properties of BFS evaluation."
+        },
+        {
+            "group": "4",
+            "item": "Zero-One Equations (ZOE)",
+            "type": "NP",
+            "desc": "NP-Complete base structural matrix constraint model used to establish reductions from 3D Matching."
+        },
+        {
+            "group": "4",
+            "item": "Integer Factoring Decision (FACT)",
+            "type": "NP_CO_NP",
+            "desc": "Belongs to NP ∩ co-NP. A single factor serves as an NP certificate; a full prime factorization serves as a co-NP certificate. Also lives in BQP (Shor's Algorithm)."
+        },
+        {
+            "group": "6",
+            "item": "Unweighted Interval Scheduling",
+            "type": "P",
+            "desc": "Optimal polynomial resolution via a greedy algorithm sorting by earliest finish intervals."
+        },
+        {
+            "group": "7",
+            "item": "General Traveling Salesperson (TSP)",
+            "type": "NP",
+            "desc": "Completely inapproximable within any constant factor or polynomial function unless P = NP."
+        },
+        {
+            "group": "9",
+            "item": "Randomized QuickSort Runtime",
+            "type": "ZPP",
+            "desc": "A Las Vegas implementation. It always finishes with zero error (sorted array) and boasts an expected runtime bound of O(n log n)."
+        },
+        {
+            "group": "10",
+            "item": "Matrix Product Verification (Freivalds)",
+            "type": "BPP",
+            "desc": "A structural Monte Carlo algorithm running in O(n^2). It has a bounded error chance ≤ 1/2 per pass, placing it in BPP."
+        },
+        {
+            "group": "10",
+            "item": "Halting Problem Recognition",
+            "type": "UNDECIDABLE",
+            "desc": "Undecidable; proven via Cantor diagonalization to fall completely outside the bounded scope of recursive structural parameters."
+        }
+    ],
+    "proofs": [
+        {
+            "id": "bpt-graph",
+            "group": "1",
+            "title": "Bipartite Graph ⟺ No Odd Cycles",
+            "explanation": "An undirected graph G is bipartite (2-colorable) if and only if it contains no cycles of odd length.",
+            "steps": [
+                "**Direction 1 (⟹):** Assume G is bipartite with vertex partitions L and R. Suppose G contains a cycle C = (v1, v2, ..., vk, v1). The vertices must alternate partitions: if v1 ∈ L, then v2 ∈ R, v3 ∈ L, and so on. For the final edge (vk, v1) to connect across partitions, vk must belong to R, which requires the path length k to be an even integer. Thus, no odd cycles can exist.",
+                "**Direction 2 (⟸):** Assume G contains no odd cycles. Pick an arbitrary starting vertex v and assign it to layer 0. Run a Breadth-First Search (BFS) traversal. For every vertex u, compute its shortest path distance d(v, u) from v. Partition vertices with even distances into set L, and vertices with odd distances into set R.",
+                "We must show that no edge connects two vertices within the same partition. Suppose there is an edge (x, y) where both x, y ∈ L. This implies d(v, x) and d(v, y) are both even. The cycle formed by the shortest path from v to x, the edge (x, y), and the shortest path from y back to v has a total length of d(v, x) + d(v, y) + 1, which is an odd integer. This contradicts our assumption of no odd cycles, proving that no such internal edge can exist and G is bipartite."
+            ]
+        },
+        {
+            "id": "repeated-squaring",
+            "group": "2",
+            "title": "Polynomial Bound of Repeated Squaring Algorithm",
+            "explanation": "The powering function power(x, k) = x^k is computable in polynomial time relative to its binary input size.",
+            "steps": [
+                "**Input Bit Encoding:** The input size for the problem is defined by the number of bits required to represent the values, which is Θ(log x + log k).",
+                "**Naive Evaluation Defect:** A naive multiplication loop performs k multiplications. The value k scales as 2^(log k). This makes the naive approach linear in terms of value, but exponential in terms of input bits, violating P-class requirements.",
+                "**Repeated Squaring Mechanics:** The algorithm checks the binary representation of the exponent k. It squares the base in each step: x^2, x^4, x^8... If the current bit of k is 1, it multiplies the running total by the current squared base.",
+                "**Complexity Analysis:** The total number of squaring and multiplication operations is bounded by the number of bits in k, which is exactly ceil(log2 k). Because each large integer multiplication takes polynomial time relative to the bit lengths, the total execution runtime is polynomial in the input size, placing the problem firmly in P."
+            ]
+        },
+        {
+            "id": "3sat-independent-set",
+            "group": "3",
+            "title": "Karp Reduction Correctness: 3SAT ≤_Karp Independent Set",
+            "explanation": "A boolean formula φ in 3-CNF is satisfiable if and only if its reduction graph G_φ contains an independent set of size m, where m is the number of clauses.",
+            "steps": [
+                "**Graph Construction:** For each of the m clauses in φ, construct a 3-vertex clique triangle gadget where each vertex represents a literal in that clause. Add external consistency edges connecting any vertex labeled x_j to any vertex labeled ¬x_j across different clause gadgets.",
+                "**Direction 1 (⟹):** Assume φ has a satisfying truth assignment. This means at least one literal in each clause evaluates to true. Select exactly one true literal vertex from each clause triangle gadget to form a subset I.",
+                "Since we select exactly one vertex per triangle gadget, no two selected vertices share an internal clause edge. Furthermore, because our selection is based on a valid truth assignment, we can never select both a variable x_j and its negation ¬x_j. This ensures no external consistency edges are violated, meaning I forms a valid independent set of size m.",
+                "**Direction 2 (⟸):** Assume G_φ contains an independent set I of size m. Because each clause gadget is a 3-clique, I can contain at most one vertex from each triangle. To reach a total size of m across m clauses, I must contain exactly one vertex from each clause gadget.",
+                "Since I is an independent set, it cannot contain two vertices connected by an edge. This means it cannot contain a vertex labeled x_j and another labeled ¬x_j. We can therefore construct a valid truth assignment by setting the variables corresponding to the vertices in I to true. Any remaining variables can be set arbitrarily. This assignment satisfies at least one literal per clause, making φ satisfiable."
+            ]
+        },
+        {
+            "id": "factoring-np-co-np",
+            "group": "4",
+            "title": "Factoring Structural Niche (FACT ∈ NP ∩ co-NP)",
+            "explanation": "The decision factoring language FACT belongs to both NP and co-NP, making it unlikely to be NP-complete.",
+            "steps": [
+                "**FACT Language Formulation:** FACT = { (x, d) : integer x has a non-trivial factor k such that 2 ≤ k ≤ d }.",
+                "**NP Membership Proof:** A valid certificate is a single integer k. The verifier checks two conditions: 1. Is k ≤ d? 2. Does k divide x with zero remainder (x % k == 0)? Both checks can be performed in polynomial time via standard division, placing FACT in NP.",
+                "**co-NP Membership Proof:** For a NO instance (where x has no factors less than or equal to d), a valid certificate is the complete prime factorisation of x: x = p1^e1 * p2^e2 * ... * pr^er. The verifier checks that: 1. The product equals x. 2. Every factor pi is prime (using the polynomial-time AKS primality test). 3. All prime factors are strictly greater than d.",
+                "**Complexity Conclusion:** Since both YES and NO instances can be verified in polynomial time, FACT belongs to the intersection class NP ∩ co-NP. If any problem in NP ∩ co-NP were proven NP-complete, it would imply NP = co-NP, which contradicts structural complexity assumptions."
+            ]
+        },
+        {
+            "id": "search-decision-independent-set",
+            "group": "5",
+            "title": "Equivalence of Search and Decision for Independent Set",
+            "explanation": "A polynomial-time decision oracle B(G, k) exists if and only if there is a polynomial-time search algorithm that constructs the vertex subset of an independent set of size k.",
+            "steps": [
+                "**Direction 1 (Search ⟹ Decision):** This direction is immediate. If a search algorithm returns a valid vertex set of size k with no internal edges, accept and return YES. If no such set is found, return NO.",
+                "**Direction 2 (Decision ⟹ Search):** Assume we have access to a black-box oracle B(G, k) that returns YES or NO in polynomial time. We can construct a valid independent set iteratively using the following self-reduction algorithm:",
+                "First, query B(G, k). If it returns NO, terminate immediately; no independent set of size k exists.",
+                "If the oracle returns YES, select an arbitrary vertex v ∈ V. We want to test whether a valid independent set of size k can be formed without using v.",
+                "Construct a modified graph G' = G \\ {v} by removing v and all its incident edges. Query the decision oracle with the modified graph: B(G', k).",
+                "**Case A:** If the oracle returns YES, a valid independent set of size k exists without using v. Update G = G' and repeat the loop with the next vertex.",
+                "**Case B:** If the oracle returns NO, v must be part of the independent set solution. Retain v in your solution set, decrement the target counter k by 1, and remove v along with all its neighbors N(v) from G (since neighbors cannot be chosen alongside v). Update G = G \\ ({v} ∪ N(v)) and repeat until k = 0."
+            ]
+        },
+        {
+            "id": "greedy-matching-vertex-cover",
+            "group": "6",
+            "title": "Factor-2 Greedy Matching Approximation for Minimum Vertex Cover",
+            "explanation": "The greedy matching-based algorithm guarantees a valid vertex cover whose size is at most twice that of the absolute optimum (Sol ≤ 2 * OPT).",
+            "steps": [
+                "**Algorithm Mechanics:** Initialize an empty vertex cover set C. While the graph contains edges, select an arbitrary edge (u, v). Add both endpoints u and v to C, and remove all edges incident to u or v from the graph.",
+                "**Establishing a Lower Bound (The Matching):** Let M denote the set of edges selected by the algorithm. By construction, once an edge is selected, all its incident edges are removed. This ensures that no two edges in M share a vertex endpoint, making M a valid matching.",
+                "Because the edges in M are disjoint, any valid vertex cover *must* pick at least one unique vertex from each edge in M to cover it. This establishes a fundamental lower bound on the size of the optimal solution: OPT ≥ |M|.",
+                "**Bounding the Algorithm's Solution:** The algorithm adds both endpoints of each edge in M to the cover C, so the total size of the returned solution is exactly |C| = 2 * |M|.",
+                "**Final Comparison:** Combining the solution size with our lower bound yields: |C| = 2 * |M| ≤ 2 * OPT. This proves that the greedy matching-based approach achieves a factor-2 approximation."
+            ]
+        },
+        {
+            "id": "double-tree-tsp",
+            "group": "7",
+            "title": "Factor-2 Double-Tree Approximation for Metric TSP",
+            "explanation": "In graph metrics satisfying the triangle inequality, the double-tree shortcut algorithm guarantees a tour cost at most twice the optimal tour cost (Cost(T) ≤ 2 * OPT).",
+            "steps": [
+                "**Lower Bound via MST:** Let T^* denote the absolute optimal TSP tour with cost OPT. Removing any single edge from T^* yields a path that spans all vertices. Since a Minimum Spanning Tree (MST) has the minimum possible weight among all spanning structures, we have: Cost(MST) ≤ Cost(Spanning Path) ≤ Cost(T^*) = OPT.",
+                "**Eulerian Graph Construction:** The algorithm constructs an MST and doubles every edge. This ensures every vertex has an even degree, allowing us to find an Eulerian tour W that traverses every edge exactly once. The total weight of this tour is exactly 2 * Cost(MST).",
+                "**Shortcutting Traversal:** We traverse the Eulerian tour W and use shortcuts to avoid visiting vertices more than once, converting the walk into a valid Hamiltonian TSP tour T.",
+                "**Applying the Triangle Inequality:** By the triangle inequality, a direct edge c(u, w) is always less than or equal to the cost of a multi-hop path c(u, v) + c(v, w). Shortcut steps therefore never increase the total cost of the tour: Cost(T) ≤ Cost(W).",
+                "**Final Analysis Chain:** Combining these bounds gives: Cost(T) ≤ Cost(W) = 2 * Cost(MST) ≤ 2 * OPT. This completes the proof."
+            ]
+        },
+        {
+            "id": "freivalds-proof",
+            "group": "8-10",
+            "title": "Freivalds' Matrix Product Verification Correctness",
+            "explanation": "If A * B ≠ C, Freivalds' algorithm flags the inequality with a success probability of at least 1/2 using a random binary vector r ∈ {0,1}^n.",
+            "steps": [
+                "**Error Definition:** Let D = (A * B) - C. Since A * B ≠ C, the difference matrix D is non-zero, meaning it contains at least one non-size entries. Suppose row i of D contains a non-zero element, so (d_i1, d_i2, ..., d_in) ≠ (0, 0, ..., 0).",
+                "**Vector Multiplication Mapping:** The algorithm picks a random binary vector r = (r1, r2, ..., rn)^T where each r_i ∈ {0,1} is chosen uniformly at random. The i-th entry of the product D * r is given by the linear combination: y = ∑_(j=1 to n) d_ij * r_j.",
+                "**Applying the Principle of Deferred Decisions:** Assume without loss of generality that d_i1 ≠ 0. Fix the values of all random bits except the first one, r1. For the sum to equal zero, we require: d_i1 * r1 + ∑_(j=2 to n) d_ij * r_j = 0, which implies d_i1 * r1 = -∑_(j=2 to n) d_ij * r_j.",
+                "Since d_i1 ≠ 0, there is at most *one* specific value for r1 ∈ {0,1} that can satisfy this equation. Because r1 is chosen uniformly at random from {0,1}, the probability that it hits this specific value is at most 1/2.",
+                "Thus, the probability that the sum equals zero is at most 1/2, meaning Pr[D * r = 0] ≤ 1/2. The algorithm will therefore detect the inequality and output NO with a success probability of at least 1/2."
+            ]
+        },
+        {
+            "id": "quickselect-expected-runtime",
+            "group": "9",
+            "title": "Expected Linear Runtime of Randomized Selection",
+            "explanation": "The randomized QuickSelect algorithm finds the k-th smallest element in an array in expected linear time O(n).",
+            "steps": [
+                "**Algorithm Execution:** Choose a pivot element 'a' uniformly at random from the array S. Compute the sub-arrays S_less (elements < a) and S_greater (elements > a). Let ϑ = |S_less|. If ϑ = k - 1, return 'a'. If ϑ > k - 1, recursively search for the k-th element in S_less. If ϑ < k - 1, recursively search for the (k - ϑ - 1)-th element in S_greater.",
+                "**Defining a Good Pivot:** A pivot is considered 'good' if it falls within the middle two quartiles of the sorted array (between the 25th and 75th percentiles). A good pivot ensures that the larger partition contains at most 3/4 * |S| elements.",
+                "**Probability of a Good Pivot:** Since the pivot is chosen uniformly at random, it lands in the middle two quartiles with a probability of exactly 1/2.",
+                "**Expected Iterations until a Good Pivot:** The number of pivot selections needed to get a good pivot follows a geometric distribution with a success probability of 1/2. The expected number of trials until success is therefore 1 / (1/2) = 2.",
+                "**Recurrence Formulation:** The expected work done in an array of size n satisfies the recurrence: T(n) ≤ 2 * c * n + T(3/4 * n), where c * n represents the linear time spent partitioning the array.",
+                "**Solving via Geometric Series:** Expanding the recurrence yields a geometric series: T(n) ≤ 2 * c * n * (1 + 3/4 + (3/4)^2 + (3/4)^3 + ...) = 2 * c * n * (1 / (1 - 3/4)) = 2 * c * n * 4 = 8 * c * n. This proves that the expected running time is linear, O(n)."
+            ]
+        },
+        {
+            "id": "lp-rounding-vertex-cover",
+            "group": "8-10",
+            "title": "Factor-2 LP Rounding Approximation for Minimum Vertex Cover",
+            "explanation": "Rounding the optimal fractional solution of an LP relaxation for Minimum Vertex Cover yields a valid vertex cover whose size is at most twice the optimal integer solution (Sol ≤ 2 * OPT).",
+            "steps": [
+                "**ILP and LP Formulations:** The Integer Linear Program (ILP) for Minimum Vertex Cover assigns a binary variable x_v ∈ {0,1} to each vertex, minimizing ∑_(v∈V) x_v subject to the edge coverage constraints x_u + x_v ≥ 1 for all (u, v) ∈ E. The LP relaxation relaxes the binary constraints to continuous intervals: 0 ≤ x_v ≤ 1.",
+                "**The Bounding Principle:** Let x^* denote the optimal fractional solution to the relaxed LP, and let LP-OPT = ∑_(v∈V) x_v^* be its objective value. Because the relaxed LP searches over a broader continuous space that includes all valid integer solutions, its optimum cannot exceed the true integer optimum: LP-OPT ≤ OPT.",
+                "**Rounding Rule and Validity Proof:** Construct an integer solution set A using the threshold rule: include vertex v in A if and only if x_v^* ≥ 1/2. To show A is a valid vertex cover, consider any edge (u, v) ∈ E. The LP solution must satisfy x_u^* + x_v^* ≥ 1. For this inequality to hold, at least one of the endpoints must have a value ≥ 1/2, ensuring it is rounded up to 1 and included in A.",
+                "**Approximation Bound Derivation:** We bound the size of the constructed vertex cover |A| as follows: |A| = ∑_(v∈A) 1. Since x_v^* ≥ 1/2 for all v ∈ A, we have 1 ≤ 2 * x_v^*. Substituting this gives: |A| ≤ ∑_(v∈A) 2 * x_v^* ≤ 2 * ∑_(v∈V) x_v^* = 2 * LP-OPT.",
+                "**Final Comparison Bound:** Since LP-OPT ≤ OPT, we get: |A| ≤ 2 * LP-OPT ≤ 2 * OPT. This completes the formal proof that threshold rounding achieves a factor-2 approximation."
+            ]
+        }
+    ],
+    "quiz": [
+        {
+            "group": "1",
+            "type": "single",
+            "q": "Which graph property can be evaluated in deterministic linear time?",
+            "options": [
+                "Hamiltonian Cycle",
+                "Eulerian Tour",
+                "3-Coloring",
+                "Maximum Independent Set"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Eulerian tours only require verifying that the graph is connected and all vertex degrees are even, which takes O(|V|+|E|) time."
+        },
+        {
+            "group": "1",
+            "type": "single",
+            "q": "A graph G has an odd-length cycle. What is its exact chromatic profile bounds?",
+            "options": [
+                "It is 2-colorable",
+                "It is bipartite",
+                "It requires at least 3 colors",
+                "It cannot be connected"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "A graph is bipartite (2-colorable) if and only if it contains no odd cycles. The presence of an odd cycle means it requires 3 or more colors."
+        },
+        {
+            "group": "1",
+            "type": "multiple",
+            "q": "Select all concepts that directly quantify the input size in complexity metrics:",
+            "options": [
+                "The string length of the binary-encoded input",
+                "The physical RAM limit of the machine",
+                "The clock cycle speed of the processor",
+                "The number of bits used to represent values"
+            ],
+            "correct": [
+                0,
+                3
+            ],
+            "feedback": "Complexity theory defines input size strictly by the number of bits required to encode the input instance using standard encoding schemes."
+        },
+        {
+            "group": "1",
+            "type": "single",
+            "q": "If a graph has an independent set S, what property must V \\ S satisfy?",
+            "options": [
+                "It must be a clique",
+                "It must be an Eulerian subgraph",
+                "It must be a valid vertex cover",
+                "It must be an empty set"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "By definition, the complement of any independent set in a graph is always a valid vertex cover."
+        },
+        {
+            "group": "1",
+            "type": "single",
+            "q": "What is the maximum number of edges in a perfect matching on an undirected graph with n vertices?",
+            "options": [
+                "n",
+                "n / 2",
+                "n - 1",
+                "2n"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "A perfect matching pairs every vertex uniquely with another via a disjoint edge, requiring exactly n / 2 edges. (Requires even n)."
+        },
+        {
+            "group": "1",
+            "type": "single",
+            "q": "An algorithm checks if all vertices have an even degree. What decision language is it verifying?",
+            "options": [
+                "Hamiltonian path existence",
+                "Bipartite structure",
+                "Eulerian tour existence",
+                "Perfect matching presence"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "Even degrees for all vertices in a connected graph is the exact condition for Eulerian tours."
+        },
+        {
+            "group": "1",
+            "type": "single",
+            "q": "What is the worst-case runtime to check if a graph is 2-colorable using BFS?",
+            "options": [
+                "O(V^3)",
+                "O(2^V)",
+                "O(V + E)",
+                "O(E log V)"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "BFS traverses the entire graph structure in linear time O(|V| + |E|)."
+        },
+        {
+            "group": "1",
+            "type": "single",
+            "q": "Which of the following graph families is always bipartite?",
+            "options": [
+                "All cycles",
+                "All cliques K_n for n > 2",
+                "All trees",
+                "All wheels"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "Trees contain zero cycles, so they cannot contain any odd cycles, guaranteeing bipartite membership."
+        },
+        {
+            "group": "1",
+            "type": "multiple",
+            "q": "Select all true properties of a matching:",
+            "options": [
+                "No two edges share an endpoint",
+                "It must cover every vertex",
+                "It is a set of vertices",
+                "A single edge can form a matching"
+            ],
+            "correct": [
+                0,
+                3
+            ],
+            "feedback": "A matching is a set of edges sharing no endpoints. It does not have to be perfect (cover everything), and a single edge trivially fulfills this definition."
+        },
+        {
+            "group": "1",
+            "type": "single",
+            "q": "If a graph is a single cycle of 5 vertices, what is its vertex cover number?",
+            "options": [
+                "2",
+                "3",
+                "4",
+                "5"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "For an odd cycle C_5, the max independent set size is 2. The minimum vertex cover size is therefore |V| - 2 = 5 - 2 = 3."
+        },
+        {
+            "group": "2",
+            "type": "single",
+            "q": "If A ≤_Karp B and B ∈ P, then:",
+            "options": [
+                "A must be NP-complete",
+                "A must be in P",
+                "B must be NP-hard",
+                "A requires exponential time"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Karp reductions preserve polynomial time bounds. If the target problem is in P, the source problem is pulled into P."
+        },
+        {
+            "group": "2",
+            "type": "single",
+            "q": "The runtime bound for the class EXP is formally defined as:",
+            "options": [
+                "O(2^n)",
+                "⋃ TIME(2^(n^c)) for c ≥ 1",
+                "O(n!)",
+                "⋃ TIME(c^n) for constant c"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "EXP encompasses all languages decidable within 2^(n^c) time for some polynomial exponent c."
+        },
+        {
+            "group": "2",
+            "type": "single",
+            "q": "What is the bit size required to encode a numerical value k in standard computational formats?",
+            "options": [
+                "k bits",
+                "k^2 bits",
+                "Θ(log k) bits",
+                "O(1) bits"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "Expressing a number k in positional binary notation requires a length proportional to the logarithm of that number, base 2."
+        },
+        {
+            "group": "2",
+            "type": "single",
+            "q": "The fundamental theorem establishing that P ≠ EXP is known as the:",
+            "options": [
+                "Cook-Levin Theorem",
+                "Time Hierarchy Theorem",
+                "Space Bound Postulate",
+                "Triangle Inequality Theorem"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "The Time Hierarchy Theorem mathematically guarantees that deterministic complexity classes grow strictly larger as time bounds increase exponentially."
+        },
+        {
+            "group": "2",
+            "type": "multiple",
+            "q": "Select all requirements for a function f to be a valid Karp reduction from language A to B:",
+            "options": [
+                "f must be computable in polynomial time",
+                "f must run in O(n log n) time",
+                "x ∈ A ⟺ f(x) ∈ B",
+                "f must be an invertible function"
+            ],
+            "correct": [
+                0,
+                2
+            ],
+            "feedback": "A Karp reduction requires polynomial time limits on computing f, and the mapping must preserve membership status exactly (x ∈ A iff f(x) ∈ B)."
+        },
+        {
+            "group": "2",
+            "type": "single",
+            "q": "How many variable assignments must a brute-force solver evaluate to check a SAT formula with n variables?",
+            "options": [
+                "n^2",
+                "2^n",
+                "n!",
+                "2n"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Each boolean variable has 2 independent choices (true/false), resulting in 2^n total global permutations."
+        },
+        {
+            "group": "2",
+            "type": "single",
+            "q": "If A ≤_Karp B and B ≤_Karp C, what does transitivity imply?",
+            "options": [
+                "C ≤_Karp A",
+                "A ≤_Karp C",
+                "B is in P",
+                "All three are in EXP"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Reductions are transitive; mapping A to B and B to C provides a direct polynomial mapping pipeline from A to C."
+        },
+        {
+            "group": "2",
+            "type": "single",
+            "q": "A decision problem is structurally defined as a language over the alphabet:",
+            "options": [
+                "{A, B, C, D}",
+                "{0, 1}",
+                "Any infinite set",
+                "The real numbers R"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Standard complexity frameworks map inputs to binary strings, which are subsets of {0, 1}^*."
+        },
+        {
+            "group": "2",
+            "type": "single",
+            "q": "Why is repeated squaring preferred for power implementation over sequential multiplications?",
+            "options": [
+                "It takes fewer bits",
+                "It minimizes space complexity from O(n) to O(1)",
+                "It reduces execution runtime from exponential to polynomial in terms of input bits",
+                "It is easier to read"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "Multiplying k times takes time exponential in log k, whereas repeated squaring requires only log k operations, achieving polynomial efficiency."
+        },
+        {
+            "group": "2",
+            "type": "single",
+            "q": "If language A can be Karp-reduced to language B, what is the relative difficulty of the two languages?",
+            "options": [
+                "A is at least as hard as B",
+                "B is at least as hard as A",
+                "Both have identical time complexity",
+                "Neither can be solved in polynomial time"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "A ≤_Karp B implies that if we can solve B efficiently, we can solve A efficiently. Thus, B acts as a ceiling and is at least as hard as A."
+        },
+        {
+            "group": "3",
+            "type": "single",
+            "q": "A certificate for verifying the Independent Set problem on input (G, k) consists of:",
+            "options": [
+                "A listing of all cycles in G",
+                "A subset of k vertices",
+                "A polynomial equation",
+                "An Eulerian tour sequence"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Providing the k vertices allows a polynomial-time verifier to check that the subset has size k and contains no internal edges."
+        },
+        {
+            "group": "3",
+            "type": "single",
+            "q": "In the reduction from 3SAT to Independent Set, a formula with 12 clauses creates a graph with how many vertices?",
+            "options": [
+                "12",
+                "24",
+                "36",
+                "48"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "Each clause maps to a triangle gadget containing exactly 3 vertices, so 12 * 3 = 36 vertices."
+        },
+        {
+            "group": "3",
+            "type": "multiple",
+            "q": "Select all true statements about the complexity class NP:",
+            "options": [
+                "NP stands for Non-Polynomial time",
+                "P is a subset of NP",
+                "Every language in NP can be solved in brute-force exponential time",
+                "NP-complete problems are a subset of NP"
+            ],
+            "correct": [
+                1,
+                2,
+                3
+            ],
+            "feedback": "NP stands for Non-deterministic Polynomial time. P is contained within NP, languages in NP can be solved in exponential time by trying all certificates, and NP-complete problems are by definition within NP."
+        },
+        {
+            "group": "3",
+            "type": "single",
+            "q": "External edges in the 3SAT to Independent Set reduction connect:",
+            "options": [
+                "Vertices within the same clause gadget",
+                "Vertices with identical literal labels",
+                "Vertices representing conflicting literals (x_j and ¬x_j)",
+                "Every vertex to a central root node"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "External edges connect x_j and ¬x_j across gadgets to prevent both from being simultaneously selected in the independent set."
+        },
+        {
+            "group": "3",
+            "type": "single",
+            "q": "If a 3SAT instance has m clauses, a valid independent set in the reduction graph must have a size of exactly:",
+            "options": [
+                "3m",
+                "m",
+                "2^m",
+                "m / 3"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Since each of the m clause gadgets is a clique, the independent set can pick at most one vertex per gadget. To reach size m, it must pick exactly one per gadget."
+        },
+        {
+            "group": "3",
+            "type": "single",
+            "q": "The verification algorithm V(x, c) for a language in NP must run in:",
+            "options": [
+                "Linear time O(|x|)",
+                "Polynomial time with respect to |x|",
+                "Exponential time",
+                "Logarithmic space"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "By definition, the verification process for languages in NP must run in polynomial time on a deterministic machine."
+        },
+        {
+            "group": "3",
+            "type": "single",
+            "q": "What is the maximum number of vertices that can be chosen from a single clause triangle gadget in an independent set?",
+            "options": [
+                "0",
+                "1",
+                "2",
+                "3"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Vertices in a clause gadget form a 3-clique, meaning every pair is connected by an edge. An independent set can therefore contain at most 1 vertex from it."
+        },
+        {
+            "group": "3",
+            "type": "single",
+            "q": "Which problem can be verified in polynomial time but is not known to be in P?",
+            "options": [
+                "Eulerian Tour",
+                "2-Coloring",
+                "3-Coloring",
+                "Minimum Spanning Tree"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "3-Coloring is an NP-complete problem; it is verifiable in polynomial time, but no polynomial-time decision algorithm is known."
+        },
+        {
+            "group": "3",
+            "type": "single",
+            "q": "If a boolean formula is unsatisfiable, what can we say about the independent set size in its reduction graph?",
+            "options": [
+                "It cannot contain an independent set of size m",
+                "It has an independent set of size 3m",
+                "It has no independent set at all",
+                "The independent set size is exactly m"
+            ],
+            "correct": [
+                0
+            ],
+            "feedback": "The reduction guarantees that the formula is satisfiable if and only if the graph has an independent set of size m. If it is unsatisfiable, the max independent set is strictly less than m."
+        },
+        {
+            "group": "3",
+            "type": "single",
+            "q": "The relation R_3COL = {(G, σ) : σ is a valid 3-coloring of G} defines what kind of problem?",
+            "options": [
+                "Decision Problem",
+                "Search Problem",
+                "Optimisation Problem",
+                "Relational Verification Problem"
+            ],
+            "correct": [
+                3
+            ],
+            "feedback": "This relational pairing matches an instance with a valid candidate solution, forming the basis for polynomial-time verification."
+        },
+        {
+            "group": "4",
+            "type": "single",
+            "q": "A language L is NP-complete if:",
+            "options": [
+                "L is NP-hard",
+                "L is in NP",
+                "L is in NP and L is NP-hard",
+                "L is in P"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "NP-completeness requires both membership in NP and NP-hardness."
+        },
+        {
+            "group": "4",
+            "type": "single",
+            "q": "The Cook-Levin Theorem establishes that which problem is NP-complete?",
+            "options": [
+                "Independent Set",
+                "Vertex Cover",
+                "SAT",
+                "Factoring"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "The Cook-Levin theorem proved that SAT is NP-complete by showing that any NP machine could be encoded as a boolean formula."
+        },
+        {
+            "group": "4",
+            "type": "multiple",
+            "q": "Select all true properties of the Factoring decision problem (FACT):",
+            "options": [
+                "FACT is NP-complete",
+                "FACT is in NP",
+                "FACT is in co-NP",
+                "FACT is in BQP"
+            ],
+            "correct": [
+                1,
+                2,
+                3
+            ],
+            "feedback": "FACT is in NP, co-NP, and BQP (via Shor's algorithm). It is not expected to be NP-complete because that would imply NP = co-NP."
+        },
+        {
+            "group": "4",
+            "type": "single",
+            "q": "If a language is NP-hard but not in NP, it can be described as:",
+            "options": [
+                "NP-complete",
+                "Strictly harder than or outside of NP",
+                "In P",
+                "Decidable in logarithmic time"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "NP-hard problems that are outside of NP are not NP-complete; they are simply upper bounds of hardness for NP."
+        },
+        {
+            "group": "4",
+            "type": "single",
+            "q": "What happens if a problem L' can be Karp-reduced to L (L' ≤_Karp L)?",
+            "options": [
+                "L' is at least as hard as L",
+                "L is at least as hard as L'",
+                "L' must be in P",
+                "L must be in NP"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Karp reductions establish that the target language L is at least as hard as the source language L'."
+        },
+        {
+            "group": "4",
+            "type": "single",
+            "q": "Which complexity class represents problems solvable in polynomial time on a quantum computer?",
+            "options": [
+                "P",
+                "NP",
+                "BQP",
+                "EXP"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "BQP (Bounded-error Quantum Polynomial-time) is the quantum analog to the class BPP or P."
+        },
+        {
+            "group": "4",
+            "type": "single",
+            "q": "If NP is not equal to co-NP, then:",
+            "options": [
+                "P = NP",
+                "No NP-complete problem can be in co-NP",
+                "FACT is NP-complete",
+                "EXP = P"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "If an NP-complete problem were in co-NP, its entire class (NP) would collapse into co-NP, implying NP = co-NP."
+        },
+        {
+            "group": "4",
+            "type": "single",
+            "q": "To prove a problem is NP-hard, you must reduce:",
+            "options": [
+                "A known NP-hard problem TO the new problem",
+                "The new problem TO a known NP-hard problem",
+                "An exponential problem TO a polynomial problem",
+                "A problem in P TO a problem in NP"
+            ],
+            "correct": [
+                0
+            ],
+            "feedback": "To show a new problem is at least as hard as the known standard, you must reduce the known hard problem to the new problem."
+        },
+        {
+            "group": "4",
+            "type": "single",
+            "q": "What is the complement problem of SAT?",
+            "options": [
+                "3SAT",
+                "UNSAT (verifying a formula has no satisfying assignments)",
+                "Independent Set",
+                "Factoring"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "The complement of SAT is UNSAT, which asks if a formula has zero satisfying assignments. UNSAT is co-NP-complete."
+        },
+        {
+            "group": "4",
+            "type": "single",
+            "q": "The class NP ∩ co-NP contains which notable problem?",
+            "options": [
+                "SAT",
+                "3COL",
+                "FACT",
+                "General TSP"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "Factoring (FACT) is the classic example of a problem residing in NP ∩ co-NP that is not known to be in P."
+        },
+        {
+            "group": "5",
+            "type": "single",
+            "q": "If an optimisation problem is solved in O(n^2 * V_max) where V_max is the maximum numerical value in the input, the algorithm is:",
+            "options": [
+                "Polynomial time",
+                "Pseudo-polynomial time",
+                "Strongly polynomial time",
+                "Exponential time"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "The runtime is polynomial in the value V_max, but exponential in its bit length log(V_max). This matches the definition of pseudo-polynomial time."
+        },
+        {
+            "group": "5",
+            "type": "single",
+            "q": "A problem is classified as strongly NP-hard if it:",
+            "options": [
+                "Can be solved in O(n^log n) time",
+                "Is NP-hard even when all numeric inputs are bounded by a polynomial in the input length",
+                "Cannot be verified in polynomial time",
+                "Contains no numeric values"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Strong NP-hardness means the problem remains NP-hard even without large numeric inputs driving the complexity."
+        },
+        {
+            "group": "5",
+            "type": "multiple",
+            "q": "Select all true statements regarding the Knapsack problem:",
+            "options": [
+                "It is strongly NP-hard",
+                "It can be solved in O(nW) time using dynamic programming",
+                "It is weakly NP-hard",
+                "W represents the number of items"
+            ],
+            "correct": [
+                1,
+                2
+            ],
+            "feedback": "Knapsack is weakly NP-hard because it has a pseudo-polynomial O(nW) DP solver, where W is the weight capacity."
+        },
+        {
+            "group": "5",
+            "type": "single",
+            "q": "The process of using a decision oracle to construct a full search solution is called:",
+            "options": [
+                "Karp reduction",
+                "Self-reduction",
+                "Linear programming rounding",
+                "Greedy thresholding"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Self-reduction exploits the structural relationship between a decision problem and its search variant to build a solution step-by-step."
+        },
+        {
+            "group": "5",
+            "type": "single",
+            "q": "If a decision oracle for Independent Set returns NO for an input (G, k), what does the self-reduction algorithm do?",
+            "options": [
+                "Removes a vertex and continues",
+                "Terminates immediately because no solution exists",
+                "Decrements k and runs again",
+                "Ignores the oracle"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "A NO response from the oracle means there is no independent set of size k anywhere in the graph, so the algorithm terminates."
+        },
+        {
+            "group": "5",
+            "type": "single",
+            "q": "Which of the following problems is strongly NP-hard?",
+            "options": [
+                "Knapsack",
+                "3-Coloring",
+                "Subset Sum",
+                "Pseudo-matching"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "3-Coloring has no numeric parameters; its hardness is structural, making it strongly NP-hard."
+        },
+        {
+            "group": "5",
+            "type": "single",
+            "q": "If the input capacity W of a Knapsack instance is 1,000,000, how many bits are required to encode W?",
+            "options": [
+                "1,000,000 bits",
+                "Exactly 10 bits",
+                "Approximately 20 bits",
+                "100 bits"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "The number of bits is ceil(log2(1,000,000)) ≈ 20 bits."
+        },
+        {
+            "group": "5",
+            "type": "single",
+            "q": "The optimisation variant of Minimum Vertex Cover asks for:",
+            "options": [
+                "A vertex cover with a size less than k",
+                "A vertex cover of absolute minimum cardinality",
+                "Any valid vertex cover",
+                "A vertex cover that forms a clique"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "The optimisation variant seeks to minimize the objective function (the size of the cover) over all valid solutions."
+        },
+        {
+            "group": "5",
+            "type": "single",
+            "q": "Under what condition does a pseudo-polynomial time algorithm run in true polynomial time?",
+            "options": [
+                "When the graph is a tree",
+                "When all numerical inputs are bounded by a polynomial function of the input size",
+                "When P = NP",
+                "When the numbers are represented in binary"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "If numeric inputs are bounded by poly(n), then the numeric value V matches poly(n), making an O(nV) algorithm run in true polynomial time."
+        },
+        {
+            "group": "5",
+            "type": "single",
+            "q": "If problem A is strongly NP-hard, then it cannot have a pseudo-polynomial time algorithm unless:",
+            "options": [
+                "P = NP",
+                "EXP = true",
+                "It has no weights",
+                "It is in co-NP"
+            ],
+            "correct": [
+                0
+            ],
+            "feedback": "If a strongly NP-hard problem had a pseudo-polynomial algorithm, bounding its parameters would yield a true polynomial-time algorithm for an NP-hard problem, proving P=NP."
+        },
+        {
+            "group": "6",
+            "type": "single",
+            "q": "The matching-based greedy algorithm for Minimum Vertex Cover provides an approximation factor of:",
+            "options": [
+                "1.5",
+                "2",
+                "log n",
+                "1 + ε"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "The matching-based algorithm guarantees that the returned vertex cover is at most twice the size of the optimal cover."
+        },
+        {
+            "group": "6",
+            "type": "single",
+            "q": "For a minimisation problem, a valid approximation factor α must always satisfy:",
+            "options": [
+                "α ≤ 1",
+                "α ≥ 1",
+                "α = 0",
+                "α < 0"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Minimisation approximations yield costs greater than or equal to the optimum, so the ratio Sol / OPT is always ≥ 1."
+        },
+        {
+            "group": "6",
+            "type": "single",
+            "q": "If an optimal vertex cover for a graph G has a size of 15, what is the maximum size the matching-based approximation algorithm could return?",
+            "options": [
+                "15",
+                "30",
+                "45",
+                "60"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "With a factor-2 approximation bound, Sol ≤ 2 * OPT = 2 * 15 = 30."
+        },
+        {
+            "group": "6",
+            "type": "single",
+            "q": "The greedy algorithm for Minimum Set Cover yields an approximation factor proportional to:",
+            "options": [
+                "O(1)",
+                "O(n)",
+                "O(log n)",
+                "O(2^n)"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "The harmonic total approximation bound for Set Cover scales logarithmically with the number of elements, O(log n)."
+        },
+        {
+            "group": "6",
+            "type": "multiple",
+            "q": "Select all true properties of the edges selected by the matching-based Vertex Cover algorithm:",
+            "options": [
+                "They share endpoints",
+                "They form a valid matching",
+                "They are disjoint",
+                "They form a cycle"
+            ],
+            "correct": [
+                1,
+                2
+            ],
+            "feedback": "The algorithm selects arbitrary independent edges, meaning no two selected edges share a vertex endpoint. This forms a matching."
+        },
+        {
+            "group": "6",
+            "type": "single",
+            "q": "Why can't we use the complement of a 2-approximated Vertex Cover to get a constant approximation for Independent Set?",
+            "options": [
+                "Independent Set is in P",
+                "The complement relation shifts the approximation ratio from constant to unbounded, depending on the graph size",
+                "The complement is not an independent set",
+                "Vertex Cover is not NP-hard"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Subtracting a 2-approximation from |V| does not scale linearly. If |V|=100, OPT_VC=10 (so OPT_IS=90), a vertex cover of size 20 leaves an independent set of size 80. The ratio does not remain bounded by a constant across instances."
+        },
+        {
+            "group": "6",
+            "type": "single",
+            "q": "If an optimisation problem has no constant-factor approximation algorithm assuming P ≠ NP, it is considered:",
+            "options": [
+                "Weakly polynomial",
+                "Inapproximable within constant factors",
+                "An ILP",
+                "An Eulerian system"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Problems like Set Cover or Independent Set cannot be approximated within arbitrary constant factors unless P = NP."
+        },
+        {
+            "group": "6",
+            "type": "single",
+            "q": "What is the universe size variable n in Set Cover?",
+            "options": [
+                "The number of subsets available",
+                "The total number of elements to cover across all subsets",
+                "The cost of the subsets",
+                "The number of edges"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "The parameter n represents the total cardinality of the base element universe U that must be covered."
+        },
+        {
+            "group": "6",
+            "type": "single",
+            "q": "If we run the greedy matching vertex cover algorithm on a star graph with a central hub and 10 leaves, what cover size is returned?",
+            "options": [
+                "1",
+                "2",
+                "10",
+                "11"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "The algorithm selects an arbitrary edge connecting the hub to a leaf, adds both endpoints to the cover, and removes all edges. Since the hub is removed, no edges remain. The cover size is 2, whereas the optimal size is 1 (the hub)."
+        },
+        {
+            "group": "6",
+            "type": "single",
+            "q": "Approximation algorithms must execute in what time complexity?",
+            "options": [
+                "Exponential time",
+                "Polynomial time",
+                "Pseudo-polynomial time",
+                "Logarithmic time"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "By definition, an approximation algorithm must run in polynomial time."
+        },
+        {
+            "group": "7",
+            "type": "single",
+            "q": "The General TSP problem (without the triangle inequality) cannot be approximated to any constant factor unless:",
+            "options": [
+                "P = NP",
+                "NP = co-NP",
+                "We use quantum computers",
+                "The graph is complete"
+            ],
+            "correct": [
+                0
+            ],
+            "feedback": "An approximation algorithm for General TSP could solve the NP-complete Hamiltonian Cycle problem in polynomial time, implying P = NP."
+        },
+        {
+            "group": "7",
+            "type": "single",
+            "q": "The double-tree algorithm for Metric TSP achieves an approximation factor of:",
+            "options": [
+                "1.5",
+                "2",
+                "log n",
+                "1 + ε"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "The double-tree algorithm yields a tour with a total cost of at most 2 * OPT."
+        },
+        {
+            "group": "7",
+            "type": "multiple",
+            "q": "Select all steps included in the double-tree Metric TSP algorithm:",
+            "options": [
+                "Compute a Minimum Spanning Tree",
+                "Double every edge of the MST",
+                "Find an Eulerian tour",
+                "Perform vertex shortcutting"
+            ],
+            "correct": [
+                0,
+                1,
+                2,
+                3
+            ],
+            "feedback": "All four steps are required to construct the final factor-2 tour."
+        },
+        {
+            "group": "7",
+            "type": "single",
+            "q": "A PTAS algorithm for a maximisation problem has a solution bound of:",
+            "options": [
+                "Sol ≥ (1 - ε) * OPT",
+                "Sol ≤ (1 + ε) * OPT",
+                "Sol = OPT",
+                "Sol ≤ ε * OPT"
+            ],
+            "correct": [
+                0
+            ],
+            "feedback": "For maximisation, a PTAS provides a solution value that is at least a (1 - ε) fraction of the true optimum."
+        },
+        {
+            "group": "7",
+            "type": "single",
+            "q": "If an algorithm runs in O(n^(2/ε)) time, it qualifies as a:",
+            "options": [
+                "PTAS",
+                "FPTAS",
+                "Exact polynomial solver",
+                "Pseudo-polynomial time algorithm"
+            ],
+            "correct": [
+                0
+            ],
+            "feedback": "The runtime is polynomial in n for any fixed ε, but scales exponentially with 1/ε, which satisfies the definition of a PTAS but not an FPTAS."
+        },
+        {
+            "group": "7",
+            "type": "single",
+            "q": "The inequality c(u,w) ≤ c(u,v) + c(v,w) is known as the:",
+            "options": [
+                "Cook-Levin relation",
+                "Triangle inequality",
+                "Karp bounding condition",
+                "Markov boundary"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "This is the triangle inequality, which defines a metric space and underpins Metric TSP approximations."
+        },
+        {
+            "group": "7",
+            "type": "single",
+            "q": "Why is the weight of an Eulerian tour on a doubled MST exactly 2 * Cost(MST)?",
+            "options": [
+                "Because the graph is a clique",
+                "Because every edge of the MST is traversed exactly twice",
+                "By the triangle inequality",
+                "Because MST = OPT"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Doubling every edge of an MST means the sum of all edge weights in the new graph is exactly 2 * Cost(MST), which matches the weight of its Eulerian tour."
+        },
+        {
+            "group": "7",
+            "type": "single",
+            "q": "What is the relationship between the weight of an MST and the optimal TSP tour (OPT)?",
+            "options": [
+                "Cost(MST) > OPT",
+                "Cost(MST) ≤ OPT",
+                "Cost(MST) = 2 * OPT",
+                "No clear relationship exists"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "An optimal TSP tour minus one edge forms a spanning tree. Since an MST has the absolute minimum weight among all spanning trees, Cost(MST) must be ≤ OPT."
+        },
+        {
+            "group": "7",
+            "type": "single",
+            "q": "An FPTAS requires the execution runtime to be polynomial in:",
+            "options": [
+                "n only",
+                "1/ε only",
+                "Both n and 1/ε",
+                "2^n"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "An FPTAS requires the runtime to be polynomial in both the input size n and the error parameter 1/ε."
+        },
+        {
+            "group": "7",
+            "type": "single",
+            "q": "If we set ε = 0.1 for a Knapsack maximisation PTAS, our solution value is guaranteed to be at least:",
+            "options": [
+                "10% of OPT",
+                "50% of OPT",
+                "90% of OPT",
+                "110% of OPT"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "The solution value bound is (1 - ε) * OPT = (1 - 0.1) * OPT = 0.9 * OPT, or 90% of the true optimum."
+        },
+        {
+            "group": "8",
+            "type": "single",
+            "q": "A Monte Carlo algorithm is characterized by:",
+            "options": [
+                "Always running in polynomial time, with a bounded error probability",
+                "An unpredictable runtime, but always returning the correct answer",
+                "Always running in exponential time",
+                "Never making random choices"
+            ],
+            "correct": [
+                0
+            ],
+            "feedback": "Monte Carlo algorithms have a fixed polynomial runtime, but their accuracy is probabilistic."
+        },
+        {
+            "group": "8",
+            "type": "single",
+            "q": "Freivalds' algorithm verifies whether A * B = C in what time complexity?",
+            "options": [
+                "O(n)",
+                "O(n^2)",
+                "O(n^3)",
+                "O(2^n)"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "By computing matrix-vector products sequentially—A*(B*r) and C*r—Freivalds' algorithm achieves an O(n^2) runtime."
+        },
+        {
+            "group": "8",
+            "type": "single",
+            "q": "If A * B ≠ C, the probability that a single iteration of Freivalds' algorithm returns YES is at most:",
+            "options": [
+                "0",
+                "1 / 4",
+                "1 / 2",
+                "1"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "The worst-case error probability for a single random vector trial in Freivalds' algorithm is bounded by 1/2."
+        },
+        {
+            "group": "8",
+            "type": "multiple",
+            "q": "Select all true statements regarding independent repetitions of randomized algorithms:",
+            "options": [
+                "They reduce the error probability exponentially",
+                "They change a Monte Carlo algorithm into a Las Vegas algorithm",
+                "T iterations of an error-1/2 algorithm drop cumulative error to (1/2)^T",
+                "They increase the running time linearly with T"
+            ],
+            "correct": [
+                0,
+                2,
+                3
+            ],
+            "feedback": "Independent repetitions scale the runtime linearly by T while dropping the error probability exponentially to (1/2)^T. They do not alter the foundational type of the algorithm."
+        },
+        {
+            "group": "8",
+            "type": "single",
+            "q": "To guarantee that an error probability drops below ε for an algorithm with success probability p, the number of repetitions T must be at least:",
+            "options": [
+                "p * ε",
+                "ln(ε) / p",
+                "(1 / p) * ln(1 / ε)",
+                "p / ln(ε)"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "Deriving from (1-p)^T ≤ e^(-pT) = ε shows that T must be at least (1/p) * ln(1/ε)."
+        },
+        {
+            "group": "8",
+            "type": "single",
+            "q": "The algebraic identity used to bound the error term (1 - p)^T using the base of natural logarithms is:",
+            "options": [
+                "1 - z ≤ e^-z",
+                "1 + z ≥ 2^z",
+                "ln(1-z) = z",
+                "e^z = 1/z"
+            ],
+            "correct": [
+                0
+            ],
+            "feedback": "The inequality 1 - z ≤ e^-z holds for all real z, providing a clean exponential upper bound for error margins."
+        },
+        {
+            "group": "8",
+            "type": "single",
+            "q": "If an algorithm has a success probability of 1/n and we run it n * ln(2) times, the error probability drops to approximately:",
+            "options": [
+                "1 / n",
+                "1 / 2",
+                "1 / e",
+                "0"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Using e^(-pT), we get e^(-(1/n) * n * ln(2)) = e^(-ln(2)) = 1/2."
+        },
+        {
+            "group": "8",
+            "type": "single",
+            "q": "What type of error profile does Freivalds' algorithm have?",
+            "options": [
+                "Two-sided error",
+                "One-sided error (it never outputs NO if A*B=C)",
+                "Zero error",
+                "Exponential error"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Freivalds' algorithm has one-sided error: if A*B=C, it always outputs YES. It can only fail by outputting YES when A*B ≠ C."
+        },
+        {
+            "group": "8",
+            "type": "single",
+            "q": "A deterministic algorithm for verifying matrix multiplication by computing A*B directly takes at least how much time using the naive method?",
+            "options": [
+                "O(n)",
+                "O(n^2)",
+                "O(n^3)",
+                "O(n!)"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "The naive row-by-column matrix multiplication algorithm requires O(n^3) primitive operations."
+        },
+        {
+            "group": "8",
+            "type": "single",
+            "q": "Randomized algorithms are useful because they provide:",
+            "options": [
+                "Simplicity and efficiency",
+                "Guaranteed 100% accuracy in O(1) time",
+                "A way to avoid using memory",
+                "Deterministic execution steps"
+            ],
+            "correct": [
+                0
+            ],
+            "feedback": "Randomisation often yields algorithms that are simpler and faster than their deterministic counterparts."
+        },
+        {
+            "group": "9",
+            "type": "single",
+            "q": "A Las Vegas algorithm is characterized by:",
+            "options": [
+                "Always returning the correct answer, with a variable expected runtime",
+                "A fixed polynomial runtime, but with a bounded error probability",
+                "Always running in O(1) time",
+                "Never using random choices"
+            ],
+            "correct": [
+                0
+            ],
+            "feedback": "Las Vegas algorithms are always correct; their complexity lies in their variable execution runtime."
+        },
+        {
+            "group": "9",
+            "type": "single",
+            "q": "The expected running time of the randomized k-th selection algorithm is:",
+            "options": [
+                "O(log n)",
+                "O(n)",
+                "O(n log n)",
+                "O(n^2)"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "The randomized selection algorithm finds the k-th element in expected linear time O(n)."
+        },
+        {
+            "group": "9",
+            "type": "single",
+            "q": "The worst-case running time of the randomized selection algorithm is:",
+            "options": [
+                "O(n)",
+                "O(n log n)",
+                "O(n^2)",
+                "O(2^n)"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "The worst case occurs when bad pivots are repeatedly chosen, resulting in a quadratic O(n^2) runtime."
+        },
+        {
+            "group": "9",
+            "type": "multiple",
+            "q": "Select all true statements regarding the Linearity of Expectation:",
+            "options": [
+                "It only holds for independent random variables",
+                "It states that E[X + Y] = E[X] + E[Y]",
+                "It applies to any finite collection of random variables",
+                "It is only valid for binary distributions"
+            ],
+            "correct": [
+                1,
+                2
+            ],
+            "feedback": "Linearity of expectation holds for any random variables, completely independent of their correlation or dependency status."
+        },
+        {
+            "group": "9",
+            "type": "single",
+            "q": "A random variable is formally defined as a function mapping:",
+            "options": [
+                "Real numbers to integers",
+                "The sample space Ω to the real numbers R",
+                "Algorithms to complexity classes",
+                "Inputs to outputs"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "A random variable maps outcomes from a sample space Ω to real numeric values."
+        },
+        {
+            "group": "9",
+            "type": "single",
+            "q": "If we toss three fair coins independently, what is the expected number of heads?",
+            "options": [
+                "1",
+                "1.5",
+                "2",
+                "2.5"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "By linearity of expectation, each coin has an expected value of 0.5 heads. For three coins: 0.5 + 0.5 + 0.5 = 1.5."
+        },
+        {
+            "group": "9",
+            "type": "single",
+            "q": "What does the index size parameter ϑ represent in the randomized selection step?",
+            "options": [
+                "The target element value",
+                "The size of the subset of elements smaller than the pivot (|S_less|)",
+                "The recursion depth limit",
+                "The array capacity"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "The parameter ϑ tracks the number of elements that fall below the chosen pivot value, determining which partition to search recursively."
+        },
+        {
+            "group": "9",
+            "type": "single",
+            "q": "If ϑ = k - 1 during a run of the randomized selection algorithm, the algorithm should:",
+            "options": [
+                "Recursively search S_less",
+                "Recursively search S_greater",
+                "Return the pivot element immediately",
+                "Terminate with an error"
+            ],
+            "correct": [
+                2
+            ],
+            "feedback": "If the number of elements smaller than the pivot is exactly k-1, then the pivot is precisely the k-th smallest element, so it is returned immediately."
+        },
+        {
+            "group": "9",
+            "type": "single",
+            "q": "The sample space Ω of an experiment represents:",
+            "options": [
+                "The running time of an algorithm",
+                "The set of all possible outcomes",
+                "The memory addresses used",
+                "The input bit lengths"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "In probability theory, the sample space Ω contains every possible outcome of a random trial."
+        },
+        {
+            "group": "9",
+            "type": "single",
+            "q": "If a Las Vegas algorithm is terminated early because it exceeded a runtime threshold, what type of algorithm does it become?",
+            "options": [
+                "A deterministic algorithm",
+                "A Monte Carlo algorithm",
+                "An FPTAS",
+                "An NP-complete problem"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Enforcing a hard runtime cut-off introduces an error probability for instances where it was forced to stop, converting it into a Monte Carlo algorithm."
+        },
+        {
+            "group": "10",
+            "type": "single",
+            "q": "For a minimisation problem like Vertex Cover, the relationship between the relaxed LP optimum (LP-OPT) and the absolute integer optimum (OPT) is:",
+            "options": [
+                "LP-OPT ≥ OPT",
+                "LP-OPT ≤ OPT",
+                "LP-OPT = 2 * OPT",
+                "They are completely independent"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Relaxing integer constraints expands the feasible region, meaning a minimisation problem can find a smaller or equal objective value: LP-OPT ≤ OPT."
+        },
+        {
+            "group": "10",
+            "type": "single",
+            "q": "The threshold rounding rule for the Minimum Vertex Cover LP relaxation includes vertex v in the cover if its fractional solution satisfies:",
+            "options": [
+                "x_v^* > 0",
+                "x_v^* ≥ 1 / 2",
+                "x_v^* = 1",
+                "x_v^* < 1 / 2"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Rounding values ≥ 1/2 up to 1 ensures that the LP edge constraints (x_u + x_v ≥ 1) are preserved in the integer solution."
+        },
+        {
+            "group": "10",
+            "type": "single",
+            "q": "The LP rounding algorithm for Minimum Vertex Cover provides an approximation factor of:",
+            "options": [
+                "1.5",
+                "2",
+                "log n",
+                "1 + ε"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "The threshold rounding approach yields a factor-2 approximation for Minimum Vertex Cover."
+        },
+        {
+            "group": "10",
+            "type": "multiple",
+            "q": "Select all complexity classes that allow for a randomized or probabilistic decision path:",
+            "options": [
+                "P",
+                "BPP",
+                "RP",
+                "PP"
+            ],
+            "correct": [
+                1,
+                2,
+                3
+            ],
+            "feedback": "BPP, RP, and PP are all foundational probabilistic complexity classes, whereas P is strictly deterministic."
+        },
+        {
+            "group": "10",
+            "type": "single",
+            "q": "A language in the class RP (Randomized Polynomial-time) has what type of error profile?",
+            "options": [
+                "Two-sided error",
+                "One-sided error (always correct on NO instances)",
+                "One-sided error (always correct on YES instances)",
+                "Zero error"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "RP defines randomized algorithms with one-sided error that never falsely accept a NO instance but can fail to accept a YES instance up to 50% of the time."
+        },
+        {
+            "group": "10",
+            "type": "single",
+            "q": "The class BPP requires the error probability for both positive and negative instances to be bounded above by a constant strictly less than:",
+            "options": [
+                "0",
+                "1 / 4",
+                "1 / 3",
+                "1 / 2"
+            ],
+            "correct": [
+                3
+            ],
+            "feedback": "BPP requires a clear error bound strictly less than 1/2, allowing the error to be amplified downward via independent repetitions."
+        },
+        {
+            "group": "10",
+            "type": "single",
+            "q": "Why does the constraint x_u + x_v ≥ 1 ensure that threshold rounding at 1/2 covers every edge?",
+            "options": [
+                "Because both variables must equal 1",
+                "Because at least one of the variables must be ≥ 1/2 to sum to 1",
+                "Because the graph is bipartite",
+                "By the triangle inequality"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "If both variables were strictly less than 1/2, their sum would be strictly less than 1, violating the LP constraint. Thus, at least one must be ≥ 1/2."
+        },
+        {
+            "group": "10",
+            "type": "single",
+            "q": "The open question P = BPP asks whether:",
+            "options": [
+                "Quantum computing is equal to classical computing",
+                "Randomness can be completely removed from polynomial-time algorithms",
+                "NP-complete problems can be solved in polynomial time",
+                "All languages are decidable"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "P = BPP would mean that any problem solved efficiently with randomness can also be solved efficiently deterministically (derandomisation)."
+        },
+        {
+            "group": "10",
+            "type": "single",
+            "q": "Which probabilistic class has an unhelpful error bound that can be as close to 1/2 as 1/2 - 1/2^n, making error amplification impossible in polynomial time?",
+            "options": [
+                "BPP",
+                "RP",
+                "ZPP",
+                "PP"
+            ],
+            "correct": [
+                3
+            ],
+            "feedback": "PP only requires the error to be strictly less than 1/2. If the gap is exponentially small, independent repetitions cannot amplify the success probability using only polynomially many trials."
+        },
+        {
+            "group": "10",
+            "type": "single",
+            "q": "If an optimal fractional LP solution assigns x_v^* = 0.4 for all vertices in a graph, how does the Vertex Cover rounding rule treat these vertices?",
+            "options": [
+                "It includes all of them in the cover",
+                "It excludes all of them from the cover",
+                "It includes them with 40% probability",
+                "It terminates with an error"
+            ],
+            "correct": [
+                1
+            ],
+            "feedback": "Since 0.4 is strictly less than 0.5, the rule rounds every vertex down to 0, excluding them from the cover (though an optimal LP relaxation would never yield 0.4 for all vertices if edges exist)."
+        }
+    ]
+}
