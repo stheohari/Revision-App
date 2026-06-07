@@ -1,0 +1,1533 @@
+{
+	"moduleName": "Robotics",
+	"moduleCode": "COM2009",
+	"flashcards": [
+		{
+			"group": "3",
+			"topic": "Robot Components",
+			"q": "What distinguishes the effector and the sensor in a robot's architecture?",
+			"a": "The sensor handles 'perception' (reading the environment), while the effector handles 'action' (acting upon the environment)[cite: 1777, 1778]."
+		},
+		{
+			"group": "3",
+			"topic": "Degrees of Freedom",
+			"q": "How many degrees of freedom does a rigid object have in 3D space?",
+			"a": "A rigid object in 3D space has six Degrees of Freedom (DoF): three for positioning and three for orientation[cite: 1842, 1844, 1845]."
+		},
+		{
+			"group": "3",
+			"topic": "Robot Morphology",
+			"q": "What are the three main design principles for robot bodies?",
+			"a": "Robot bodies can be 'mechanomorphic' (machine-like), 'zoomorphic' (animal-like), or 'anthropomorphic' (human-like)[cite: 1820, 1821]."
+		},
+		{
+			"group": "3",
+			"topic": "Actuation",
+			"q": "Provide three examples of effectors that generate action.",
+			"a": "Examples of effectors include wheels, tracks, legs, wings, grippers, cutters, lasers, and loudspeakers[cite: 1946]."
+		},
+		{
+			"group": "3",
+			"topic": "Interaction",
+			"q": "What is a disadvantage of a robot sensing its own actions?",
+			"a": "A major disadvantage is interference, such as noise from motors masking all other sounds in the environment[cite: 1968]."
+		},
+		{
+			"group": "4",
+			"topic": "Autonomy",
+			"q": "How is an autonomous mechanism defined?",
+			"a": "An autonomous mechanism is capable of acting without constant human intervention, making it more than just a programmable automaton[cite: 2048]."
+		},
+		{
+			"group": "4",
+			"topic": "Types of Autonomy",
+			"q": "What is the difference between an autopoietic and a homeostatic system?",
+			"a": "An autopoietic system implies a self-sustaining body, while a homeostatic system implies autonomous control contributing actively to conditions for persistence[cite: 2054, 2057]."
+		},
+		{
+			"group": "4",
+			"topic": "Subsumption Architecture",
+			"q": "What is the core principle of Behavior-Based Robotics (BBR) and subsumption?",
+			"a": "It throws out global modeling and planning, relying instead on a layered 'reactive' approach where simple behaviours subsume others to interact with the world directly[cite: 2021, 2030, 2036]."
+		},
+		{
+			"group": "4",
+			"topic": "Potential Fields",
+			"q": "What is the primary problem with using Potential Fields for local navigation?",
+			"a": "Potential fields are vulnerable to getting stuck in 'local minima' where repulsive and attractive forces cancel out[cite: 2086, 2092]."
+		},
+		{
+			"group": "4",
+			"topic": "Morphological Computing",
+			"q": "What is morphological computing?",
+			"a": "It is the outsourcing of computation to the robot's body (e.g., using soft, compliant parts like muscles and tendons) to achieve stable dynamics without heavy processing[cite: 2096, 2100, 2103]."
+		},
+		{
+			"group": "5",
+			"topic": "Open-Loop Control",
+			"q": "What is another name for open-loop control?",
+			"a": "It is also known as 'feedforward control' or 'dead reckoning'[cite: 2119]."
+		},
+		{
+			"group": "5",
+			"topic": "Closed-Loop Control",
+			"q": "What makes closed-loop control superior to open-loop control?",
+			"a": "Closed-loop control uses 'negative-feedback' to automatically compensate for disturbances and errors by sensing the current situation and adjusting the action to match the intention[cite: 2121, 2122]."
+		},
+		{
+			"group": "5",
+			"topic": "Negative Feedback",
+			"q": "What physical property does negative feedback provide to a system?",
+			"a": "Negative feedback provides stability to a control system by reducing the deviation between the target and the actual output to zero[cite: 2126, 2128]."
+		},
+		{
+			"group": "5",
+			"topic": "Perceptual Control Theory",
+			"q": "What is the foundational premise of Perceptual Control Theory (PCT)?",
+			"a": "PCT posits that behaviour is the control of perception, forming the basis for hierarchical control systems in living organisms[cite: 2137, 2138]."
+		},
+		{
+			"group": "5",
+			"topic": "Layered Control",
+			"q": "What is a major disadvantage of standard subsumption architecture compared to Hierarchical FB-Control?",
+			"a": "Subsumption accomplishes tasks sequentially and is susceptible to disturbances (open-loop), whereas Hierarchical FB-Control operates in parallel using closed loops[cite: 2151]."
+		},
+		{
+			"group": "6",
+			"topic": "PID Control",
+			"q": "What do the P, I, and D stand for in PID control?",
+			"a": "Proportional, Integral, and Derivative[cite: 2161]."
+		},
+		{
+			"group": "6",
+			"topic": "PID Gain Terms",
+			"q": "Which gain term influences the rate-of-change of error?",
+			"a": "The Derivative (Kd) term influences the rate-of-change of error[cite: 2168]."
+		},
+		{
+			"group": "6",
+			"topic": "Ziegler-Nichols Tuning",
+			"q": "In the Ziegler-Nichols method, what is the 'ultimate gain' (Ku)?",
+			"a": "Ku is the value of Kp where the control system achieves stable and consistent oscillations when increased from zero[cite: 2186]."
+		},
+		{
+			"group": "6",
+			"topic": "Compliance",
+			"q": "Why is compliance important in robot actuators?",
+			"a": "Compliance ensures actuators have some 'give' instead of being dangerously stiff, which is vital for handling soft or delicate materials[cite: 2202]."
+		},
+		{
+			"group": "6",
+			"topic": "Limitations of PID",
+			"q": "What is 'integral windup'?",
+			"a": "It is a limitation of PID controllers where the integral term accumulates significant error during a large disturbance, causing the system to overshoot[cite: 2210]."
+		},
+		{
+			"group": "7",
+			"topic": "Kinematic Control",
+			"q": "What is Inverse Kinematics?",
+			"a": "It is the process of converting a desired end-effector position along with kinematic equations into specific joint angles[cite: 2220]."
+		},
+		{
+			"group": "7",
+			"topic": "Visual Servoing",
+			"q": "How does visual servoing improve upon kinematic control?",
+			"a": "It places a camera on the end-effector to observe the target directly, minimizing the difference between the target view and the current view, acting as a closed feedback loop[cite: 2230, 2231]."
+		},
+		{
+			"group": "7",
+			"topic": "Image Jacobian",
+			"q": "What does the Image Jacobian matrix do?",
+			"a": "It relates the velocity of the camera in 3D space to the velocity of the pixels in the image plane[cite: 2248]."
+		},
+		{
+			"group": "7",
+			"topic": "Haptics",
+			"q": "Why is touch (haptics) crucial for robotic grippers?",
+			"a": "It provides necessary mechanical pressure and stretch feedback to grasp objects safely, complementing vision which alone is insufficient for delicate interaction[cite: 2266, 2269]."
+		},
+		{
+			"group": "7",
+			"topic": "Machine Vision Focus",
+			"q": "What defines the focal length in pixels for a camera?",
+			"a": "It is the focal length of the lens in meters divided by the pixel dimensions in meters per pixel[cite: 2234]."
+		},
+		{
+			"group": "8",
+			"topic": "Search Strategies",
+			"q": "When is it appropriate for a robot to engage in a search strategy?",
+			"a": "When there is an absence of guidance cues or when there is an unpredictable distribution and location of targets[cite: 2281]."
+		},
+		{
+			"group": "8",
+			"topic": "Levy Flights",
+			"q": "What is a Levy Flight search strategy?",
+			"a": "It uses a long-tailed distribution to select step size, generating clusters of local searches interspersed with long paths into new areas[cite: 2285]."
+		},
+		{
+			"group": "8",
+			"topic": "Beaconing",
+			"q": "What defines 'Beaconing' (or Taxis)?",
+			"a": "It is the directed movement towards an observable external cue, such as moving directly toward a light or signal[cite: 2293]."
+		},
+		{
+			"group": "8",
+			"topic": "Average Landmark Vector",
+			"q": "How does the Average Landmark Vector (ALV) method compute a home vector?",
+			"a": "It subtracts the ALV computed at the current location from the ALV computed at the home location to find the heading[cite: 2320, 2321]."
+		},
+		{
+			"group": "8",
+			"topic": "Image Difference Functions",
+			"q": "Why are Image Difference Functions (IDFs) useful for homing?",
+			"a": "They provide a gradient that increases with distance, allowing for gradient descent homing in complex environments without needing to detect or match specific features[cite: 2334]."
+		},
+		{
+			"group": "9",
+			"topic": "Localisation Sensors",
+			"q": "What is the difference between exteroceptive and proprioceptive sensors?",
+			"a": "Exteroceptive sensors acquire information from the environment (e.g., GPS, LIDAR), while proprioceptive sensors measure values internal to the robot (e.g., odometry)[cite: 2479]."
+		},
+		{
+			"group": "9",
+			"topic": "Global Positioning System",
+			"q": "How many satellites are required for a GPS receiver to determine a 3D position?",
+			"a": "Four or more satellites are needed to determine latitude, longitude, altitude, and to sync the receiver's clock[cite: 2365]."
+		},
+		{
+			"group": "9",
+			"topic": "Dead Reckoning",
+			"q": "What is the primary drawback of using Dead Reckoning (Odometry)?",
+			"a": "Sensing errors accumulate over time (e.g., due to wheel slip), leading to significant long-term distance and orientation inaccuracies[cite: 2381, 2384]."
+		},
+		{
+			"group": "9",
+			"topic": "Optical Flow",
+			"q": "What concept describes the direct perception of movement as elements expand outwards from a central point?",
+			"a": "This is known as the 'point of expansion' within optical flow[cite: 2393]."
+		},
+		{
+			"group": "9",
+			"topic": "Visual Odometry",
+			"q": "How can the Image Jacobian be used in Visual Odometry?",
+			"a": "It can be inverted or rearranged to infer the correct camera movement (velocities in x and y) from the observed pixel velocities in the visual field[cite: 2397, 2401]."
+		},
+		{
+			"group": "10",
+			"topic": "Types of Maps",
+			"q": "What characterizes a topological map?",
+			"a": "It is an abstract, qualitative 'symbolic' representation consisting of a record of connections (edges) between a set of known places (nodes)[cite: 2430, 2431]."
+		},
+		{
+			"group": "10",
+			"topic": "Topographic Maps",
+			"q": "What is an 'occupancy grid'?",
+			"a": "It is a discrete, raster-format topographic map representing the locations of objects, free space, and unexplored areas in an absolute coordinate system[cite: 2425, 2428]."
+		},
+		{
+			"group": "10",
+			"topic": "Semantic Maps",
+			"q": "What information does a Semantic Map provide?",
+			"a": "It provides a record of semantic information or metadata, including segmentation and the function of objects (e.g., identifying a 'desk' or 'stairs')[cite: 2435]."
+		},
+		{
+			"group": "10",
+			"topic": "Path Planning Algorithms",
+			"q": "What is the key difference between Dijkstra's Algorithm and A* Search?",
+			"a": "Dijkstra's is a brute-force search that optimizes the path cost from the start node, while A* optimizes the cost using an added heuristic (estimated cost to the goal) for greater efficiency[cite: 2440, 2448, 2449]."
+		},
+		{
+			"group": "10",
+			"topic": "Hybrid Maps",
+			"q": "What is a 'Cost-Map'?",
+			"a": "It is a hybrid representation of the environment that assigns a 'cost' to each cell based on a combination of metric, topological, and semantic factors[cite: 2436, 2437]."
+		},
+		{
+			"group": "11",
+			"topic": "Sensor Characteristics",
+			"q": "Define 'Dynamic Range' in the context of sensors.",
+			"a": "It is the ratio of the maximum input value to the minimum input value that the sensor can measure, typically defined in decibels (dB)[cite: 2482]."
+		},
+		{
+			"group": "11",
+			"topic": "Signal Quantisation",
+			"q": "What does Nyquist's theorem state regarding temporal resolution?",
+			"a": "It states that the sampling rate must be at least twice the highest frequency present in the signal to avoid under-sampling errors[cite: 2495]."
+		},
+		{
+			"group": "11",
+			"topic": "Accuracy vs Precision",
+			"q": "What is the difference between accuracy and precision?",
+			"a": "Accuracy is the conformity between a measurement and the true value, while precision is the consistency or repeatability of the output irrespective of its accuracy[cite: 2511, 2517]."
+		},
+		{
+			"group": "11",
+			"topic": "Sensor Fusion",
+			"q": "How does Bayesian Inference weight inputs during sensor fusion?",
+			"a": "It weights sensory inputs inversely proportional to their variance, favoring the sensor that is more precise[cite: 2661, 2662, 2663]."
+		},
+		{
+			"group": "11",
+			"topic": "Cross-Sensitivity",
+			"q": "What is sensor noise or 'cross-sensitivity'?",
+			"a": "It is the sensitivity of a sensor to environmental changes orthogonal to the ones you wish to measure (e.g., a compass affected by nearby power cables)[cite: 2504]."
+		},
+		{
+			"group": "12",
+			"topic": "SLAM Concept",
+			"q": "What does SLAM stand for?",
+			"a": "Simultaneous Localisation and Mapping[cite: 2737]."
+		},
+		{
+			"group": "12",
+			"topic": "Kalman Filter",
+			"q": "What is the purpose of a Kalman filter in SLAM?",
+			"a": "It is an efficient, recursive filter that estimates the internal state of a dynamic system (like robot pose) from a series of noisy sensor measurements and model predictions[cite: 2764, 2766]."
+		},
+		{
+			"group": "12",
+			"topic": "Kalman Gain",
+			"q": "In a Kalman Filter, what happens to the Kalman Gain when measurement uncertainty is extremely large?",
+			"a": "The Kalman Gain approaches 0, meaning the system places less trust in the sensor reading and more trust in the model prediction[cite: 2778, 2779]."
+		},
+		{
+			"group": "12",
+			"topic": "Loop Closure",
+			"q": "Why is 'loop closure' important in SLAM?",
+			"a": "When a robot recognizes an old landmark it has seen before, it closes the loop, drastically reducing the accumulated uncertainty about its current location[cite: 2806]."
+		},
+		{
+			"group": "12",
+			"topic": "SLAM Algorithms",
+			"q": "Name three popular SLAM algorithms.",
+			"a": "Extended Kalman filter SLAM (EKF SLAM), Particle filter SLAM (FAST SLAM), and Graph-based SLAM[cite: 2808]."
+		},
+		{
+			"group": "13",
+			"topic": "Robot Learning",
+			"q": "What are the four main approaches to robot learning?",
+			"a": "Direct programming, Supervised Learning, Reinforcement Learning, and Unsupervised Learning[cite: 2817]."
+		},
+		{
+			"group": "13",
+			"topic": "Supervised Learning",
+			"q": "What must be provided to a system during Supervised Learning?",
+			"a": "Input features and their corresponding target labels (annotations) must be supplied to learn the mapping[cite: 2817, 2834]."
+		},
+		{
+			"group": "13",
+			"topic": "Reinforcement Learning",
+			"q": "How does Reinforcement Learning generally work?",
+			"a": "The agent learns actions that maximize cumulative future reward through exploration and trial-and-error in dynamic environments[cite: 2817, 2859]."
+		},
+		{
+			"group": "13",
+			"topic": "Reward Shaping",
+			"q": "What are 'living rewards' in RL?",
+			"a": "Living rewards are small positive or negative rewards given at each time step to encourage efficiency, such as a negative penalty to avoid taking needlessly long paths[cite: 2865]."
+		},
+		{
+			"group": "13",
+			"topic": "Actor-Critic Networks",
+			"q": "In Actor-Critic RL networks, what is the role of the critic?",
+			"a": "The critic network assesses the value of potential actions outputted by the actor in terms of their expected total reward, acting similarly to a heuristic in search algorithms[cite: 2867]."
+		},
+		{
+			"group": "14",
+			"topic": "System Domains",
+			"q": "What are the four key domains in interactive systems?",
+			"a": "The Physical Domain, Information Domain, Social Domain, and Cognitive Domain[cite: 2882]."
+		},
+		{
+			"group": "14",
+			"topic": "System Unities",
+			"q": "What represents a 1st-Order 'Unity'?",
+			"a": "An autopoietic unity, consisting of an organism's physiology and behavior structurally coupled with its environment[cite: 2891, 2894]."
+		},
+		{
+			"group": "14",
+			"topic": "Symbiotic Hybrids",
+			"q": "Provide an example of a biological implant cyborg vs an artificial prosthetic cyborg.",
+			"a": "The Borg from Star Trek represents a biological implant cyborg, while a Cyberman represents an artificial prosthetic cyborg[cite: 2909]."
+		},
+		{
+			"group": "14",
+			"topic": "Interaction Types",
+			"q": "What distinguishes active vs passive interaction?",
+			"a": "Passive interaction relies on sensing without emitting energy, while active interaction involves emitting energy or action (e.g., active sensing or broadcast communication)[cite: 2924, 2927]."
+		},
+		{
+			"group": "14",
+			"topic": "Stigmergy",
+			"q": "What is stigmergy?",
+			"a": "It is indirect communication and interaction between agents achieved by altering the shared environment[cite: 2942]."
+		},
+		{
+			"group": "15",
+			"topic": "Swarm Coordination",
+			"q": "What is the difference between Top-Down and Bottom-Up coordination?",
+			"a": "Top-down uses global control to direct agents, while bottom-up uses distributed control where emergent outcomes arise from local interactions[cite: 2963, 2964]."
+		},
+		{
+			"group": "15",
+			"topic": "Swarm Robotics",
+			"q": "What defines Swarm Robotics?",
+			"a": "It is the study of how large numbers of relatively simple agents can be designed so that desired collective behaviour emerges from local interactions among agents and the environment[cite: 2971]."
+		},
+		{
+			"group": "15",
+			"topic": "Boids",
+			"q": "What are the three rules governing Craig Reynolds' 'Boids'?",
+			"a": "Separation (avoid crowding), Alignment (steer towards average heading), and Cohesion (steer toward average position of flockmates)[cite: 3011, 3012, 3013]."
+		},
+		{
+			"group": "15",
+			"topic": "Computation-Free Swarms",
+			"q": "How do computation-free swarms interact?",
+			"a": "There is no direct communication; behaviors evolve through mutual observation using minimal information and computation[cite: 2991, 2992, 2996]."
+		},
+		{
+			"group": "15",
+			"topic": "Swarm Stigmergy",
+			"q": "How do bees utilize stigmergy and direct communication during foraging?",
+			"a": "They use chemical trails (stigmergy) to recruit others to resources, and physical head-butts (direct communication stop-signals) to inhibit recruitment for alternative sites[cite: 3161, 3205]."
+		},
+		{
+			"group": "16",
+			"topic": "Human-Robot Interaction",
+			"q": "What forms of information exchange are common in HRI?",
+			"a": "Visual displays, gesture, speech/language, audio, physical haptics, and multi-modal interactions[cite: 3241]."
+		},
+		{
+			"group": "16",
+			"topic": "Theory of Mind",
+			"q": "What is the 'Theory of Mind' in cognitive representations?",
+			"a": "It is the ability of an agent to model the mental states and perspectives of other agents, allowing for empathy and deeper interaction[cite: 3258]."
+		},
+		{
+			"group": "16",
+			"topic": "The Uncanny Valley",
+			"q": "What is the 'Uncanny Valley'?",
+			"a": "It is a hypothesis by Masahiro Mori stating that as a robot's appearance becomes highly human-like but not perfectly so, human observers experience a sharp dip in affinity or a feeling of eeriness[cite: 3290, 3291]."
+		},
+		{
+			"group": "16",
+			"topic": "Uncanny Valley Explanations",
+			"q": "What is Categorical Perception's role in the Uncanny Valley?",
+			"a": "Conflicting perceptual cues cause differential distortion, leading to perceptual 'tension' at the category boundary between 'human' and 'machine'[cite: 3315, 3320]."
+		},
+		{
+			"group": "16",
+			"topic": "Canny Approach",
+			"q": "What is the 'Canny' Approach to agent design?",
+			"a": "It involves minimizing conflicting cues by aligning a robot's visual, vocal, behavioral, and cognitive affordances so its nature is clear, thereby increasing attractiveness and rapport[cite: 3328, 3329]."
+		},
+		{
+			"group": "17",
+			"topic": "Cognitive Robotics",
+			"q": "What characterizes Cognitive Robotics?",
+			"a": "It focuses on robots that learn from experience, commit knowledge to memory, and flexibly use it to select actions while anticipating outcomes[cite: 3351]."
+		},
+		{
+			"group": "17",
+			"topic": "Cognitive Paradigms",
+			"q": "What is the difference between 'System 1' and 'System 2' cognition?",
+			"a": "System 1 is fast, automatic, emotional, and unconscious, while System 2 is slow, effortful, logical, and conscious[cite: 3362]."
+		},
+		{
+			"group": "17",
+			"topic": "Motivation Types",
+			"q": "What differentiates Extrinsic from Intrinsic motivation?",
+			"a": "Extrinsic reward comes from outside the agent (the external environment), while Intrinsic reward is generated internally by the agent's motivation system[cite: 3371, 3374]."
+		},
+		{
+			"group": "17",
+			"topic": "Dimensional Emotion",
+			"q": "What are the three dimensions in the 'PAD' model of emotion?",
+			"a": "Valence (pleasure), Arousal (intensity), and Dominance (control)[cite: 3391]."
+		},
+		{
+			"group": "17",
+			"topic": "Appraisal Theory",
+			"q": "According to the Computational Model of Emotion, what causes 'anger'?",
+			"a": "An event that is appraised as undesirable and caused by another agent[cite: 3412]."
+		},
+		{
+			"group": "18",
+			"topic": "Gartner Hype Cycle",
+			"q": "What does the Gartner Hype Cycle illustrate?",
+			"a": "It illustrates the progression of expectations for new technologies, often highlighting how they are initially overhyped before reaching a plateau of productivity[cite: 3440]."
+		},
+		{
+			"group": "18",
+			"topic": "Technology Readiness Level",
+			"q": "What does a TRL of 9 indicate?",
+			"a": "It indicates that the actual system is fully complete and proven to operate successfully in its target operational environment[cite: 3464]."
+		},
+		{
+			"group": "18",
+			"topic": "Robot Ethics",
+			"q": "What ethical dilemma does the 'Moral Machine' experiment address?",
+			"a": "It addresses the 'Trolley Problem' for self-driving cars, deciding whose lives to prioritize when a fatal crash is unavoidable[cite: 3474, 3475]."
+		},
+		{
+			"group": "18",
+			"topic": "Asimov's Laws",
+			"q": "What is Asimov's First Law of Robotics?",
+			"a": "A robot may not injure a human being or, through inaction, allow a human being to come to harm[cite: 3484]."
+		},
+		{
+			"group": "18",
+			"topic": "EPSRC Principles",
+			"q": "What is the primary thesis of the EPSRC's Principles of Robotics?",
+			"a": "Robots are tools and manufactured artefacts; humans are the responsible agents who must ensure safety, transparency, and legal accountability[cite: 3488, 3489, 3491]."
+		}
+	],
+	"quiz": [
+		{
+			"group": "3",
+			"type": "single",
+			"q": "Which component acts as the 'brain' of the robot responsible for its behaviour?",
+			"options": [
+				"Sensing",
+				"Actuation",
+				"Control mechanism",
+				"Morphology"
+			],
+			"correct": [2],
+			"feedback": "The control mechanism processes sensory input to determine actions, acting as the robot's intelligence or 'brain'[cite: 1779, 1781]."
+		},
+		{
+			"group": "3",
+			"type": "multiple",
+			"q": "Which of the following are examples of low-level percepts?",
+			"options": [
+				"Light level",
+				"People",
+				"Temperature",
+				"Proximity",
+				"Intentions"
+			],
+			"correct": [0, 2, 3],
+			"feedback": "Light level, temperature, and proximity are low-level percepts, while people are high-level and intentions are abstract percepts[cite: 1930, 1931, 1932]."
+		},
+		{
+			"group": "3",
+			"type": "single",
+			"q": "What does a robot's proprioception refer to?",
+			"options": [
+				"External perception of scenes",
+				"Internal sensing like power level or joint angles",
+				"Predicting the future state of the world",
+				"Communicating with other robots"
+			],
+			"correct": [1],
+			"feedback": "Proprioception is internal sensing, giving the robot feedback on its own orientation, joint angles, or power levels[cite: 1933, 1934]."
+		},
+		{
+			"group": "3",
+			"type": "multiple",
+			"q": "What benefits does structural redundancy (having more DoF than strictly needed) provide to a manipulator?",
+			"options": [
+				"Energy minimization",
+				"Increased battery capacity",
+				"Obstacle avoidance",
+				"Reduced weight"
+			],
+			"correct": [0, 2],
+			"feedback": "Redundancy facilitates optimizations like energy minimization and obstacle avoidance[cite: 1847, 1848]."
+		},
+		{
+			"group": "3",
+			"type": "single",
+			"q": "Which type of actuator utilizes compressed air?",
+			"options": [
+				"Servo motors",
+				"Hydraulic cylinders",
+				"Shape memory alloys",
+				"Pneumatic cylinders"
+			],
+			"correct": [3],
+			"feedback": "Pneumatic systems operate using gas (air), unlike hydraulics which use liquid[cite: 1782, 1959]."
+		},
+		{
+			"group": "4",
+			"type": "single",
+			"q": "Which paradigm emerged in the 1990s emphasizing the relationship between the brain, body, mind, and the world?",
+			"options": [
+				"Cybernetics",
+				"Connectionism",
+				"Computationalism",
+				"Embodied Cognition"
+			],
+			"correct": [3],
+			"feedback": "Embodied Cognition emerged in the 1990s, focusing on enactive systems and the brain/body/world relationship[cite: 1975]."
+		},
+		{
+			"group": "4",
+			"type": "multiple",
+			"q": "Which of the following are true regarding the Subsumption Architecture?",
+			"options": [
+				"It relies heavily on global world maps.",
+				"It is a layered 'reactive' approach.",
+				"It was pioneered by Rodney Brooks.",
+				"It performs tasks strictly sequentially.",
+				"It handles multiple sensors and goals robustly."
+			],
+			"correct": [1, 2, 4],
+			"feedback": "Subsumption is a layered reactive approach pioneered by Rodney Brooks that throws out modeling and planning, providing robustness through parallel lower-level responses[cite: 2021, 2060, 2063]."
+		},
+		{
+			"group": "4",
+			"type": "single",
+			"q": "In morphological computing, computation is primarily outsourced to what?",
+			"options": [
+				"The cloud",
+				"The robot's physical body layout and materials",
+				"A central processing unit",
+				"A swarm network"
+			],
+			"correct": [1],
+			"feedback": "Morphological computing blurs the line between controller and body by outsourcing stabilization and control to the physical compliance of muscles, bones, or springs[cite: 2096, 2100, 2103]."
+		},
+		{
+			"group": "4",
+			"type": "single",
+			"q": "What issue primarily plagues Potential Field navigation?",
+			"options": [
+				"High computation time",
+				"Total reliance on GPS",
+				"Vulnerability to local minima",
+				"Inability to avoid obstacles"
+			],
+			"correct": [2],
+			"feedback": "A major drawback of Potential Fields is getting trapped in local minima where repulsive and attractive forces sum to zero[cite: 2086, 2092]."
+		},
+		{
+			"group": "4",
+			"type": "single",
+			"q": "What makes a system 'autopoietic'?",
+			"options": [
+				"It requires constant external fuel.",
+				"It deploys different processes of self-maintenance depending on the environment.",
+				"It makes active contributions to its own persistence without maintaining the conditions.",
+				"It avoids interacting with human operators."
+			],
+			"correct": [2],
+			"feedback": "An autopoietic (self-sustaining) system makes active contributions to its persistence but does not maintain the conditions for it, unlike homeostatic systems[cite: 2054]."
+		},
+		{
+			"group": "5",
+			"type": "single",
+			"q": "Which type of control is also known as 'dead reckoning'?",
+			"options": [
+				"Closed-loop control",
+				"Feedback control",
+				"Open-loop control",
+				"Hierarchical control"
+			],
+			"correct": [2],
+			"feedback": "Open-loop control operates purely feedforward and is synonymous with dead reckoning[cite: 2119]."
+		},
+		{
+			"group": "5",
+			"type": "multiple",
+			"q": "Which of the following are components or concepts of Perceptual Control Theory (PCT)?",
+			"options": [
+				"It operates entirely open-loop.",
+				"Behaviour is defined as the control of perception.",
+				"It uses stacked hierarchies of closed control loops.",
+				"It was pioneered by Rodney Brooks."
+			],
+			"correct": [1, 2],
+			"feedback": "PCT asserts that behaviour is the control of perception and relies on hierarchical arrangements of closed negative-feedback loops[cite: 2137, 2145]."
+		},
+		{
+			"group": "5",
+			"type": "single",
+			"q": "In a negative-feedback system, the difference between the 'set point' and the measured outcome is known as:",
+			"options": [
+				"The reference input",
+				"The deviation or error signal",
+				"The control signal",
+				"The dynamic range"
+			],
+			"correct": [1],
+			"feedback": "The deviation signal (error) is formed as a result of feedback and is used by the controller to reduce this error to zero[cite: 2126, 2129]."
+		},
+		{
+			"group": "5",
+			"type": "multiple",
+			"q": "What are the primary disadvantages of a purely open-loop control system?",
+			"options": [
+				"It is computationally expensive.",
+				"It requires extensive trial-and-error to find a good transform.",
+				"It automatically compensates for external disturbances.",
+				"It is highly affected by disturbances to the world or output."
+			],
+			"correct": [1, 3],
+			"feedback": "Open-loop control lacks feedback, meaning it is highly vulnerable to disturbances and requires careful calibration or trial-and-error[cite: 2119]."
+		},
+		{
+			"group": "5",
+			"type": "single",
+			"q": "According to the British Standards Institution, what defines a control system possessing monitoring feedback?",
+			"options": [
+				"It relies on feedforward neural networks.",
+				"The deviation signal controls a final element to reduce the deviation to zero.",
+				"It exclusively uses visual servoing.",
+				"It operates entirely without human intervention."
+			],
+			"correct": [1],
+			"feedback": "Feedback control systems use the deviation signal derived from monitoring to adjust the final element to nullify the error[cite: 2126]."
+		},
+		{
+			"group": "6",
+			"type": "single",
+			"q": "In a PID controller, which term is responsible for correcting the long-term accumulated error?",
+			"options": [
+				"Proportional (Kp)",
+				"Integral (Ki)",
+				"Derivative (Kd)",
+				"Gain (Ku)"
+			],
+			"correct": [1],
+			"feedback": "The Integral term (Ki) addresses the long-term, steady-state equilibrium error[cite: 2168]."
+		},
+		{
+			"group": "6",
+			"type": "multiple",
+			"q": "When tuning a PID controller via the Ziegler-Nichols method, which parameters must first be measured experimentally?",
+			"options": [
+				"The derivative time (Td)",
+				"The ultimate gain (Ku)",
+				"The oscillation frequency (Fu)",
+				"The integral error limit"
+			],
+			"correct": [1, 2],
+			"feedback": "The Ziegler-Nichols method requires finding the ultimate gain (Ku) that causes stable oscillations, and recording that oscillation frequency (Fu)[cite: 2186]."
+		},
+		{
+			"group": "6",
+			"type": "single",
+			"q": "Why might a robot designer purposefully lower the Kp gain on an actuator?",
+			"options": [
+				"To maximize stiffness and speed.",
+				"To eliminate derivative noise.",
+				"To introduce compliance for handling delicate objects.",
+				"To increase battery life exponentially."
+			],
+			"correct": [2],
+			"feedback": "A lower Kp yields weaker control, which makes the joint 'compliant' (giving way to external forces), necessary for interacting safely with delicate materials[cite: 2202]."
+		},
+		{
+			"group": "6",
+			"type": "single",
+			"q": "What happens if the proportional gain (Kp) is set too high?",
+			"options": [
+				"The system ignores the reference input.",
+				"The system will suffer from integral windup.",
+				"The system will overshoot significantly and possibly oscillate.",
+				"The system reacts too slowly to reach the target."
+			],
+			"correct": [2],
+			"feedback": "A Kp that is too large forces the system to react aggressively, causing severe overshoot and potential instability[cite: 2173]."
+		},
+		{
+			"group": "6",
+			"type": "single",
+			"q": "How is the inverted pendulum problem commonly solved using hierarchical control?",
+			"options": [
+				"By stacking multiple P controllers that cascade error corrections down to motor torque.",
+				"By using a single massively tuned PID controller.",
+				"By applying open-loop feedforward predictions.",
+				"By employing morphological computing."
+			],
+			"correct": [0],
+			"feedback": "Hierarchical Perceptual Control Theory (HPCT) solves this by nesting P controllers, translating angular position error ultimately down to required motor torque[cite: 2199]."
+		},
+		{
+			"group": "7",
+			"type": "single",
+			"q": "What is the primary function of the 'Image Jacobian' in visual servoing?",
+			"options": [
+				"To identify objects in an image.",
+				"To calculate the focal length of the camera.",
+				"To translate pixel velocities into required 3D camera velocities.",
+				"To measure distance using stereoscopic vision."
+			],
+			"correct": [2],
+			"feedback": "The Image Jacobian mathematically relates velocities in the 2D image plane to velocities in 3D camera space[cite: 2248, 2253]."
+		},
+		{
+			"group": "7",
+			"type": "multiple",
+			"q": "What are common limitations of purely kinematic control in robot arms?",
+			"options": [
+				"Sensor drift or failure over time.",
+				"The assumption that the world matches the programmed model perfectly.",
+				"It relies too heavily on visual feedback.",
+				"Positional mismatch between the target and actual positions."
+			],
+			"correct": [0, 1, 3],
+			"feedback": "Kinematic control is open-loop. It assumes a perfect model and is heavily compromised by sensor drift, miscalibration, and unexpected obstacles[cite: 2226]."
+		},
+		{
+			"group": "7",
+			"type": "single",
+			"q": "In visual servoing, the error is minimized by comparing the current view with:",
+			"options": [
+				"A mathematical 3D rendering of the room.",
+				"A pre-recorded 'snapshot' or stored target view.",
+				"A thermal imaging scan.",
+				"An explicit set of inverse kinematic joint angles."
+			],
+			"correct": [1],
+			"feedback": "Visual servoing tracks the difference between features in the current camera view and a stored reference image of the target[cite: 2231]."
+		},
+		{
+			"group": "7",
+			"type": "single",
+			"q": "If a camera has a focal length of 10mm and a sensor density of 100 pixels/mm, what is the focal length in pixel units?",
+			"options": [
+				"10",
+				"100",
+				"1000",
+				"10000"
+			],
+			"correct": [2],
+			"feedback": "Focal length in pixels = focal length (mm) * pixel density (pixels/mm). 10 * 100 = 1000[cite: 2255]."
+		},
+		{
+			"group": "7",
+			"type": "single",
+			"q": "Why is haptic feedback essential for realistic robotic grasping?",
+			"options": [
+				"Because visual servoing cannot estimate depth.",
+				"Because touch provides data on mechanical pressure, stretch, and slippage that vision cannot easily detect.",
+				"Because robots cannot compute Image Jacobians fast enough.",
+				"Because soft grippers require electrical conductivity to function."
+			],
+			"correct": [1],
+			"feedback": "Haptic (touch) sensors measure contact forces, slipping, and textures, which are largely invisible to cameras but critical for secure handling[cite: 2266, 2269]."
+		},
+		{
+			"group": "8",
+			"type": "single",
+			"q": "Which search strategy mixes dense local exploration with occasional long paths into new areas?",
+			"options": [
+				"Brownian Walk",
+				"Levy Flight",
+				"Spiral Search",
+				"A* Search"
+			],
+			"correct": [1],
+			"feedback": "Levy flights use a long-tailed distribution to naturally cluster local searches interspersed with long 'jumps'[cite: 2285]."
+		},
+		{
+			"group": "8",
+			"type": "multiple",
+			"q": "Which of the following are valid visual homing methods?",
+			"options": [
+				"Average Landmark Vectors (ALV)",
+				"Image Difference Functions (IDF)",
+				"Dijkstra's expansion",
+				"Gradient descent on signal strength"
+			],
+			"correct": [0, 1],
+			"feedback": "ALV and IDFs are both biologically inspired methods for achieving visual homing using panoramic views[cite: 2316, 2334]."
+		},
+		{
+			"group": "8",
+			"type": "single",
+			"q": "What is the primary benefit of using Image Difference Functions (IDFs) over feature-based homing?",
+			"options": [
+				"IDFs require extremely high computational power.",
+				"IDFs do not require solving the 'correspondence problem' to match individual features.",
+				"IDFs can only be used indoors.",
+				"IDFs automatically avoid obstacles."
+			],
+			"correct": [1],
+			"feedback": "IDFs (like pixel-wise RMS difference) compute global view mismatches, side-stepping the need to locate and track distinct landmarks[cite: 2334]."
+		},
+		{
+			"group": "8",
+			"type": "single",
+			"q": "Braitenberg's Vehicle 2b ('Aggression') exhibits what kind of behaviour?",
+			"options": [
+				"It runs away from light.",
+				"It wanders randomly.",
+				"It approaches the target and speeds up to hit it.",
+				"It circles the target continuously."
+			],
+			"correct": [2],
+			"feedback": "Vehicle 2b features contralateral positive connections, causing it to orient towards a stimulus and approach it aggressively[cite: 2294]."
+		},
+		{
+			"group": "8",
+			"type": "single",
+			"q": "What limitation heavily affects beaconing based on single-sensor signal gradients?",
+			"options": [
+				"It works perfectly regardless of occlusions.",
+				"Signal loss and noisy environments disrupt the smooth gradient, potentially causing local minima.",
+				"It strictly requires a detailed semantic map.",
+				"It forces the robot into a Levy flight."
+			],
+			"correct": [1],
+			"feedback": "Beaconing gradients can be distorted by occlusions and signal noise, easily trapping a reactive robot[cite: 2303]."
+		},
+		{
+			"group": "9",
+			"type": "single",
+			"q": "Which positioning system relies entirely on internal measurements to estimate the change in pose?",
+			"options": [
+				"GPS",
+				"Differential GPS",
+				"WiFi Fingerprinting",
+				"Odometry"
+			],
+			"correct": [3],
+			"feedback": "Odometry (dead reckoning) uses proprioceptive sensors like encoders and gyros to measure relative movement[cite: 2371]."
+		},
+		{
+			"group": "9",
+			"type": "multiple",
+			"q": "Which factors commonly introduce error into wheeled odometry?",
+			"options": [
+				"Wheel slip on smooth surfaces",
+				"GPS satellite occlusion",
+				"Interference affecting magnetic compasses",
+				"Differences in wheel diameters"
+			],
+			"correct": [0, 2, 3],
+			"feedback": "Odometry strictly relies on wheel movement and internal sensors; slip, differing diameters, and gyro/compass interference all rapidly accumulate error[cite: 2381, 2382]."
+		},
+		{
+			"group": "9",
+			"type": "single",
+			"q": "Optical flow can provide a robot with 'direct perception' of its movement. Where does elements expand from during forward motion?",
+			"options": [
+				"The vanishing point",
+				"The point of expansion",
+				"The optic nerve",
+				"The peripheral boundaries"
+			],
+			"correct": [1],
+			"feedback": "During motion, the visual field expands outwards from a central focus known as the point of expansion[cite: 2393]."
+		},
+		{
+			"group": "9",
+			"type": "single",
+			"q": "When calculating the new position in basic 2D dead reckoning, the change in the X axis (delta x) is found using:",
+			"options": [
+				"Distance * sin(Theta)",
+				"Distance * cos(Theta)",
+				"Velocity * sin(Theta)",
+				"Distance / tan(Theta)"
+			],
+			"correct": [1],
+			"feedback": "Basic trigonometry for path integration splits the vector: delta X = distance * cos(theta), delta Y = distance * sin(theta)[cite: 2376]."
+		},
+		{
+			"group": "9",
+			"type": "single",
+			"q": "Why is standard GPS unsuitable for indoor robot navigation?",
+			"options": [
+				"It operates at frequencies that interfere with WiFi.",
+				"The satellite signals cannot reliably penetrate buildings.",
+				"It requires a minimum speed to register movement.",
+				"Indoor spaces lack magnetic north."
+			],
+			"correct": [1],
+			"feedback": "GPS relies on weak radio signals from space that are heavily attenuated or blocked by building infrastructure[cite: 2363]."
+		},
+		{
+			"group": "10",
+			"type": "single",
+			"q": "Which type of map format uses a discrete grid of free, occupied, or unexplored cells?",
+			"options": [
+				"Topological Graph",
+				"Occupancy Grid",
+				"Semantic Map",
+				"Vector Map"
+			],
+			"correct": [1],
+			"feedback": "An occupancy grid is a rasterized topographic map representing the spatial environment in discrete blocks[cite: 2428]."
+		},
+		{
+			"group": "10",
+			"type": "multiple",
+			"q": "What are the primary disadvantages of Topographic maps compared to Topological maps?",
+			"options": [
+				"They require highly accurate position tracking.",
+				"They have a high computational cost for storage and processing.",
+				"They are too abstract for path planning.",
+				"They suffer heavily from perceptual aliasing."
+			],
+			"correct": [0, 1],
+			"feedback": "Topographic maps are dense and coordinate-heavy, demanding precise odometry and memory, whereas topological maps abstract this into nodes[cite: 2433]."
+		},
+		{
+			"group": "10",
+			"type": "single",
+			"q": "What additional parameter does the A* algorithm use that Dijkstra's algorithm does not?",
+			"options": [
+				"The path cost from the start node.",
+				"A heuristic estimating the cost to the goal.",
+				"A pre-computed Voronoi diagram.",
+				"A continuous vector layout."
+			],
+			"correct": [1],
+			"feedback": "A* calculates f(n) = g(n) + h(n), where h(n) is the heuristic (e.g., straight-line distance to the target) directing the search efficiently[cite: 2449]."
+		},
+		{
+			"group": "10",
+			"type": "single",
+			"q": "In a topological map, what do the 'edges' between nodes typically represent?",
+			"options": [
+				"The exact XYZ coordinates of obstacles.",
+				"The actions or paths required to traverse from one place to another.",
+				"The semantic label of a room.",
+				"The field of view of a camera."
+			],
+			"correct": [1],
+			"feedback": "Edges represent the connections between distinct places (nodes), defining the action, direction, or cost to move between them[cite: 2431]."
+		},
+		{
+			"group": "10",
+			"type": "single",
+			"q": "What is the term for a map that overlays object functions (like 'desk' or 'stairs') onto spatial data?",
+			"options": [
+				"Metric Map",
+				"Topological Map",
+				"Semantic Map",
+				"Odometry Map"
+			],
+			"correct": [2],
+			"feedback": "Semantic maps include metadata about the objects in the environment, identifying what they are or their function[cite: 2435]."
+		},
+		{
+			"group": "11",
+			"type": "single",
+			"q": "If a sensor has a dynamic range of 74 dB, what does this mathematically represent?",
+			"options": [
+				"The maximum frequency it can capture.",
+				"The ratio of the maximum to minimum input value it can measure.",
+				"The physical distance it can measure in meters.",
+				"The number of bits used by its ADC."
+			],
+			"correct": [1],
+			"feedback": "Dynamic range specifies the spread of input values a sensor can detect, calculated using 20 * log10(max/min)[cite: 2482, 2483]."
+		},
+		{
+			"group": "11",
+			"type": "multiple",
+			"q": "According to Bayesian Inference in sensor fusion, if Sensor A has high variance and Sensor B has low variance, what will the combined estimate do?",
+			"options": [
+				"It will average them exactly 50/50.",
+				"It will place much more weight on Sensor B.",
+				"It will reject both sensors.",
+				"It will calculate an overall variance lower than both."
+			],
+			"correct": [1, 3],
+			"feedback": "The combined mean naturally favors the sensor with lower variance (higher precision), and the combined variance is always smaller than the best individual sensor[cite: 2664, 2690]."
+		},
+		{
+			"group": "11",
+			"type": "single",
+			"q": "What is 'Nyquist's Theorem' in the context of digital sensors?",
+			"options": [
+				"A sensor must be calibrated linearly.",
+				"The sampling rate must be at least twice the highest frequency present in the signal.",
+				"The dynamic range determines the quantization step.",
+				"A higher focal length reduces temporal resolution."
+			],
+			"correct": [1],
+			"feedback": "To accurately capture an analog signal digitally without aliasing (under-sampling errors), it must be sampled at twice its highest frequency[cite: 2495]."
+		},
+		{
+			"group": "11",
+			"type": "single",
+			"q": "A sensor that emits energy into the environment and measures the reaction (e.g., LIDAR) is called:",
+			"options": [
+				"A passive sensor",
+				"An active sensor",
+				"A proprioceptive sensor",
+				"An internal sensor"
+			],
+			"correct": [1],
+			"feedback": "Active sensors emit energy (like laser light or ultrasonic sound) to detect the environment, unlike passive sensors which only receive ambient energy[cite: 2479]."
+		},
+		{
+			"group": "11",
+			"type": "single",
+			"q": "What happens to the dynamic range of an Analog-to-Digital Converter (ADC) if you increase the number of bits?",
+			"options": [
+				"It remains the same but processes faster.",
+				"It decreases logarithmically.",
+				"It increases, allowing finer amplitude resolution.",
+				"It causes severe quantization errors."
+			],
+			"correct": [2],
+			"feedback": "More bits provide exponentially more quantization levels, increasing the dynamic range and providing finer amplitude resolution[cite: 2492, 2493]."
+		},
+		{
+			"group": "12",
+			"type": "single",
+			"q": "Why is SLAM considered a 'chicken-or-egg' problem?",
+			"options": [
+				"It requires high computational power but drains the battery quickly.",
+				"You need a map to localize the robot, but you need the robot's location to build the map.",
+				"Sensors are too noisy to trust, but the model drifts over time.",
+				"Visual odometry is slower than wheel odometry."
+			],
+			"correct": [1],
+			"feedback": "SLAM solves this paradox iteratively: it updates the pose using the map, and then expands the map using the new pose[cite: 2737]."
+		},
+		{
+			"group": "12",
+			"type": "multiple",
+			"q": "What two primary pieces of information does a Kalman Filter combine?",
+			"options": [
+				"Predictions from an internal mathematical model.",
+				"A pre-rendered 3D architectural blueprint.",
+				"Updates from noisy sensor measurements.",
+				"Information from external GPS satellites only."
+			],
+			"correct": [0, 2],
+			"feedback": "The Kalman Filter optimally fuses internal model predictions (extrapolated state) with external sensor updates based on their respective uncertainties[cite: 2737, 2766]."
+		},
+		{
+			"group": "12",
+			"type": "single",
+			"q": "In the context of the Kalman Filter, if the model uncertainty is extremely large compared to the sensor uncertainty, what happens to the Kalman Gain?",
+			"options": [
+				"It approaches 0.",
+				"It approaches 1.",
+				"It becomes negative.",
+				"It causes a system crash."
+			],
+			"correct": [1],
+			"feedback": "The Kalman Gain determines how much to trust the sensor. If the model is highly uncertain, the Gain approaches 1, heavily favoring the new sensor measurement[cite: 2779]."
+		},
+		{
+			"group": "12",
+			"type": "single",
+			"q": "Which action allows a SLAM system to drastically reduce its accumulated uncertainty?",
+			"options": [
+				"Increasing the robot's velocity.",
+				"Loop Closure (recognizing a previously mapped location).",
+				"Disconnecting the odometry sensors.",
+				"Switching to a purely open-loop search."
+			],
+			"correct": [1],
+			"feedback": "Loop closure links the current drifted pose estimate back to a highly certain known landmark, collapsing the accumulated error along the path[cite: 2806]."
+		},
+		{
+			"group": "12",
+			"type": "single",
+			"q": "What is 'Process Noise' in a Kalman Filter framework?",
+			"options": [
+				"Electrical interference in the sensor wiring.",
+				"Natural, unmodeled fluctuations or physical uncertainties in the robot's true state progression.",
+				"Audio noise detected by a microphone.",
+				"The error specifically caused by GPS satellite occlusion."
+			],
+			"correct": [1],
+			"feedback": "Process noise (often denoted as Q or C) represents the inherent uncertainty or small random variations introduced when predicting the next state from the model[cite: 2775]."
+		},
+		{
+			"group": "13",
+			"type": "single",
+			"q": "Which learning paradigm relies heavily on 'trial-and-error' exploration to maximize a cumulative numerical signal?",
+			"options": [
+				"Supervised Learning",
+				"Unsupervised Learning",
+				"Reinforcement Learning",
+				"Direct Programming"
+			],
+			"correct": [2],
+			"feedback": "Reinforcement learning discovers optimal policies by exploring states and actions to maximize a reward function over time[cite: 2817, 2850]."
+		},
+		{
+			"group": "13",
+			"type": "multiple",
+			"q": "What are the core components of a Reinforcement Learning 'World'?",
+			"options": [
+				"A set of states (S)",
+				"A set of labelled training images",
+				"A set of actions (A)",
+				"A predefined topological map",
+				"A reward function (R)"
+			],
+			"correct": [0, 2, 4],
+			"feedback": "An RL problem is typically framed as a Markov Decision Process containing states, actions, and a reward function[cite: 2859]."
+		},
+		{
+			"group": "13",
+			"type": "single",
+			"q": "In an Actor-Critic architecture, what is the role of the 'Actor' network?",
+			"options": [
+				"It evaluates the quality of the current state.",
+				"It takes state observations and outputs potential actions.",
+				"It manually overrides safety protocols.",
+				"It acts as the visual cortex extracting features."
+			],
+			"correct": [1],
+			"feedback": "The Actor network suggests the policy (which action to take), while the Critic network evaluates the expected reward of that action[cite: 2867]."
+		},
+		{
+			"group": "13",
+			"type": "single",
+			"q": "What is a major advantage of 'Model-based' Reinforcement Learning over 'Model-free'?",
+			"options": [
+				"It does not require any knowledge of the environment.",
+				"It is computationally cheaper and easier to implement.",
+				"The agent can explore and evaluate paths in simulation without having to physically risk the action.",
+				"It never suffers from local minima."
+			],
+			"correct": [2],
+			"feedback": "Model-based RL allows the agent to 'think ahead' using an internal model of the world, avoiding physically dangerous or unrewarding actions[cite: 2870]."
+		},
+		{
+			"group": "13",
+			"type": "single",
+			"q": "What is 'Reward Shaping' in the context of Reinforcement Learning?",
+			"options": [
+				"Only rewarding the robot when it perfectly completes a 10-hour task.",
+				"Providing intermediate 'living rewards' (positive or negative) to subtly guide the robot toward efficient behavior.",
+				"Changing the physical shape of the goal object.",
+				"Using supervised learning labels instead of rewards."
+			],
+			"correct": [1],
+			"feedback": "Reward shaping provides dense feedback, such as a small negative penalty per timestep, encouraging the robot to solve the task quickly and efficiently[cite: 2865]."
+		},
+		{
+			"group": "14",
+			"type": "single",
+			"q": "According to the framework of 'Cognitive Unities', what defines an organism interacting with its environment?",
+			"options": [
+				"A cybernetic loop.",
+				"An autopoietic unity.",
+				"A subsumption node.",
+				"A stigmergic network."
+			],
+			"correct": [1],
+			"feedback": "Living systems are modeled as autopoietic unities structurally coupled with their environment[cite: 2891]."
+		},
+		{
+			"group": "14",
+			"type": "multiple",
+			"q": "Which of the following are recognized forms of 'Intentional Acts' in interactive systems?",
+			"options": [
+				"Direct (Action: change state of world)",
+				"Indirect (Communication: change state of other)",
+				"Reflective (Investigation: change state of self)",
+				"Subsumptive (Inhibit external behaviours)"
+			],
+			"correct": [0, 1, 2],
+			"feedback": "Intentional acts are modeled as action (changing the world), investigation (changing the self's knowledge), and communication (changing another agent's state)[cite: 2925]."
+		},
+		{
+			"group": "14",
+			"type": "single",
+			"q": "If two robots interact by altering the environment, leaving traces for each other to react to, what is this called?",
+			"options": [
+				"Synchrony",
+				"Joint attention",
+				"Stigmergy",
+				"Direct coupling"
+			],
+			"correct": [2],
+			"feedback": "Stigmergy is an indirect form of communication where actions are coordinated via physical modifications to the shared environment[cite: 2942]."
+		},
+		{
+			"group": "14",
+			"type": "single",
+			"q": "A cyborg representing an 'artificial prosthetic' design (like a Cyberman) is an example of:",
+			"options": [
+				"A 1st-Order Unity",
+				"A Symbiotic Hybrid",
+				"A purely cognitive domain",
+				"A soft robot"
+			],
+			"correct": [1],
+			"feedback": "Cyborgs blend biological and artificial elements, classified broadly as symbiotic hybrids[cite: 2909]."
+		},
+		{
+			"group": "14",
+			"type": "single",
+			"q": "Synchrony (such as two pendulums syncing on a wall) is an example of what type of interaction?",
+			"options": [
+				"Coordination via physical coupling",
+				"Linguistic communication",
+				"Empathic connection",
+				"Stigmergic mapping"
+			],
+			"correct": [0],
+			"feedback": "Synchrony occurs through direct or indirect physical coupling and feedback between systems[cite: 2936]."
+		},
+		{
+			"group": "15",
+			"type": "single",
+			"q": "What is the primary difference between 'Swarm Intelligence' and 'Computation-Free' swarms?",
+			"options": [
+				"Swarm intelligence uses global top-down control.",
+				"Computation-Free swarms rely strictly on stigmergy.",
+				"Swarm intelligence involves direct communication between agents, while computation-free relies entirely on mutual observation without communication.",
+				"Swarm intelligence requires human operators."
+			],
+			"correct": [2],
+			"feedback": "Computation-free swarms interact purely by observing each other (e.g., line-of-sight), while swarm intelligence utilizes direct signaling and data exchange[cite: 2983, 2984, 2991]."
+		},
+		{
+			"group": "15",
+			"type": "multiple",
+			"q": "What are the three fundamental rules in Craig Reynolds' 'Boids' flocking model?",
+			"options": [
+				"Separation",
+				"Alignment",
+				"Predator Avoidance",
+				"Cohesion",
+				"Food Seeking"
+			],
+			"correct": [0, 1, 3],
+			"feedback": "The Boids model generates flocking using only local Separation, Alignment, and Cohesion rules[cite: 3011, 3012, 3013]."
+		},
+		{
+			"group": "15",
+			"type": "single",
+			"q": "In swarm robotics, what effect does applying a mutually repulsive potential field to all robots have?",
+			"options": [
+				"They cluster tightly together.",
+				"They follow the leader in a line.",
+				"They rapidly disperse to maximize area coverage.",
+				"They spin in circles (local minima)."
+			],
+			"correct": [2],
+			"feedback": "A repulsive potential field between agents causes them to disperse evenly across an environment, useful for sensor network deployment[cite: 3079, 3080, 3087]."
+		},
+		{
+			"group": "15",
+			"type": "single",
+			"q": "How do honeybees (and simulated robot equivalents) perform optimal site selection when exploring multiple options?",
+			"options": [
+				"By voting using a central cloud server.",
+				"Through 'cross-inhibition' where committed scouts physically head-butt and stop others from recruiting to rival sites.",
+				"By calculating the exact distance using GPS.",
+				"By destroying the less desirable sites."
+			],
+			"correct": [1],
+			"feedback": "Bees use a direct communication 'stop-signal' to inhibit rival recruiters, mimicking neural cross-inhibition for collective decision making[cite: 3205]."
+		},
+		{
+			"group": "15",
+			"type": "single",
+			"q": "Which of the following is NOT a typical benefit of Swarm Robotics?",
+			"options": [
+				"Fault tolerance",
+				"Scalability",
+				"Division of labour",
+				"Highly complex individual cognitive reasoning"
+			],
+			"correct": [3],
+			"feedback": "Swarm robotics relies on relatively simple individuals producing complex emergent behavior, not heavily complex individual reasoning[cite: 2978]."
+		},
+		{
+			"group": "16",
+			"type": "single",
+			"q": "The 'Uncanny Valley' describes a phenomenon where:",
+			"options": [
+				"Robots become too intelligent and threaten humans.",
+				"Human affinity sharply drops when a robot looks nearly, but not perfectly, human.",
+				"Robots fail to navigate a physical valley due to sensor limits.",
+				"Humans prefer industrial robots over companion robots."
+			],
+			"correct": [1],
+			"feedback": "Masahiro Mori's hypothesis notes a severe dip in emotional response and comfort when an artefact borders on being imperceptibly non-human[cite: 3290, 3291]."
+		},
+		{
+			"group": "16",
+			"type": "multiple",
+			"q": "Which of the following have been proposed as psychological or evolutionary explanations for the Uncanny Valley?",
+			"options": [
+				"Pathogen avoidance",
+				"Mortality salience",
+				"Cognitive dissonance due to sensor drift",
+				"Mismatches between conflicting sensory cues (Categorical Perception)"
+			],
+			"correct": [0, 1, 3],
+			"feedback": "Theories include fear of disease (pathogens), reminders of death (mortality), and 'tension' caused by conflicting perceptual cues crossing category boundaries[cite: 3313, 3320]."
+		},
+		{
+			"group": "16",
+			"type": "single",
+			"q": "In Human-Robot Interaction, what does 'Theory of Mind' refer to?",
+			"options": [
+				"The robot's operating system architecture.",
+				"The ability of the robot/human to model the other's mental states and perspectives.",
+				"The ethical laws governing AI behavior.",
+				"The semantic map of a room."
+			],
+			"correct": [1],
+			"feedback": "Theory of Mind involves understanding and modeling the intentions, knowledge, and perspectives of other interacting agents[cite: 3258]."
+		},
+		{
+			"group": "16",
+			"type": "single",
+			"q": "What characterizes the 'Canny' Approach to agent design?",
+			"options": [
+				"Making the robot look exactly like a human to maximize trust.",
+				"Using purely textual communication to avoid audio processing.",
+				"Aligning a robot's visual, vocal, and behavioral affordances to avoid conflicting cues.",
+				"Programming robots to deceive users into thinking they are human."
+			],
+			"correct": [2],
+			"feedback": "A 'Canny' design explicitly aligns all interactive cues (voice matches appearance) so the agent's capabilities are clear and consistent, increasing rapport[cite: 3328, 3329]."
+		},
+		{
+			"group": "16",
+			"type": "single",
+			"q": "What is 'Human-Robot Non-Interaction' primarily concerned with?",
+			"options": [
+				"Replacing humans entirely with robots.",
+				"Designing safe collaborative robotics ('Co-bots') that don't harm humans when paths unavoidably cross.",
+				"Programming robots to ignore vocal commands.",
+				"Using swarms instead of single humanoids."
+			],
+			"correct": [1],
+			"feedback": "Non-interaction focuses on safety and intuitive interfaces in environments where robots and humans share space but may have incompatible physical goals[cite: 3333, 3334]."
+		},
+		{
+			"group": "17",
+			"type": "single",
+			"q": "In the context of Cognitive Paradigms, what defines 'System 1' thinking?",
+			"options": [
+				"Slow, logical, and calculating.",
+				"Fast, automatic, emotional, and unconscious.",
+				"Symbolic and highly structured.",
+				"Based solely on path integration."
+			],
+			"correct": [1],
+			"feedback": "System 1 is the fast, intuitive, and automatic layer of cognition, whereas System 2 is the slow, deliberate, computational layer[cite: 3362]."
+		},
+		{
+			"group": "17",
+			"type": "multiple",
+			"q": "Which of the following are dimensions used in the 'PAD' model of emotion?",
+			"options": [
+				"Perception",
+				"Pleasure (Valence)",
+				"Arousal",
+				"Dominance",
+				"Desirability"
+			],
+			"correct": [1, 2, 3],
+			"feedback": "The PAD model stands for Pleasure (Valence), Arousal, and Dominance[cite: 3391, 3392]."
+		},
+		{
+			"group": "17",
+			"type": "single",
+			"q": "According to the Computational Model of Emotion, if an event is 'undesirable' and 'caused by another', what emotional consequence is triggered?",
+			"options": [
+				"Fear",
+				"Joy",
+				"Sadness",
+				"Anger"
+			],
+			"correct": [3],
+			"feedback": "Appraising an event as undesirable and attributing the blame to another agent naturally triggers anger[cite: 3412]."
+		},
+		{
+			"group": "17",
+			"type": "single",
+			"q": "What is the primary difference between Extrinsic and Intrinsic Motivation in cognitive robotics?",
+			"options": [
+				"Extrinsic motivation uses continuous logic; intrinsic uses discrete logic.",
+				"Extrinsic motivation stems from external environment rewards; intrinsic motivation stems from the agent's internal cognitive drives.",
+				"Extrinsic motivation requires a human operator.",
+				"Intrinsic motivation is only found in biological organisms."
+			],
+			"correct": [1],
+			"feedback": "Extrinsic rewards are provided by the external environment (like finding an object), while intrinsic motivation represents internal drives like curiosity or maintaining homeostasis[cite: 3371, 3374]."
+		},
+		{
+			"group": "17",
+			"type": "single",
+			"q": "In the 'Control Model of Emotion', emotion is conceptually analogous to what component of a standard control loop?",
+			"options": [
+				"The reference target",
+				"The actuator output",
+				"The deviation/error signal resulting from appraisal",
+				"The external disturbance"
+			],
+			"correct": [2],
+			"feedback": "Emotion acts as the error signal derived from the 'appraisal' (comparator) between the perceived state and the agent's internal needs/goals[cite: 3405, 3406]."
+		},
+		{
+			"group": "18",
+			"type": "single",
+			"q": "What does 'Technology Readiness Level' (TRL) measure?",
+			"options": [
+				"The battery capacity of a mobile robot.",
+				"The maturity and validation status of a technology, from concept (TRL 1) to proven operational system (TRL 9).",
+				"The speed of an A* path planning algorithm.",
+				"The ethical compliance of an autonomous vehicle."
+			],
+			"correct": [1],
+			"feedback": "TRL is a scale from 1 to 9 used to assess the maturity level of a particular technology[cite: 3464]."
+		},
+		{
+			"group": "18",
+			"type": "multiple",
+			"q": "According to the EPSRC 'Principles of Robotics', which of the following are true?",
+			"options": [
+				"Robots should be designed to deceive humans for better interaction.",
+				"Humans, not robots, are the responsible agents.",
+				"Robots are products and should assure safety and security.",
+				"The legal responsibility for a robot should be attributed to a person."
+			],
+			"correct": [1, 2, 3],
+			"feedback": "The principles emphasize that humans are responsible, robots are products requiring safety, deception should be avoided, and legal accountability must exist[cite: 3488, 3489, 3491]."
+		},
+		{
+			"group": "18",
+			"type": "single",
+			"q": "The 'Moral Machine' experiment was designed to crowd-source human ethical decisions regarding what famous philosophical dilemma?",
+			"options": [
+				"The Prisoner's Dilemma",
+				"The Trolley Problem",
+				"The Turing Test",
+				"The Chinese Room"
+			],
+			"correct": [1],
+			"feedback": "The Moral Machine applied the Trolley Problem to self-driving cars, gathering data on how people think autonomous vehicles should prioritize lives in unavoidable crashes[cite: 3474, 3475]."
+		},
+		{
+			"group": "18",
+			"type": "single",
+			"q": "What is Asimov's Second Law of Robotics?",
+			"options": [
+				"A robot must protect its own existence.",
+				"A robot may not injure a human being.",
+				"A robot must obey orders given it by human beings except where such orders would conflict with the First Law.",
+				"A robot must never replace a human worker."
+			],
+			"correct": [2],
+			"feedback": "The second law states a robot must obey human orders, provided they do not conflict with the first law (do no harm)[cite: 3485]."
+		},
+		{
+			"group": "18",
+			"type": "single",
+			"q": "What trend describes the initial over-enthusiasm and subsequent disillusionment of a new robotic technology?",
+			"options": [
+				"The Moore's Law curve",
+				"The Gartner Hype Cycle",
+				"The PID overshoot",
+				"The Levy Flight distribution"
+			],
+			"correct": [1],
+			"feedback": "The Gartner Hype Cycle tracks the phases of a technology from 'Innovation Trigger' through the 'Peak of Inflated Expectations' into the 'Trough of Disillusionment'[cite: 3440]."
+		}
+	]
+}

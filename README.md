@@ -18,7 +18,7 @@ Please note that if you refresh the site at any point, it will clear the dataset
 
 ### Uploading New Datasets
 
-New datasets can be uploaded in `.json` files. Please see `example_extension.json` for examples of each data type for uploading. 
+New datasets can be uploaded in `.json` files. Please see `example_extension.json` for examples of each data type for uploading.
 
 I recommend passing the example file into an AI agent, along with your questions / flashcards etc, and asking it to convert them into the format specified in the example file.
 

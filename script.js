@@ -1,3 +1,7 @@
+// --- MODULE MANAGEMENT STATE ---
+let loadedModules = {}; // { moduleName: { flashcards, matcher, quests, quiz } }
+let currentModuleKey = null; // Currently active module identifier
+
 const masterFlashcards = [];
 
 const masterMatcher = [];
@@ -83,30 +87,196 @@ let quizIndex = 0;
 let quizScore = 0;
 let quizanswered = false;
 
+// --- MODULE SWITCHER FUNCTIONS ---
+function switchModule() {
+	const selector = document.getElementById("module-switcher");
+	const moduleKey = selector.value;
+
+	if (!moduleKey || !loadedModules[moduleKey]) {
+		console.warn("Invalid module selection");
+		return;
+	}
+
+	currentModuleKey = moduleKey;
+	const module = loadedModules[moduleKey];
+
+	// Swap active data arrays to this module's data
+	masterFlashcards.length = 0;
+	masterFlashcards.push(...module.flashcards);
+
+	masterMatcher.length = 0;
+	masterMatcher.push(...module.matcher);
+
+	masterQuests.length = 0;
+	masterQuests.push(...module.quests);
+
+	masterQuiz.length = 0;
+	masterQuiz.push(...module.quiz);
+
+	// Update header to reflect active module
+	updateModuleHeader(module.moduleName, module.moduleCode);
+
+	// Save preference to localStorage
+	localStorage.setItem("lastActiveModule", moduleKey);
+
+	// Generate lecture filters based on this module's data
+	generateLectureFilters();
+}
+
+function updateModuleHeader(moduleName, moduleCode) {
+    document.getElementById("module-title").innerText = `${moduleCode || "Module"} - ${moduleName}`;
+    document.getElementById("module-subtitle").innerText = 
+        `Comprehensive Study Suite • ${currentModuleKey}`;
+}
+
+function populateModuleSwitcher() {
+    const selector = document.getElementById("module-switcher");
+    selector.innerHTML = '<option value="">Select a module...</option>';
+
+    Object.keys(loadedModules).forEach((key) => {
+        const module = loadedModules[key];
+        const opt = document.createElement("option");
+        opt.value = key;
+        opt.text = `${module.moduleCode} - ${module.moduleName}`;
+        selector.appendChild(opt);
+    });
+
+    // Restore last active module if it exists
+    const lastModule = localStorage.getItem("lastActiveModule");
+    if (lastModule && loadedModules[lastModule]) {
+        selector.value = lastModule;
+        switchModule();
+    }
+}
+
+function generateLectureFilters() {
+	// Collect all unique group values from current module's data
+	const groups = new Set();
+
+	masterFlashcards.forEach((fc) => groups.add(fc.group));
+	masterMatcher.forEach((mt) => groups.add(mt.group));
+	masterQuests.forEach((qst) => groups.add(qst.group));
+	masterQuiz.forEach((qz) => groups.add(qz.group));
+
+	// Convert to sorted array of numbers
+	const sortedGroups = Array.from(groups)
+		.map((g) => parseInt(g))
+		.filter((g) => !isNaN(g))
+		.sort((a, b) => a - b);
+
+	// Get the filter container and rebuild it
+	const filterContainer = document.getElementById("lecture-filter-container");
+
+	filterContainer.innerHTML = `
+        <div class="flex flex-wrap gap-2 items-center">
+            <label for="lecture-filter-mode" class="text-sm font-medium text-slate-300">Filter:</label>
+            <select
+                id="lecture-filter-mode"
+                onchange="handleFilterModeChange()"
+                class="bg-slate-900 border border-slate-600 text-slate-100 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 px-3 py-2"
+            >
+                <option value="all">All Lectures</option>
+                <option value="single">Specific Lecture</option>
+                <option value="range">Lecture Range</option>
+            </select>
+
+            <div id="single-lecture-filter" class="hidden">
+                <select
+                    id="lecture-filter-single"
+                    onchange="applyGlobalFilter()"
+                    class="bg-slate-900 border border-slate-600 text-slate-100 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 px-3 py-2"
+                >
+                    ${sortedGroups.map((g) => `<option value="${g}">Lecture ${g}</option>`).join("")}
+                </select>
+            </div>
+
+            <div id="range-lecture-filter" class="hidden flex gap-2 items-center">
+                <select
+                    id="lecture-filter-start"
+                    onchange="applyGlobalFilter()"
+                    class="bg-slate-900 border border-slate-600 text-slate-100 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 px-3 py-2"
+                >
+                    ${sortedGroups.map((g) => `<option value="${g}">Lecture ${g}</option>`).join("")}
+                </select>
+                <span class="text-slate-400">to</span>
+                <select
+                    id="lecture-filter-end"
+                    onchange="applyGlobalFilter()"
+                    class="bg-slate-900 border border-slate-600 text-slate-100 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 px-3 py-2"
+                >
+                    ${sortedGroups.map((g) => `<option value="${g}">Lecture ${g}</option>`).join("")}
+                </select>
+            </div>
+        </div>
+    `;
+
+	// Set the end range to the last available lecture by default
+	if (sortedGroups.length > 0) {
+		document.getElementById("lecture-filter-end").value = sortedGroups[sortedGroups.length - 1];
+	}
+
+	// Apply filter with updated options
+	applyGlobalFilter();
+}
+
+function handleFilterModeChange() {
+	const mode = document.getElementById("lecture-filter-mode").value;
+	const singleFilter = document.getElementById("single-lecture-filter");
+	const rangeFilter = document.getElementById("range-lecture-filter");
+
+	// Hide all filter inputs
+	singleFilter.classList.add("hidden");
+	rangeFilter.classList.add("hidden");
+
+	// Show relevant filter input
+	if (mode === "single") {
+		singleFilter.classList.remove("hidden");
+	} else if (mode === "range") {
+		rangeFilter.classList.remove("hidden");
+	}
+
+	// Apply filter
+	applyGlobalFilter();
+}
+
 // --- FILTER HUB ---
 function applyGlobalFilter() {
-	globalFilter = document.getElementById("lecture-filter").value;
+	const filterMode = document.getElementById("lecture-filter-mode")?.value || "all";
+	let targetGroups = new Set();
 
-	activeFlashcards =
-		globalFilter === "all"
-			? masterFlashcards
-			: masterFlashcards.filter((i) => i.group === globalFilter);
-	activeMatcher =
-		globalFilter === "all" ? masterMatcher : masterMatcher.filter((i) => i.group === globalFilter);
-	activeQuests =
-		globalFilter === "all" ? masterQuests : masterQuests.filter((i) => i.group === globalFilter);
-	activeQuiz =
-		globalFilter === "all" ? masterQuiz : masterQuiz.filter((i) => i.group === globalFilter);
+	if (filterMode === "all") {
+		// Include all groups
+		masterFlashcards.forEach((fc) => targetGroups.add(parseInt(fc.group)));
+		masterMatcher.forEach((mt) => targetGroups.add(parseInt(mt.group)));
+		masterQuests.forEach((qst) => targetGroups.add(parseInt(qst.group)));
+		masterQuiz.forEach((qz) => targetGroups.add(parseInt(qz.group)));
+	} else if (filterMode === "single") {
+		// Single lecture only
+		const selected = parseInt(document.getElementById("lecture-filter-single")?.value || "all");
+		targetGroups.add(selected);
+	} else if (filterMode === "range") {
+		// Range of lectures
+		const start = parseInt(document.getElementById("lecture-filter-start")?.value || 1);
+		const end = parseInt(document.getElementById("lecture-filter-end")?.value || 999);
 
-	// Reset States
+		for (let i = start; i <= end; i++) {
+			targetGroups.add(i);
+		}
+	}
+
+	// Filter datasets based on target groups
+	activeFlashcards = masterFlashcards.filter((fc) => targetGroups.has(parseInt(fc.group)));
+	activeMatcher = masterMatcher.filter((mt) => targetGroups.has(parseInt(mt.group)));
+	activeQuests = masterQuests.filter((qst) => targetGroups.has(parseInt(qst.group)));
+	activeQuiz = masterQuiz.filter((qz) => targetGroups.has(parseInt(qz.group)));
+
+	// Reset card indices and render
 	currentCardIndex = 0;
+	quizIndex = 0;
 	renderCard();
 	resetMatcher();
 	setupQuestDropdown();
-
-	if (!document.getElementById("panel-quiz").classList.contains("hidden")) {
-		resetQuiz();
-	}
+	startQuiz();
 }
 
 // --- DYNAMIC DATASET INJECTOR ENGINE ---
@@ -119,13 +289,31 @@ function handleJsonUpload(event) {
 	reader.onload = function (e) {
 		try {
 			const data = JSON.parse(e.target.result);
+
+			// Validate required module metadata
+			if (!data.moduleName) {
+				throw new Error("Missing required field: 'moduleName'");
+			}
+
+			const moduleCode = data.moduleCode || "UNKNOWN";
+			const moduleKey = `${moduleCode}_${Date.now()}`; // Unique key
 			let counts = { flashcards: 0, proofs: 0, quiz: 0, matches: 0 };
+
+			// Create module container
+			const newModule = {
+				moduleName: data.moduleName,
+				moduleCode: moduleCode,
+				flashcards: [],
+				matcher: [],
+				quests: [],
+				quiz: [],
+			};
 
 			// 1. Inject Flashcards
 			if (data.flashcards && Array.isArray(data.flashcards)) {
 				data.flashcards.forEach((fc) => {
 					if (fc.group && fc.topic && fc.q && fc.a) {
-						masterFlashcards.push(fc);
+						newModule.flashcards.push(fc);
 						counts.flashcards++;
 					} else {
 						console.error("Skipped invalid flashcard element:", fc);
@@ -137,7 +325,7 @@ function handleJsonUpload(event) {
 			if (data.proofs && Array.isArray(data.proofs)) {
 				data.proofs.forEach((pf) => {
 					if (pf.id && pf.group && pf.title && pf.explanation && pf.steps) {
-						masterQuests.push(pf);
+						newModule.quests.push(pf);
 						counts.proofs++;
 					} else {
 						console.error("Skipped invalid proof quest element:", pf);
@@ -149,7 +337,7 @@ function handleJsonUpload(event) {
 			if (data.quiz && Array.isArray(data.quiz)) {
 				data.quiz.forEach((qz) => {
 					if (qz.group && qz.type && qz.q && qz.options && qz.correct && qz.feedback) {
-						masterQuiz.push(qz);
+						newModule.quiz.push(qz);
 						counts.quiz++;
 					} else {
 						console.error("Skipped invalid quiz element:", qz);
@@ -157,11 +345,11 @@ function handleJsonUpload(event) {
 				});
 			}
 
-			// 4. Inject Matcher Elements (if any)
+			// 4. Inject Matcher Elements
 			if (data.matcher && Array.isArray(data.matcher)) {
 				data.matcher.forEach((mt) => {
-					if (mt.group && mt.item && mt.item && mt.desc) {
-						masterMatcher.push(mt);
+					if (mt.group && mt.item && mt.type && mt.desc) {
+						newModule.matcher.push(mt);
 						counts.matches++;
 					} else {
 						console.error("Skipped invalid matcher element:", mt);
@@ -169,19 +357,27 @@ function handleJsonUpload(event) {
 				});
 			}
 
-			// Show completion feedback to user
+			// Store module in loadedModules object
+			loadedModules[moduleKey] = newModule;
+
+			// Save to localStorage for persistence
+			localStorage.setItem("loadedModules", JSON.stringify(loadedModules));
+
+			// Show completion feedback
 			statusEl.className =
 				"mt-2 text-center text-[11px] font-medium text-emerald-400 bg-emerald-950/20 py-1.5 px-2 rounded-lg border border-emerald-500/20";
-			statusEl.innerText = `Successfully loaded: +${counts.flashcards} Flashcards, +${counts.proofs} Proofs, +${counts.quiz} Quiz elements, +${counts.matches} Matcher elements.`;
+			statusEl.innerText = `✓ Loaded module "${data.moduleName}": +${counts.flashcards} Flashcards, +${counts.proofs} Proofs, +${counts.quiz} Quiz, +${counts.matches} Matcher items.`;
 			statusEl.classList.remove("hidden");
 
-			// Force global application filter state compilation to sync elements immediately
-			applyGlobalFilter();
+			// Update module switcher and auto-select new module
+			populateModuleSwitcher();
+			document.getElementById("module-switcher").value = moduleKey;
+			switchModule();
 		} catch (err) {
 			console.error(err);
 			statusEl.className =
 				"mt-2 text-center text-[11px] font-medium text-rose-400 bg-rose-950/20 py-1.5 px-2 rounded-lg border border-rose-500/20";
-			statusEl.innerText = "Error: Invalid JSON framework or configuration schema mismatch.";
+			statusEl.innerText = `Error: ${err.message || "Invalid JSON structure"}`;
 			statusEl.classList.remove("hidden");
 		}
 	};
@@ -190,56 +386,65 @@ function handleJsonUpload(event) {
 
 // --- DYNAMIC DATASET EXPORT ENGINE ---
 function downloadDataset(type) {
+	if (!currentModuleKey || !loadedModules[currentModuleKey]) {
+		alert("No active module selected.");
+		return;
+	}
+
+	const module = loadedModules[currentModuleKey];
 	let targetData;
 	let filename;
 
-	// Determine which dataset to pull based on the button clicked
 	switch (type) {
 		case "all":
 			targetData = {
-				flashcards: masterFlashcards,
-				matcher: masterMatcher,
-				proofs: masterQuests,
-				quiz: masterQuiz,
+				moduleName: module.moduleName,
+				moduleCode: module.moduleCode,
+				flashcards: module.flashcards,
+				matcher: module.matcher,
+				proofs: module.quests,
+				quiz: module.quiz,
 			};
-			filename = "com2109_full_export.json";
+			filename = `${module.moduleCode}_full_export.json`;
 			break;
 		case "flashcards":
-			targetData = { flashcards: masterFlashcards };
-			filename = "com2109_flashcards_export.json";
+			targetData = {
+				moduleName: module.moduleName,
+				flashcards: module.flashcards,
+			};
+			filename = `${module.moduleCode}_flashcards_export.json`;
 			break;
 		case "matcher":
-			targetData = { matcher: masterMatcher };
-			filename = "com2109_matcher_export.json";
+			targetData = {
+				moduleName: module.moduleName,
+				matcher: module.matcher,
+			};
+			filename = `${module.moduleCode}_matcher_export.json`;
 			break;
 		case "quest":
-			targetData = { proofs: masterQuests };
-			filename = "com2109_proofs_export.json";
+			targetData = {
+				moduleName: module.moduleName,
+				proofs: module.quests,
+			};
+			filename = `${module.moduleCode}_proofs_export.json`;
 			break;
 		case "quiz":
-			targetData = { quiz: masterQuiz };
-			filename = "com2109_quiz_export.json";
+			targetData = {
+				moduleName: module.moduleName,
+				quiz: module.quiz,
+			};
+			filename = `${module.moduleCode}_quiz_export.json`;
 			break;
 		default:
-			console.error("Unknown dataset type requested for download.");
 			return;
 	}
 
-	// Convert the array into a beautifully formatted JSON string
 	const jsonString = JSON.stringify(targetData, null, 4);
-
-	// Create a Blob containing the JSON data
 	const blob = new Blob([jsonString], { type: "application/json" });
-
-	// Create a temporary URL for the Blob
 	const url = URL.createObjectURL(blob);
-
-	// Create a hidden anchor element to trigger the download mechanism
 	const a = document.createElement("a");
 	a.href = url;
 	a.download = filename;
-
-	// Append, click, and cleanup
 	document.body.appendChild(a);
 	a.click();
 	document.body.removeChild(a);
@@ -672,7 +877,54 @@ function resetQuiz() {
 	document.getElementById("quiz-start-screen").classList.remove("hidden");
 }
 
-// --- BOOTSTRAP INITIALISATION ---
+function showNoModuleScreen() {
+	document.querySelectorAll(".tab-panel").forEach((p) => p.classList.add("hidden"));
+
+	const mainContent = document.querySelector("main");
+	mainContent.innerHTML = `
+        <div class="flex items-center justify-center min-h-[60vh]">
+            <div class="text-center bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-xl max-w-md">
+                <div class="mb-4">
+                    <svg class="w-16 h-16 mx-auto text-slate-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-200 mb-2">No Modules Loaded</h2>
+                <p class="text-slate-400 text-sm mb-6">
+                    Start by uploading a JSON file containing your revision content for a specific module.
+                </p>
+                <button
+                    onclick="switchTab('upload')"
+                    class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-6 py-3 rounded-xl transition shadow-lg text-sm w-full"
+                >
+                    Go to Upload/Export
+                </button>
+            </div>
+        </div>
+    `;
+}
+
 window.onload = function () {
-	applyGlobalFilter();
+	// Load modules from localStorage if available
+	const saved = localStorage.getItem("loadedModules");
+	if (saved) {
+		try {
+			loadedModules = JSON.parse(saved);
+			populateModuleSwitcher();
+		} catch (err) {
+			console.error("Failed to load saved modules:", err);
+		}
+	}
+
+	// If no module is active, show the landing screen
+	if (!currentModuleKey && Object.keys(loadedModules).length === 0) {
+		showNoModuleScreen();
+	} else if (!currentModuleKey && Object.keys(loadedModules).length > 0) {
+		// Auto-select first available module if none is active
+		const firstKey = Object.keys(loadedModules)[0];
+		document.getElementById("module-switcher").value = firstKey;
+		switchModule();
+	} else {
+		generateLectureFilters();
+	}
 };

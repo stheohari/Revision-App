@@ -30,6 +30,7 @@
 			}
 		</style>
 	</head>
+
 	<body class="bg-slate-900 text-slate-100 min-h-screen font-sans pb-12">
 		<header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50 shadow-md">
 			<div
@@ -39,11 +40,22 @@
 					<h1
 						class="text-2xl font-bold bg-indigo-400 bg-clip-text text-transparent"
 					>
-						COM2109 - Automata, Computation & Complexity
+						<span id="module-title">Revision Suite</span>
 					</h1>
 					<p class="text-xs text-slate-400">
-						Comprehensive Ultra-Revision Suite • Lectures 1-10 & Exam Mechanics
+						<span id="module-subtitle">Comprehensive Revision Suite</span>
 					</p>
+				</div>
+
+				<div class="flex items-center gap-3">
+					<label for="module-switcher" class="text-sm font-medium text-slate-300">Active Module:</label>
+					<select
+						id="module-switcher"
+						onchange="switchModule()"
+						class="bg-slate-900 border border-slate-600 text-slate-100 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block p-2"
+					>
+						<option value="">No module loaded</option>
+					</select>
 				</div>
 
 				<nav class="flex flex-wrap gap-1 bg-slate-900 p-1 rounded-xl border border-slate-700">
@@ -87,32 +99,34 @@
                 
 
 				<div class="flex items-center gap-2">
-					<label for="lecture-filter" class="text-sm font-medium text-slate-300"
-						>Target Lecture(s):</label
-					>
-					<select
-						id="lecture-filter"
-						onchange="applyGlobalFilter()"
-						class="bg-slate-900 border border-slate-600 text-slate-100 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block p-2"
-					>
-						<option value="all">All Lectures (1-10)</option>
-						<option value="1">Lec 1: Computational Problems</option>
-						<option value="2">Lec 2: Decision Problems & P vs EXP</option>
-						<option value="3">Lec 3: Complexity Class NP & Karp Reductions</option>
-						<option value="4">Lec 4: NP-Completeness & Cook-Levin</option>
-						<option value="5">Lec 5: Optimisation & Pseudo-Polynomial Time</option>
-						<option value="6">Lec 6: Approximation Algorithms & Vertex Cover</option>
-						<option value="7">Lec 7: Metric TSP & Knapsack PTAS</option>
-						<option value="8">Lec 8: Randomisation & Monte Carlo Algorithms</option>
-						<option value="9">Lec 9: Expected Performance & Las Vegas Algorithms</option>
-						<option value="10">Lec 10: Probabilistic Complexity & LP Rounding</option>
-					</select>
+					<div id="lecture-filter-container" class="flex flex-wrap gap-2 items-center">
+						<label for="lecture-filter" class="text-sm font-medium text-slate-300"
+							>Target Lecture(s):</label
+						>
+						<select
+							id="lecture-filter"
+							onchange="applyGlobalFilter()"
+							class="bg-slate-900 border border-slate-600 text-slate-100 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block p-2"
+						>
+							<option value="all">All Lectures (1-10)</option>
+							<option value="1">Lec 1: Computational Problems</option>
+							<option value="2">Lec 2: Decision Problems & P vs EXP</option>
+							<option value="3">Lec 3: Complexity Class NP & Karp Reductions</option>
+							<option value="4">Lec 4: NP-Completeness & Cook-Levin</option>
+							<option value="5">Lec 5: Optimisation & Pseudo-Polynomial Time</option>
+							<option value="6">Lec 6: Approximation Algorithms & Vertex Cover</option>
+							<option value="7">Lec 7: Metric TSP & Knapsack PTAS</option>
+							<option value="8">Lec 8: Randomisation & Monte Carlo Algorithms</option>
+							<option value="9">Lec 9: Expected Performance & Las Vegas Algorithms</option>
+							<option value="10">Lec 10: Probabilistic Complexity & LP Rounding</option>
+						</select>
+					</div>
 				</div>
 			</div>
 		</header>
 
 		<main class="max-w-5xl mx-auto px-4 py-8">
-			<section id="panel-flashcards" class="tab-panel block">
+			<section id="panel-flashcards" class="tab-panel content-panel block">
 				<div class="text-center mb-6">
 					<h2 class="text-xl font-bold text-slate-200">Revision Flashcards</h2>
 					<p class="text-sm text-slate-400">Review underlying theorems, bounds, and definitions.</p>
@@ -181,7 +195,7 @@
 				<div class="text-center mt-4 text-xs text-slate-400" id="card-indicator">Card 1 of X</div>
 			</section>
 
-			<section id="panel-matcher" class="tab-panel hidden">
+			<section id="panel-matcher" class="tab-panel content-panel hidden">
 				<div class="text-center mb-6">
 					<h2 class="text-xl font-bold text-slate-200">Granular Boundary Matcher</h2>
 					<p class="text-sm text-slate-400">
@@ -264,7 +278,7 @@
 				</div>
 			</section>
 
-			<section id="panel-quest" class="tab-panel hidden">
+			<section id="panel-quest" class="tab-panel content-panel hidden">
 				<div class="text-center mb-6">
 					<h2 class="text-xl font-bold text-slate-200">
 						Algorithm Steps & Proof Reconstruction Quest
@@ -336,7 +350,7 @@
 				</div>
 			</section>
 
-			<section id="panel-quiz" class="tab-panel hidden">
+			<section id="panel-quiz" class="tab-panel content-panel hidden">
 				<div
 					id="quiz-start-screen"
 					class="text-center p-8 bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl"
