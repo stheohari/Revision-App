@@ -488,12 +488,7 @@
 			"group": "3",
 			"type": "single",
 			"q": "Which component acts as the 'brain' of the robot responsible for its behaviour?",
-			"options": [
-				"Sensing",
-				"Actuation",
-				"Control mechanism",
-				"Morphology"
-			],
+			"options": ["Sensing", "Actuation", "Control mechanism", "Morphology"],
 			"correct": [2],
 			"feedback": "The control mechanism processes sensory input to determine actions, acting as the robot's intelligence or 'brain'[cite: 1779, 1781]."
 		},
@@ -501,13 +496,7 @@
 			"group": "3",
 			"type": "multiple",
 			"q": "Which of the following are examples of low-level percepts?",
-			"options": [
-				"Light level",
-				"People",
-				"Temperature",
-				"Proximity",
-				"Intentions"
-			],
+			"options": ["Light level", "People", "Temperature", "Proximity", "Intentions"],
 			"correct": [0, 2, 3],
 			"feedback": "Light level, temperature, and proximity are low-level percepts, while people are high-level and intentions are abstract percepts[cite: 1930, 1931, 1932]."
 		},
@@ -529,13 +518,13 @@
 			"type": "multiple",
 			"q": "What benefits does structural redundancy (having more DoF than strictly needed) provide to a manipulator?",
 			"options": [
-				"Energy minimization",
+				"Energy minimisation",
 				"Increased battery capacity",
 				"Obstacle avoidance",
 				"Reduced weight"
 			],
 			"correct": [0, 2],
-			"feedback": "Redundancy facilitates optimizations like energy minimization and obstacle avoidance[cite: 1847, 1848]."
+			"feedback": "Redundancy facilitates optimisations like energy minimisation and obstacle avoidance[cite: 1847, 1848]."
 		},
 		{
 			"group": "3",
@@ -554,12 +543,7 @@
 			"group": "4",
 			"type": "single",
 			"q": "Which paradigm emerged in the 1990s emphasizing the relationship between the brain, body, mind, and the world?",
-			"options": [
-				"Cybernetics",
-				"Connectionism",
-				"Computationalism",
-				"Embodied Cognition"
-			],
+			"options": ["Cybernetics", "Connectionism", "Computationalism", "Embodied Cognition"],
 			"correct": [3],
 			"feedback": "Embodied Cognition emerged in the 1990s, focusing on enactive systems and the brain/body/world relationship[cite: 1975]."
 		},
@@ -588,7 +572,7 @@
 				"A swarm network"
 			],
 			"correct": [1],
-			"feedback": "Morphological computing blurs the line between controller and body by outsourcing stabilization and control to the physical compliance of muscles, bones, or springs[cite: 2096, 2100, 2103]."
+			"feedback": "Morphological computing blurs the line between controller and body by outsourcing stabilisation and control to the physical compliance of muscles, bones, or springs[cite: 2096, 2100, 2103]."
 		},
 		{
 			"group": "4",
@@ -685,12 +669,7 @@
 			"group": "6",
 			"type": "single",
 			"q": "In a PID controller, which term is responsible for correcting the long-term accumulated error?",
-			"options": [
-				"Proportional (Kp)",
-				"Integral (Ki)",
-				"Derivative (Kd)",
-				"Gain (Ku)"
-			],
+			"options": ["Proportional (Kp)", "Integral (Ki)", "Derivative (Kd)", "Gain (Ku)"],
 			"correct": [1],
 			"feedback": "The Integral term (Ki) addresses the long-term, steady-state equilibrium error[cite: 2168]."
 		},
@@ -775,7 +754,7 @@
 		{
 			"group": "7",
 			"type": "single",
-			"q": "In visual servoing, the error is minimized by comparing the current view with:",
+			"q": "In visual servoing, the error is minimised by comparing the current view with:",
 			"options": [
 				"A mathematical 3D rendering of the room.",
 				"A pre-recorded 'snapshot' or stored target view.",
@@ -789,12 +768,7 @@
 			"group": "7",
 			"type": "single",
 			"q": "If a camera has a focal length of 10mm and a sensor density of 100 pixels/mm, what is the focal length in pixel units?",
-			"options": [
-				"10",
-				"100",
-				"1000",
-				"10000"
-			],
+			"options": ["10", "100", "1000", "10000"],
 			"correct": [2],
 			"feedback": "Focal length in pixels = focal length (mm) * pixel density (pixels/mm). 10 * 100 = 1000[cite: 2255]."
 		},
@@ -815,12 +789,7 @@
 			"group": "8",
 			"type": "single",
 			"q": "Which search strategy mixes dense local exploration with occasional long paths into new areas?",
-			"options": [
-				"Brownian Walk",
-				"Levy Flight",
-				"Spiral Search",
-				"A* Search"
-			],
+			"options": ["Brownian Walk", "Levy Flight", "Spiral Search", "A* Search"],
 			"correct": [1],
 			"feedback": "Levy flights use a long-tailed distribution to naturally cluster local searches interspersed with long 'jumps'[cite: 2285]."
 		},
@@ -880,12 +849,7 @@
 			"group": "9",
 			"type": "single",
 			"q": "Which positioning system relies entirely on internal measurements to estimate the change in pose?",
-			"options": [
-				"GPS",
-				"Differential GPS",
-				"WiFi Fingerprinting",
-				"Odometry"
-			],
+			"options": ["GPS", "Differential GPS", "WiFi Fingerprinting", "Odometry"],
 			"correct": [3],
 			"feedback": "Odometry (dead reckoning) uses proprioceptive sensors like encoders and gyros to measure relative movement[cite: 2371]."
 		},
@@ -945,14 +909,9 @@
 			"group": "10",
 			"type": "single",
 			"q": "Which type of map format uses a discrete grid of free, occupied, or unexplored cells?",
-			"options": [
-				"Topological Graph",
-				"Occupancy Grid",
-				"Semantic Map",
-				"Vector Map"
-			],
+			"options": ["Topological Graph", "Occupancy Grid", "Semantic Map", "Vector Map"],
 			"correct": [1],
-			"feedback": "An occupancy grid is a rasterized topographic map representing the spatial environment in discrete blocks[cite: 2428]."
+			"feedback": "An occupancy grid is a rasterised topographic map representing the spatial environment in discrete blocks[cite: 2428]."
 		},
 		{
 			"group": "10",
@@ -997,12 +956,7 @@
 			"group": "10",
 			"type": "single",
 			"q": "What is the term for a map that overlays object functions (like 'desk' or 'stairs') onto spatial data?",
-			"options": [
-				"Metric Map",
-				"Topological Map",
-				"Semantic Map",
-				"Odometry Map"
-			],
+			"options": ["Metric Map", "Topological Map", "Semantic Map", "Odometry Map"],
 			"correct": [2],
 			"feedback": "Semantic maps include metadata about the objects in the environment, identifying what they are or their function[cite: 2435]."
 		},
@@ -1039,7 +993,7 @@
 			"options": [
 				"A sensor must be calibrated linearly.",
 				"The sampling rate must be at least twice the highest frequency present in the signal.",
-				"The dynamic range determines the quantization step.",
+				"The dynamic range determines the quantisation step.",
 				"A higher focal length reduces temporal resolution."
 			],
 			"correct": [1],
@@ -1066,10 +1020,10 @@
 				"It remains the same but processes faster.",
 				"It decreases logarithmically.",
 				"It increases, allowing finer amplitude resolution.",
-				"It causes severe quantization errors."
+				"It causes severe quantisation errors."
 			],
 			"correct": [2],
-			"feedback": "More bits provide exponentially more quantization levels, increasing the dynamic range and providing finer amplitude resolution[cite: 2492, 2493]."
+			"feedback": "More bits provide exponentially more quantisation levels, increasing the dynamic range and providing finer amplitude resolution[cite: 2492, 2493]."
 		},
 		{
 			"group": "12",
@@ -1218,7 +1172,7 @@
 		{
 			"group": "14",
 			"type": "multiple",
-			"q": "Which of the following are recognized forms of 'Intentional Acts' in interactive systems?",
+			"q": "Which of the following are recognised forms of 'Intentional Acts' in interactive systems?",
 			"options": [
 				"Direct (Action: change state of world)",
 				"Indirect (Communication: change state of other)",
@@ -1232,12 +1186,7 @@
 			"group": "14",
 			"type": "single",
 			"q": "If two robots interact by altering the environment, leaving traces for each other to react to, what is this called?",
-			"options": [
-				"Synchrony",
-				"Joint attention",
-				"Stigmergy",
-				"Direct coupling"
-			],
+			"options": ["Synchrony", "Joint attention", "Stigmergy", "Direct coupling"],
 			"correct": [2],
 			"feedback": "Stigmergy is an indirect form of communication where actions are coordinated via physical modifications to the shared environment[cite: 2942]."
 		},
@@ -1284,13 +1233,7 @@
 			"group": "15",
 			"type": "multiple",
 			"q": "What are the three fundamental rules in Craig Reynolds' 'Boids' flocking model?",
-			"options": [
-				"Separation",
-				"Alignment",
-				"Predator Avoidance",
-				"Cohesion",
-				"Food Seeking"
-			],
+			"options": ["Separation", "Alignment", "Predator Avoidance", "Cohesion", "Food Seeking"],
 			"correct": [0, 1, 3],
 			"feedback": "The Boids model generates flocking using only local Separation, Alignment, and Cohesion rules[cite: 3011, 3012, 3013]."
 		},
@@ -1415,13 +1358,7 @@
 			"group": "17",
 			"type": "multiple",
 			"q": "Which of the following are dimensions used in the 'PAD' model of emotion?",
-			"options": [
-				"Perception",
-				"Pleasure (Valence)",
-				"Arousal",
-				"Dominance",
-				"Desirability"
-			],
+			"options": ["Perception", "Pleasure (Valence)", "Arousal", "Dominance", "Desirability"],
 			"correct": [1, 2, 3],
 			"feedback": "The PAD model stands for Pleasure (Valence), Arousal, and Dominance[cite: 3391, 3392]."
 		},
@@ -1429,12 +1366,7 @@
 			"group": "17",
 			"type": "single",
 			"q": "According to the Computational Model of Emotion, if an event is 'undesirable' and 'caused by another', what emotional consequence is triggered?",
-			"options": [
-				"Fear",
-				"Joy",
-				"Sadness",
-				"Anger"
-			],
+			"options": ["Fear", "Joy", "Sadness", "Anger"],
 			"correct": [3],
 			"feedback": "Appraising an event as undesirable and attributing the blame to another agent naturally triggers anger[cite: 3412]."
 		},

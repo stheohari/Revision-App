@@ -34,7 +34,7 @@ const masterQuests = [
 	// 		"Conclude via conditional probability bounds that the absolute error check rate Pr[D * r = 0] cannot exceed 1/2.",
 	// 	],
 	// 	explanation:
-	// 		"This proof demonstrates that a randomized binary projection vector captures structural matrix errors with a probability of at least 50% by converting matrix properties down to independent coordinate degrees of freedom.",
+	// 		"This proof demonstrates that a randomised binary projection vector captures structural matrix errors with a probability of at least 50% by converting matrix properties down to independent coordinate degrees of freedom.",
 	// },
 	// {
 	// 	id: "q-3sat-reduction",
@@ -85,7 +85,7 @@ let userQuestSequence = []; // tracks indices of chosen steps
 
 let quizIndex = 0;
 let quizScore = 0;
-let quizanswered = false;
+let quisanswered = false;
 
 // --- MODULE SWITCHER FUNCTIONS ---
 function switchModule() {
@@ -747,7 +747,7 @@ function startQuiz() {
 }
 
 function renderQuizQuestion() {
-	quizanswered = false;
+	quisanswered = false;
 	document.getElementById("quiz-feedback-box").classList.add("hidden");
 	document.getElementById("quiz-submit-btn").classList.add("hidden");
 
@@ -801,8 +801,8 @@ function renderQuizQuestion() {
 }
 
 function submitSingleAnswer(chosenIdx, clickedBtn) {
-	if (quizanswered) return;
-	quizanswered = true;
+	if (quisanswered) return;
+	quisanswered = true;
 
 	const activeQuestion = activeQuiz[quizIndex];
 	document.querySelectorAll(".option-btn").forEach((btn) => (btn.disabled = true));
@@ -819,8 +819,8 @@ function submitSingleAnswer(chosenIdx, clickedBtn) {
 }
 
 function submitMultipleAnswer() {
-	if (quizanswered) return;
-	quizanswered = true;
+	if (quisanswered) return;
+	quisanswered = true;
 	document.getElementById("quiz-submit-btn").classList.add("hidden");
 
 	const activeQuestion = activeQuiz[quizIndex];
@@ -906,32 +906,32 @@ function resetQuiz() {
 	document.getElementById("quiz-start-screen").classList.remove("hidden");
 }
 
-function showNoModuleScreen() {
-	document.querySelectorAll(".tab-panel").forEach((p) => p.classList.add("hidden"));
+// function showNoModuleScreen() {
+// 	document.querySelectorAll(".tab-panel").forEach((p) => p.classList.add("hidden"));
 
-	const mainContent = document.querySelector("main");
-	mainContent.innerHTML = `
-        <div class="flex items-center justify-center min-h-[60vh]">
-            <div class="text-center bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-xl max-w-md">
-                <div class="mb-4">
-                    <svg class="w-16 h-16 mx-auto text-slate-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                    </svg>
-                </div>
-                <h2 class="text-2xl font-bold text-slate-200 mb-2">No Modules Loaded</h2>
-                <p class="text-slate-400 text-sm mb-6">
-                    Start by uploading a JSON file containing your revision content for a specific module.
-                </p>
-                <button
-                    onclick="switchTab('upload')"
-                    class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-6 py-3 rounded-xl transition shadow-lg text-sm w-full"
-                >
-                    Go to Upload/Export
-                </button>
-            </div>
-        </div>
-    `;
-}
+// 	const mainContent = document.querySelector("main");
+// 	mainContent.innerHTML = `
+//         <div class="flex items-center justify-center min-h-[60vh]">
+//             <div class="text-center bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-xl max-w-md">
+//                 <div class="mb-4">
+//                     <svg class="w-16 h-16 mx-auto text-slate-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+//                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+//                     </svg>
+//                 </div>
+//                 <h2 class="text-2xl font-bold text-slate-200 mb-2">No Modules Loaded</h2>
+//                 <p class="text-slate-400 text-sm mb-6">
+//                     Start by uploading a JSON file containing your revision content for a specific module.
+//                 </p>
+//                 <button
+//                     onclick="switchTab('upload')"
+//                     class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-6 py-3 rounded-xl transition shadow-lg text-sm w-full"
+//                 >
+//                     Go to Upload/Export
+//                 </button>
+//             </div>
+//         </div>
+//     `;
+// }
 
 window.onload = function () {
 	// Load modules from localStorage if available
@@ -947,7 +947,7 @@ window.onload = function () {
 
 	// If no module is active, show the landing screen
 	if (!currentModuleKey && Object.keys(loadedModules).length === 0) {
-		showNoModuleScreen();
+		// showNoModuleScreen();
 	} else if (!currentModuleKey && Object.keys(loadedModules).length > 0) {
 		// Auto-select first available module if none is active
 		const firstKey = Object.keys(loadedModules)[0];

@@ -126,7 +126,7 @@
 			"group": "3",
 			"topic": "Lecture 3: Complexity Class NP & Karp Reductions [Card 1]",
 			"q": "What is the core definition of the complexity class NP?",
-			"a": "NP is the class of languages verifiable in polynomial time by a deterministic Turing machine given a polynomial-sized certificate, or equivalently, languages decidable by a non-deterministic Turing machine in polynomial time."
+			"a": "NP is the class of languages verifiable in polynomial time by a deterministic Turing machine given a polynomial-sised certificate, or equivalently, languages decidable by a non-deterministic Turing machine in polynomial time."
 		},
 		{
 			"group": "3",
@@ -258,7 +258,7 @@
 			"group": "5",
 			"topic": "Lecture 5: Optimisation & Pseudo-Polynomial Time [Card 3]",
 			"q": "What distinguishes an optimisation problem from a search problem?",
-			"a": "A search problem asks for any valid solution satisfying a baseline constraint. An optimisation problem requires finding a valid solution that maximizes or minimizes an objective function."
+			"a": "A search problem asks for any valid solution satisfying a baseline constraint. An optimisation problem requires finding a valid solution that maximises or minimises an objective function."
 		},
 		{
 			"group": "5",
@@ -425,14 +425,14 @@
 		{
 			"group": "8",
 			"topic": "Lecture 8: Randomisation & Monte Carlo Algorithms [Card 1]",
-			"q": "What defines a randomized algorithm?",
+			"q": "What defines a randomised algorithm?",
 			"a": "An algorithm that can make random choices during its execution by accessing a source of random bits (e.g., tossing coins)."
 		},
 		{
 			"group": "8",
 			"topic": "Lecture 8: Randomisation & Monte Carlo Algorithms [Card 2]",
 			"q": "What is a Monte Carlo algorithm?",
-			"a": "A randomized algorithm whose running time is deterministic and bounded by a polynomial, but whose output is correct only within a given probability margin."
+			"a": "A randomised algorithm whose running time is deterministic and bounded by a polynomial, but whose output is correct only within a given probability margin."
 		},
 		{
 			"group": "8",
@@ -486,7 +486,7 @@
 			"group": "9",
 			"topic": "Lecture 9: Expected Performance & Las Vegas Algorithms [Card 1]",
 			"q": "What is a Las Vegas algorithm?",
-			"a": "A randomized algorithm that *always* returns the correct answer, but whose running time is a random variable with a bounded expected value."
+			"a": "A randomised algorithm that *always* returns the correct answer, but whose running time is a random variable with a bounded expected value."
 		},
 		{
 			"group": "9",
@@ -509,19 +509,19 @@
 		{
 			"group": "9",
 			"topic": "Lecture 9: Expected Performance & Las Vegas Algorithms [Card 5]",
-			"q": "Describe the randomized selection algorithm for finding the k-th smallest element in an array.",
+			"q": "Describe the randomised selection algorithm for finding the k-th smallest element in an array.",
 			"a": "Select a pivot element 'a' uniformly at random. Partition the array into elements smaller than 'a' (S_less) and larger than 'a' (S_greater). Recursively search the appropriate partition based on the size of S_less."
 		},
 		{
 			"group": "9",
 			"topic": "Lecture 9: Expected Performance & Las Vegas Algorithms [Card 6]",
-			"q": "What is the expected running time of the randomized k-th element selection algorithm?",
+			"q": "What is the expected running time of the randomised k-th element selection algorithm?",
 			"a": "The expected running time is linear, O(n), where n is the number of elements in the array."
 		},
 		{
 			"group": "9",
 			"topic": "Lecture 9: Expected Performance & Las Vegas Algorithms [Card 7]",
-			"q": "What is the worst-case running time of the randomized selection algorithm?",
+			"q": "What is the worst-case running time of the randomised selection algorithm?",
 			"a": "The worst-case running time is quadratic, O(n^2), which occurs if the algorithm repeatedly picks the worst possible pivot (e.g., the minimum or maximum element)."
 		},
 		{
@@ -594,7 +594,7 @@
 			"group": "10",
 			"topic": "Lecture 10: Probabilistic Complexity & LP Rounding [Card 9]",
 			"q": "What is the operational definition of the class RP?",
-			"a": "RP (Randomized Polynomial-time) is the class of languages decidable in polynomial time by a probabilistic Turing machine with one-sided error: it is 100% correct on NO instances, and has a success probability of at least 1/2 on YES instances."
+			"a": "RP (Randomised Polynomial-time) is the class of languages decidable in polynomial time by a probabilistic Turing machine with one-sided error: it is 100% correct on NO instances, and has a success probability of at least 1/2 on YES instances."
 		},
 		{
 			"group": "10",
@@ -644,7 +644,7 @@
 			"group": "4",
 			"item": "Integer Factoring Decision (FACT)",
 			"type": "NP_CO_NP",
-			"desc": "Belongs to NP ∩ co-NP. A single factor serves as an NP certificate; a full prime factorization serves as a co-NP certificate. Also lives in BQP (Shor's Algorithm)."
+			"desc": "Belongs to NP ∩ co-NP. A single factor serves as an NP certificate; a full prime factorisation serves as a co-NP certificate. Also lives in BQP (Shor's Algorithm)."
 		},
 		{
 			"group": "6",
@@ -660,7 +660,7 @@
 		},
 		{
 			"group": "9",
-			"item": "Randomized QuickSort Runtime",
+			"item": "Randomised QuickSort Runtime",
 			"type": "ZPP",
 			"desc": "A Las Vegas implementation. It always finishes with zero error (sorted array) and boasts an expected runtime bound of O(n log n)."
 		},
@@ -674,7 +674,7 @@
 			"group": "10",
 			"item": "Halting Problem Recognition",
 			"type": "UNDECIDABLE",
-			"desc": "Undecidable; proven via Cantor diagonalization to fall completely outside the bounded scope of recursive structural parameters."
+			"desc": "Undecidable; proven via Cantor diagonalisation to fall completely outside the bounded scope of recursive structural parameters."
 		}
 	],
 	"proofs": [
@@ -747,7 +747,7 @@
 			"title": "Factor-2 Greedy Matching Approximation for Minimum Vertex Cover",
 			"explanation": "The greedy matching-based algorithm guarantees a valid vertex cover whose size is at most twice that of the absolute optimum (Sol ≤ 2 * OPT).",
 			"steps": [
-				"**Algorithm Mechanics:** Initialize an empty vertex cover set C. While the graph contains edges, select an arbitrary edge (u, v). Add both endpoints u and v to C, and remove all edges incident to u or v from the graph.",
+				"**Algorithm Mechanics:** Initialise an empty vertex cover set C. While the graph contains edges, select an arbitrary edge (u, v). Add both endpoints u and v to C, and remove all edges incident to u or v from the graph.",
 				"**Establishing a Lower Bound (The Matching):** Let M denote the set of edges selected by the algorithm. By construction, once an edge is selected, all its incident edges are removed. This ensures that no two edges in M share a vertex endpoint, making M a valid matching.",
 				"Because the edges in M are disjoint, any valid vertex cover *must* pick at least one unique vertex from each edge in M to cover it. This establishes a fundamental lower bound on the size of the optimal solution: OPT ≥ |M|.",
 				"**Bounding the Algorithm's Solution:** The algorithm adds both endpoints of each edge in M to the cover C, so the total size of the returned solution is exactly |C| = 2 * |M|.",
@@ -783,8 +783,8 @@
 		{
 			"id": "quickselect-expected-runtime",
 			"group": "9",
-			"title": "Expected Linear Runtime of Randomized Selection",
-			"explanation": "The randomized QuickSelect algorithm finds the k-th smallest element in an array in expected linear time O(n).",
+			"title": "Expected Linear Runtime of Randomised Selection",
+			"explanation": "The randomised QuickSelect algorithm finds the k-th smallest element in an array in expected linear time O(n).",
 			"steps": [
 				"**Algorithm Execution:** Choose a pivot element 'a' uniformly at random from the array S. Compute the sub-arrays S_less (elements < a) and S_greater (elements > a). Let ϑ = |S_less|. If ϑ = k - 1, return 'a'. If ϑ > k - 1, recursively search for the k-th element in S_less. If ϑ < k - 1, recursively search for the (k - ϑ - 1)-th element in S_greater.",
 				"**Defining a Good Pivot:** A pivot is considered 'good' if it falls within the middle two quartiles of the sorted array (between the 25th and 75th percentiles). A good pivot ensures that the larger partition contains at most 3/4 * |S| elements.",
@@ -999,7 +999,7 @@
 			"q": "Why is repeated squaring preferred for power implementation over sequential multiplications?",
 			"options": [
 				"It takes fewer bits",
-				"It minimizes space complexity from O(n) to O(1)",
+				"It minimises space complexity from O(n) to O(1)",
 				"It reduces execution runtime from exponential to polynomial in terms of input bits",
 				"It is easier to read"
 			],
@@ -1326,7 +1326,7 @@
 				"A vertex cover that forms a clique"
 			],
 			"correct": [1],
-			"feedback": "The optimisation variant seeks to minimize the objective function (the size of the cover) over all valid solutions."
+			"feedback": "The optimisation variant seeks to minimise the objective function (the size of the cover) over all valid solutions."
 		},
 		{
 			"group": "5",
@@ -1557,7 +1557,7 @@
 		{
 			"group": "8",
 			"type": "single",
-			"q": "A Monte Carlo algorithm is characterized by:",
+			"q": "A Monte Carlo algorithm is characterised by:",
 			"options": [
 				"Always running in polynomial time, with a bounded error probability",
 				"An unpredictable runtime, but always returning the correct answer",
@@ -1586,7 +1586,7 @@
 		{
 			"group": "8",
 			"type": "multiple",
-			"q": "Select all true statements regarding independent repetitions of randomized algorithms:",
+			"q": "Select all true statements regarding independent repetitions of randomised algorithms:",
 			"options": [
 				"They reduce the error probability exponentially",
 				"They change a Monte Carlo algorithm into a Las Vegas algorithm",
@@ -1644,7 +1644,7 @@
 		{
 			"group": "8",
 			"type": "single",
-			"q": "Randomized algorithms are useful because they provide:",
+			"q": "Randomised algorithms are useful because they provide:",
 			"options": [
 				"Simplicity and efficiency",
 				"Guaranteed 100% accuracy in O(1) time",
@@ -1657,7 +1657,7 @@
 		{
 			"group": "9",
 			"type": "single",
-			"q": "A Las Vegas algorithm is characterized by:",
+			"q": "A Las Vegas algorithm is characterised by:",
 			"options": [
 				"Always returning the correct answer, with a variable expected runtime",
 				"A fixed polynomial runtime, but with a bounded error probability",
@@ -1670,15 +1670,15 @@
 		{
 			"group": "9",
 			"type": "single",
-			"q": "The expected running time of the randomized k-th selection algorithm is:",
+			"q": "The expected running time of the randomised k-th selection algorithm is:",
 			"options": ["O(log n)", "O(n)", "O(n log n)", "O(n^2)"],
 			"correct": [1],
-			"feedback": "The randomized selection algorithm finds the k-th element in expected linear time O(n)."
+			"feedback": "The randomised selection algorithm finds the k-th element in expected linear time O(n)."
 		},
 		{
 			"group": "9",
 			"type": "single",
-			"q": "The worst-case running time of the randomized selection algorithm is:",
+			"q": "The worst-case running time of the randomised selection algorithm is:",
 			"options": ["O(n)", "O(n log n)", "O(n^2)", "O(2^n)"],
 			"correct": [2],
 			"feedback": "The worst case occurs when bad pivots are repeatedly chosen, resulting in a quadratic O(n^2) runtime."
@@ -1720,7 +1720,7 @@
 		{
 			"group": "9",
 			"type": "single",
-			"q": "What does the index size parameter ϑ represent in the randomized selection step?",
+			"q": "What does the index size parameter ϑ represent in the randomised selection step?",
 			"options": [
 				"The target element value",
 				"The size of the subset of elements smaller than the pivot (|S_less|)",
@@ -1733,7 +1733,7 @@
 		{
 			"group": "9",
 			"type": "single",
-			"q": "If ϑ = k - 1 during a run of the randomized selection algorithm, the algorithm should:",
+			"q": "If ϑ = k - 1 during a run of the randomised selection algorithm, the algorithm should:",
 			"options": [
 				"Recursively search S_less",
 				"Recursively search S_greater",
@@ -1801,7 +1801,7 @@
 		{
 			"group": "10",
 			"type": "multiple",
-			"q": "Select all complexity classes that allow for a randomized or probabilistic decision path:",
+			"q": "Select all complexity classes that allow for a randomised or probabilistic decision path:",
 			"options": ["P", "BPP", "RP", "PP"],
 			"correct": [1, 2, 3],
 			"feedback": "BPP, RP, and PP are all foundational probabilistic complexity classes, whereas P is strictly deterministic."
@@ -1809,7 +1809,7 @@
 		{
 			"group": "10",
 			"type": "single",
-			"q": "A language in the class RP (Randomized Polynomial-time) has what type of error profile?",
+			"q": "A language in the class RP (Randomised Polynomial-time) has what type of error profile?",
 			"options": [
 				"Two-sided error",
 				"One-sided error (always correct on NO instances)",
@@ -1817,7 +1817,7 @@
 				"Zero error"
 			],
 			"correct": [1],
-			"feedback": "RP defines randomized algorithms with one-sided error that never falsely accept a NO instance but can fail to accept a YES instance up to 50% of the time."
+			"feedback": "RP defines randomised algorithms with one-sided error that never falsely accept a NO instance but can fail to accept a YES instance up to 50% of the time."
 		},
 		{
 			"group": "10",

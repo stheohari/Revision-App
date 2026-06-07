@@ -27,14 +27,14 @@
 		{
 			"group": "1",
 			"type": "single",
-			"q": "What core parameters distinguish optimization problems from decision algorithms?",
+			"q": "What core parameters distinguish optimisation problems from decision algorithms?",
 			"options": [
-				"Decision models output a single binary verification bit; optimization structures target an absolute maximum/minimum bounds metric.",
-				"Optimization tasks use non-deterministic configurations exclusively.",
+				"Decision models output a single binary verification bit; optimisation structures target an absolute maximum/minimum bounds metric.",
+				"Optimisation tasks use non-deterministic configurations exclusively.",
 				"There are no functional differences between them."
 			],
 			"correct": [0],
-			"feedback": "Decision bounds limit output criteria to YES/NO, whereas operational optimization strategies balance objective evaluation metrics."
+			"feedback": "Decision bounds limit output criteria to YES/NO, whereas operational optimisation strategies balance objective evaluation metrics."
 		}
 	]
 }

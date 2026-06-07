@@ -104,7 +104,7 @@ Potential improvements for future versions:
 - Backend database for persistent cloud storage
 - User accounts and progress tracking
 - More question/dataset generation tools
-- Mobile app optimization
+- Mobile app optimisation
 - Collaborative study groups
 
 ## AI Statement
