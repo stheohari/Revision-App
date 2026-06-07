@@ -4,31 +4,8 @@
 		<meta author="Saul Theohari" />
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>COM2109: Advanced Complexity & Algorithm Simulator</title>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<style>
-			.perspective {
-				perspective: 1000px;
-			}
-			.flip-card-inner {
-				transition: transform 0.6s;
-				transform-style: preserve-3d;
-			}
-			.flipped {
-				transform: rotateY(180deg);
-			}
-			.backface-hidden {
-				backface-visibility: hidden;
-			}
-			.rotate-y-180 {
-				transform: rotateY(180deg);
-			}
-			.checkbox-custom:checked + div {
-				background-color: #4f46e5;
-				border-color: #818cf8;
-				color: white;
-			}
-		</style>
+		<title>Revision Suite</title>
+		<link rel="stylesheet" href="./output.css" />
 	</head>
 
 	<body class="bg-slate-900 text-slate-100 min-h-screen font-sans pb-12">
@@ -36,13 +13,20 @@
 			<div
 				class="max-w-7xl mx-auto px-4 py-4 flex flex-col flex-wrap lg:flex-row justify-between items-start gap-4"
 			>
-				<div>
-					<h1 class="text-2xl font-bold bg-indigo-400 bg-clip-text text-transparent">
-						<span id="module-title">Revision Suite</span>
-					</h1>
-					<p class="text-xs text-slate-400">
-						<span id="module-subtitle">Comprehensive Revision Suite</span>
-					</p>
+				<div class="flex items-center justify-start gap-3">
+					<img
+						src="./logo.png"
+						alt="App Logo"
+						class="w-12 h-12 rounded-full border border-slate-600"
+					/>
+					<div>
+						<h1 class="text-2xl font-bold bg-indigo-400 bg-clip-text text-transparent">
+							<span id="module-title">Revision Suite</span>
+						</h1>
+						<p class="text-xs text-slate-400">
+							<span id="module-subtitle">Comprehensive Revision Suite</span>
+						</p>
+					</div>
 				</div>
 
 				<div class="flex items-center gap-3">
