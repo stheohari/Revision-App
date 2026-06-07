@@ -124,29 +124,29 @@ function switchModule() {
 }
 
 function updateModuleHeader(moduleName, moduleCode) {
-    document.getElementById("module-title").innerText = `${moduleCode || "Module"} - ${moduleName}`;
-    document.getElementById("module-subtitle").innerText = 
-        `Comprehensive Study Suite • ${currentModuleKey}`;
+	document.getElementById("module-title").innerText = `${moduleCode || "Module"} - ${moduleName}`;
+	document.getElementById("module-subtitle").innerText =
+		`Comprehensive Study Suite • ${currentModuleKey}`;
 }
 
 function populateModuleSwitcher() {
-    const selector = document.getElementById("module-switcher");
-    selector.innerHTML = '<option value="">Select a module...</option>';
+	const selector = document.getElementById("module-switcher");
+	selector.innerHTML = '<option value="">Select a module...</option>';
 
-    Object.keys(loadedModules).forEach((key) => {
-        const module = loadedModules[key];
-        const opt = document.createElement("option");
-        opt.value = key;
-        opt.text = `${module.moduleCode} - ${module.moduleName}`;
-        selector.appendChild(opt);
-    });
+	Object.keys(loadedModules).forEach((key) => {
+		const module = loadedModules[key];
+		const opt = document.createElement("option");
+		opt.value = key;
+		opt.text = `${module.moduleCode} - ${module.moduleName}`;
+		selector.appendChild(opt);
+	});
 
-    // Restore last active module if it exists
-    const lastModule = localStorage.getItem("lastActiveModule");
-    if (lastModule && loadedModules[lastModule]) {
-        selector.value = lastModule;
-        switchModule();
-    }
+	// Restore last active module if it exists
+	const lastModule = localStorage.getItem("lastActiveModule");
+	if (lastModule && loadedModules[lastModule]) {
+		selector.value = lastModule;
+		switchModule();
+	}
 }
 
 function generateLectureFilters() {
@@ -269,6 +269,8 @@ function applyGlobalFilter() {
 	activeMatcher = masterMatcher.filter((mt) => targetGroups.has(parseInt(mt.group)));
 	activeQuests = masterQuests.filter((qst) => targetGroups.has(parseInt(qst.group)));
 	activeQuiz = masterQuiz.filter((qz) => targetGroups.has(parseInt(qz.group)));
+	// randomise order of quiz questions to prevent pattern recognition during repeated attempts
+	activeQuiz = activeQuiz.sort(() => Math.random() - 0.5);
 
 	// Reset card indices and render
 	currentCardIndex = 0;
@@ -501,6 +503,33 @@ function prevCard() {
 		currentCardIndex = (currentCardIndex - 1 + activeFlashcards.length) % activeFlashcards.length;
 		renderCard();
 	}
+}
+
+function shuffleFlashcards() {
+	// Fisher-Yates shuffle algorithm
+	for (let i = activeFlashcards.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[activeFlashcards[i], activeFlashcards[j]] = [activeFlashcards[j], activeFlashcards[i]];
+	}
+
+	// Reset to first card and re-render
+	currentCardIndex = 0;
+	renderCard();
+
+	// Visual feedback
+	showShuffleNotification();
+}
+
+function showShuffleNotification() {
+	const indicator = document.getElementById("card-indicator");
+	const originalText = indicator.innerText;
+	indicator.innerText = "✓ Shuffled!";
+	indicator.classList.add("text-emerald-400");
+
+	setTimeout(() => {
+		indicator.innerText = originalText;
+		indicator.classList.remove("text-emerald-400");
+	}, 1500);
 }
 
 // --- MATCHER ENGINE (UPDATED FOR MULTI-CLASS) ---

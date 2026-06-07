@@ -37,9 +37,7 @@
 				class="max-w-7xl mx-auto px-4 py-4 flex flex-col flex-wrap lg:flex-row justify-between items-start gap-4"
 			>
 				<div>
-					<h1
-						class="text-2xl font-bold bg-indigo-400 bg-clip-text text-transparent"
-					>
+					<h1 class="text-2xl font-bold bg-indigo-400 bg-clip-text text-transparent">
 						<span id="module-title">Revision Suite</span>
 					</h1>
 					<p class="text-xs text-slate-400">
@@ -48,7 +46,9 @@
 				</div>
 
 				<div class="flex items-center gap-3">
-					<label for="module-switcher" class="text-sm font-medium text-slate-300">Active Module:</label>
+					<label for="module-switcher" class="text-sm font-medium text-slate-300"
+						>Active Module:</label
+					>
 					<select
 						id="module-switcher"
 						onchange="switchModule()"
@@ -87,16 +87,14 @@
 					>
 						Quiz
 					</button>
-                    <button
-                        onclick="switchTab('upload')"
-                        id="tab-upload"
-                        class="px-3 py-2 rounded-lg text-xs font-medium transition nav-tab text-slate-400 hover:text-white"
-                    >
-                        Dataset Upload/Export
-                    </button>
+					<button
+						onclick="switchTab('upload')"
+						id="tab-upload"
+						class="px-3 py-2 rounded-lg text-xs font-medium transition nav-tab text-slate-400 hover:text-white"
+					>
+						Dataset Upload/Export
+					</button>
 				</nav>
-            
-                
 
 				<div class="flex items-center gap-2">
 					<div id="lecture-filter-container" class="flex flex-wrap gap-2 items-center">
@@ -192,7 +190,17 @@
 						❯
 					</button>
 				</div>
-				<div class="text-center mt-4 text-xs text-slate-400" id="card-indicator">Card 1 of X</div>
+
+				<div class="text-center mt-4 flex justify-center items-center gap-3">
+					<div class="text-xs text-slate-400" id="card-indicator">Card 1 of X</div>
+					<button
+						onclick="shuffleFlashcards()"
+						class="bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-300 px-3 py-1.5 rounded-lg text-xs font-medium transition"
+						title="Shuffle the order of flashcards"
+					>
+						Shuffle
+					</button>
+				</div>
 			</section>
 
 			<section id="panel-matcher" class="tab-panel content-panel hidden">
@@ -205,76 +213,132 @@
 				</div>
 
 				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-					<div id="bucket-P" class="bg-emerald-950/10 border-2 border-dashed border-emerald-500/30 rounded-2xl p-4 min-h-[180px]">
-						<h3 class="text-emerald-400 font-bold text-center border-b border-emerald-500/20 pb-2 mb-2 text-sm">
+					<div
+						id="bucket-P"
+						class="bg-emerald-950/10 border-2 border-dashed border-emerald-500/30 rounded-2xl p-4 min-h-[180px]"
+					>
+						<h3
+							class="text-emerald-400 font-bold text-center border-b border-emerald-500/20 pb-2 mb-2 text-sm"
+						>
 							Class P (Deterministic Poly)
 						</h3>
 						<div id="items-P" class="space-y-1.5 min-h-[120px]"></div>
 					</div>
 
-					<div id="bucket-ZPP" class="bg-teal-950/10 border-2 border-dashed border-teal-500/30 rounded-2xl p-4 min-h-[180px]">
-						<h3 class="text-teal-400 font-bold text-center border-b border-teal-500/20 pb-2 mb-2 text-sm">
+					<div
+						id="bucket-ZPP"
+						class="bg-teal-950/10 border-2 border-dashed border-teal-500/30 rounded-2xl p-4 min-h-[180px]"
+					>
+						<h3
+							class="text-teal-400 font-bold text-center border-b border-teal-500/20 pb-2 mb-2 text-sm"
+						>
 							Class ZPP (Las Vegas Poly)
 						</h3>
 						<div id="items-ZPP" class="space-y-1.5 min-h-[120px]"></div>
 					</div>
 
-					<div id="bucket-BPP" class="bg-cyan-950/10 border-2 border-dashed border-cyan-500/30 rounded-2xl p-4 min-h-[180px]">
-						<h3 class="text-cyan-400 font-bold text-center border-b border-cyan-500/20 pb-2 mb-2 text-sm">
+					<div
+						id="bucket-BPP"
+						class="bg-cyan-950/10 border-2 border-dashed border-cyan-500/30 rounded-2xl p-4 min-h-[180px]"
+					>
+						<h3
+							class="text-cyan-400 font-bold text-center border-b border-cyan-500/20 pb-2 mb-2 text-sm"
+						>
 							Class BPP (Monte Carlo Bounded)
 						</h3>
 						<div id="items-BPP" class="space-y-1.5 min-h-[120px]"></div>
 					</div>
 
-					<div id="bucket-NP_CO_NP" class="bg-amber-950/10 border-2 border-dashed border-amber-500/30 rounded-2xl p-4 min-h-[180px]">
-						<h3 class="text-amber-400 font-bold text-center border-b border-amber-500/20 pb-2 mb-2 text-sm">
+					<div
+						id="bucket-NP_CO_NP"
+						class="bg-amber-950/10 border-2 border-dashed border-amber-500/30 rounded-2xl p-4 min-h-[180px]"
+					>
+						<h3
+							class="text-amber-400 font-bold text-center border-b border-amber-500/20 pb-2 mb-2 text-sm"
+						>
 							NP ∩ co-NP / BQP
 						</h3>
 						<div id="items-NP_CO_NP" class="space-y-1.5 min-h-[120px]"></div>
 					</div>
 
-					<div id="bucket-NP" class="bg-rose-950/10 border-2 border-dashed border-rose-500/30 rounded-2xl p-4 min-h-[180px]">
-						<h3 class="text-rose-400 font-bold text-center border-b border-rose-500/20 pb-2 mb-2 text-sm">
+					<div
+						id="bucket-NP"
+						class="bg-rose-950/10 border-2 border-dashed border-rose-500/30 rounded-2xl p-4 min-h-[180px]"
+					>
+						<h3
+							class="text-rose-400 font-bold text-center border-b border-rose-500/20 pb-2 mb-2 text-sm"
+						>
 							NP-Complete / NP-Hard
 						</h3>
 						<div id="items-NP" class="space-y-1.5 min-h-[120px]"></div>
 					</div>
 
-					<div id="bucket-UNDECIDABLE" class="bg-purple-950/10 border-2 border-dashed border-purple-500/30 rounded-2xl p-4 min-h-[180px]">
-						<h3 class="text-purple-400 font-bold text-center border-b border-purple-500/20 pb-2 mb-2 text-sm">
+					<div
+						id="bucket-UNDECIDABLE"
+						class="bg-purple-950/10 border-2 border-dashed border-purple-500/30 rounded-2xl p-4 min-h-[180px]"
+					>
+						<h3
+							class="text-purple-400 font-bold text-center border-b border-purple-500/20 pb-2 mb-2 text-sm"
+						>
 							Undecidable / Uncomputable
 						</h3>
 						<div id="items-UNDECIDABLE" class="space-y-1.5 min-h-[120px]"></div>
 					</div>
 				</div>
 
-				<div class="mt-6 bg-slate-800 border border-slate-700 p-5 rounded-2xl text-center shadow-lg">
+				<div
+					class="mt-6 bg-slate-800 border border-slate-700 p-5 rounded-2xl text-center shadow-lg"
+				>
 					<p class="text-xs tracking-wide text-slate-400 uppercase mb-2">
 						Active Challenge Target:
 					</p>
-					<div id="current-matching-item" class="inline-block bg-indigo-600 text-white font-bold px-6 py-3 rounded-xl shadow-md border border-indigo-400/40 text-lg transition duration-200"></div>
+					<div
+						id="current-matching-item"
+						class="inline-block bg-indigo-600 text-white font-bold px-6 py-3 rounded-xl shadow-md border border-indigo-400/40 text-lg transition duration-200"
+					></div>
 
 					<div class="flex flex-wrap justify-center gap-2 mt-5">
-						<button onclick="sortItem('P')" class="bg-emerald-700 hover:bg-emerald-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md">
+						<button
+							onclick="sortItem('P')"
+							class="bg-emerald-700 hover:bg-emerald-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md"
+						>
 							P
 						</button>
-						<button onclick="sortItem('ZPP')" class="bg-teal-700 hover:bg-teal-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md">
+						<button
+							onclick="sortItem('ZPP')"
+							class="bg-teal-700 hover:bg-teal-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md"
+						>
 							ZPP (Las Vegas)
 						</button>
-						<button onclick="sortItem('BPP')" class="bg-cyan-700 hover:bg-cyan-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md">
+						<button
+							onclick="sortItem('BPP')"
+							class="bg-cyan-700 hover:bg-cyan-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md"
+						>
 							BPP (Monte Carlo)
 						</button>
-						<button onclick="sortItem('NP_CO_NP')" class="bg-amber-700 hover:bg-amber-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md">
+						<button
+							onclick="sortItem('NP_CO_NP')"
+							class="bg-amber-700 hover:bg-amber-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md"
+						>
 							NP ∩ co-NP
 						</button>
-						<button onclick="sortItem('NP')" class="bg-rose-700 hover:bg-rose-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md">
+						<button
+							onclick="sortItem('NP')"
+							class="bg-rose-700 hover:bg-rose-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md"
+						>
 							NP-Hard/Complete
 						</button>
-						<button onclick="sortItem('UNDECIDABLE')" class="bg-purple-700 hover:bg-purple-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md">
+						<button
+							onclick="sortItem('UNDECIDABLE')"
+							class="bg-purple-700 hover:bg-purple-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-md"
+						>
 							Undecidable
 						</button>
 					</div>
-					<div id="matcher-feedback" class="mt-4 font-semibold text-sm h-6 transition-all duration-200"></div>
+					<div
+						id="matcher-feedback"
+						class="mt-4 font-semibold text-sm h-6 transition-all duration-200"
+					></div>
 				</div>
 			</section>
 
@@ -447,56 +511,98 @@
 					</button>
 				</div>
 			</section>
-            
-            <section id="panel-upload" class="tab-panel hidden">
-                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 shadow-sm mt-4">
-                    <h2 class="text-sm font-semibold text-indigo-400 uppercase tracking-wider mb-2">Dynamic Dataset Injector</h2>
-                    <p class="text-xs text-slate-400 mb-3">
-                        Extend your revision app dynamically. Upload a <code>.json</code> file to inject custom assets.
-                    </p>
-                    
-                    <label class="flex flex-col items-center justify-center border-2 border-dashed border-slate-600 rounded-xl p-4 cursor-pointer hover:border-indigo-500 hover:bg-slate-750 transition group">
-                        <svg class="w-6 h-6 text-slate-400 group-hover:text-indigo-400 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
-                        </svg>
-                        <span class="text-xs font-medium text-slate-300 group-hover:text-indigo-300">Choose custom JSON map</span>
-                        <input type="file" id="json-importer" accept=".json" class="hidden" onchange="handleJsonUpload(event)" />
-                    </label>
-                    <div id="import-status" class="mt-2 text-center text-[11px] font-medium hidden"></div>
-                </div>
 
-                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 shadow-sm mt-4">
-                    <h2 class="text-sm font-semibold text-emerald-400 uppercase tracking-wider mb-2">Dataset Exporter</h2>
-                    <p class="text-xs text-slate-400 mb-4">
-                        Download your current active datasets as formatted <code>.json</code> files for backup or sharing.
-                    </p>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-1 gap-3">
-                        <button onclick="downloadDataset('all')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2">
-                            Download Full Dataset
-                        </button>
-                        <button onclick="downloadDataset('flashcards')" class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-slate-200 font-semibold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2">
-                            Download Flashcards
-                        </button>
-                        <button onclick="downloadDataset('matcher')" class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-slate-200 font-semibold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2">
-                            Download Matcher Data
-                        </button>
-                        <button onclick="downloadDataset('quest')" class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-slate-200 font-semibold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2">
-                            Download Proof Quests
-                        </button>
-                        <button onclick="downloadDataset('quiz')" class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-slate-200 font-semibold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2">
-                            Download Quiz Data
-                        </button>
-                    </div>
-                </div>
-            </section>
+			<section id="panel-upload" class="tab-panel hidden">
+				<div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 shadow-sm mt-4">
+					<h2 class="text-sm font-semibold text-indigo-400 uppercase tracking-wider mb-2">
+						Dynamic Dataset Injector
+					</h2>
+					<p class="text-xs text-slate-400 mb-3">
+						Extend your revision app dynamically. Upload a <code>.json</code> file to inject custom
+						assets.
+					</p>
+
+					<label
+						class="flex flex-col items-center justify-center border-2 border-dashed border-slate-600 rounded-xl p-4 cursor-pointer hover:border-indigo-500 hover:bg-slate-750 transition group"
+					>
+						<svg
+							class="w-6 h-6 text-slate-400 group-hover:text-indigo-400 mb-1"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+							/>
+						</svg>
+						<span class="text-xs font-medium text-slate-300 group-hover:text-indigo-300"
+							>Choose custom JSON map</span
+						>
+						<input
+							type="file"
+							id="json-importer"
+							accept=".json"
+							class="hidden"
+							onchange="handleJsonUpload(event)"
+						/>
+					</label>
+					<div id="import-status" class="mt-2 text-center text-[11px] font-medium hidden"></div>
+				</div>
+
+				<div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 shadow-sm mt-4">
+					<h2 class="text-sm font-semibold text-emerald-400 uppercase tracking-wider mb-2">
+						Dataset Exporter
+					</h2>
+					<p class="text-xs text-slate-400 mb-4">
+						Download your current active datasets as formatted <code>.json</code> files for backup
+						or sharing.
+					</p>
+
+					<div class="grid grid-cols-1 sm:grid-cols-1 gap-3">
+						<button
+							onclick="downloadDataset('all')"
+							class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2"
+						>
+							Download Full Dataset
+						</button>
+						<button
+							onclick="downloadDataset('flashcards')"
+							class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-slate-200 font-semibold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2"
+						>
+							Download Flashcards
+						</button>
+						<button
+							onclick="downloadDataset('matcher')"
+							class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-slate-200 font-semibold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2"
+						>
+							Download Matcher Data
+						</button>
+						<button
+							onclick="downloadDataset('quest')"
+							class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-slate-200 font-semibold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2"
+						>
+							Download Proof Quests
+						</button>
+						<button
+							onclick="downloadDataset('quiz')"
+							class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-slate-200 font-semibold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2"
+						>
+							Download Quiz Data
+						</button>
+					</div>
+				</div>
+			</section>
 		</main>
 
-        <footer>
-            <div class="text-center mt-12 text-xs text-slate-500">
-                2026 Saul Theohari | Designed for COM2109 - Automata, Computation & Complexity, University of Sheffield.
-            </div>
-        </footer>
+		<footer>
+			<div class="text-center mt-12 text-xs text-slate-500">
+				2026 Saul Theohari | Designed for COM2109 - Automata, Computation & Complexity, University
+				of Sheffield.
+			</div>
+		</footer>
 
 		<script src="./script.js" />
 	</body>

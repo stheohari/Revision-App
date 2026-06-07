@@ -1,29 +1,118 @@
-# Module Revision Site
+# Module Revision Suite
 
-This code was written for revising the COM2109 module for the University of Sheffield, in future it may be broadened so that any module, course etc can be uploaded and used in the various features on this page.
+A comprehensive web-based revision platform supporting multiple modules with interactive games, quizzes, and study tools. Originally built for the COM2109 module at the University of Sheffield, now designed to support any module or course.
+
+## Features
+
+- **Multi-Module Support** - Upload and switch between different modules seamlessly
+- **Flashcards** - Interactive flip cards with group/lecture filtering
+- **Matcher** - Matching exercises for connecting related concepts
+- **Proof Reconstruction** - Step-by-step algorithm and proof assembly challenges
+- **Quiz Engine** - Multiple choice and multiple answer quiz questions with feedback
+- **Dynamic Filtering** - Filter content by all lectures, specific lecture, or lecture range
+- **Data Persistence** - Modules saved in browser localStorage (survives page refreshes)
+- **Import/Export** - Upload JSON files and export individual datasets
 
 ## How to Use
 
 ### Setup
 
-Download the code as a .zip or other package and open it locally.
+1. Download the code as a .zip or clone the repository
+2. Open locally in an IDE (VS Code with Live Server extension recommended)
+3. Run from `index.html`
 
-Opening the code in VS Code or a similar IDE would be most advisable, as this allows it to be run easily using either features like Run Configurations on JetBrains IDEs or the Go Live extension on VS Code (recommended).
+### Getting Started
 
-Run the code from `revisionApp.html`.
+**First Time:**
 
-To get started quickly, you can use the upload feature on the website to upload the `com2109_full.json` file.
+1. Navigate to the **Upload/Export** tab
+2. Click to upload a JSON file containing your module content
+3. The module will load automatically and appear in the module selector
+4. Select your module from the dropdown at the top of the page
+5. Use the lecture filter to customize your study range
+6. Start studying with flashcards, quizzes, or other tools!
 
-Please note that if you refresh the site at any point, it will clear the dataset (because there's no backend at current time).
+**Subsequent Sessions:**
+
+- Your previously uploaded modules are saved automatically
+- Select from the **module dropdown** to switch between modules
+- The app will remember your last active module
 
 ### Uploading New Datasets
 
-New datasets can be uploaded in `.json` files. Please see `example_extension.json` for examples of each data type for uploading.
+Datasets must be in `.json` format. See `example_extension.json` for the required structure.
 
-I recommend passing the example file into an AI agent, along with your questions / flashcards etc, and asking it to convert them into the format specified in the example file.
+**JSON Format:**
 
-In future, the entire process could be integrated but I don't have time right now.
+```json
+{
+  "moduleName": "Module Name",
+  "moduleCode": "MOD101",
+  "flashcards": [...],
+  "proofs": [...],
+  "quiz": [...],
+  "matcher": [...]
+}
+```
+
+**Tips:**
+
+- Required fields: `moduleName`, `moduleCode`
+- Each item must have a `group` field (used for lecture filtering)
+- I recommend using an AI agent to convert your content into this format
+- Pass `example_extension.json` to the AI along with your content
+
+### Features Explained
+
+**Module Selector** - Switch between loaded modules in the header dropdown. Each module maintains its own data.
+
+**Lecture Filtering** - Three filter modes:
+
+- **All Lectures** - Study all content in the module
+- **Specific Lecture** - Focus on a single lecture
+- **Lecture Range** - Study a range (e.g., Lectures 3-7)
+
+**Flashcards** - Flip to reveal answers. Navigate with arrow buttons.
+
+**Matcher** - Sort items into categories based on type/description.
+
+**Proof Reconstruction** - Arrange algorithm/proof steps in the correct order.
+
+**Quiz** - Answer questions with instant feedback. Track your score.
+
+**Import/Export** - Upload new modules or download your study data for backup.
+
+## Data Storage
+
+- **Modules are stored in browser localStorage** - They persist across page refreshes
+- **No backend required** - Everything runs client-side
+- **Export for backup** - Use the Export feature to save your data as JSON
+
+To clear all data, clear your browser's localStorage for this site.
+
+## Technical Stack
+
+- **HTML/CSS** - Tailwind CSS for responsive styling
+- **JavaScript** - Vanilla JS (no frameworks)
+- **Storage** - Browser localStorage API
+- **Format** - JSON for data import/export
+
+## Future Enhancements
+
+Potential improvements for future versions:
+
+- Backend database for persistent cloud storage
+- User accounts and progress tracking
+- More question/dataset generation tools
+- Mobile app optimization
+- Collaborative study groups
 
 ## AI Statement
 
-Just to be totally transparent, I have used AI tools, mainly Google Gemini, throughout the process of creating this, in order to speed up things like writing basic code (eg. the Tailwind css used) and also generating all the generic questions etc found in the `com2109_full.json` file included in the package.
+This project uses AI tools (primarily Google Gemini and GitHub Copilot) to assist with:
+
+- Boilerplate code generation (HTML/CSS with Tailwind)
+- Generic quiz questions and flashcard content in `com2109_full.json`
+- Feature implementation and refactoring
+
+All core architecture and functionality decisions were made manually.
