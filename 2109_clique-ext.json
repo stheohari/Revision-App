@@ -1,0 +1,96 @@
+{
+	"moduleName": "Automata, Computation and Complexity",
+	"moduleCode": "COM2109",
+	"flashcards": [
+		{
+			"group": "5",
+			"topic": "Cook Reductions",
+			"q": "What is a Cook Reduction (Polynomial-Time Turing Reduction)?",
+			"a": "A language A is Cook reducible to a language B if A can be decided by a polynomial-time oracle Turing machine equipped with an oracle for B."
+		},
+		{
+			"group": "6",
+			"topic": "PTAS",
+			"q": "What is a Polynomial-Time Approximation Scheme (PTAS)?",
+			"a": "An approximation algorithm for an optimization problem that takes an error parameter epsilon > 0 and produces a solution within a (1 + epsilon) factor of the optimum in polynomial time for any fixed epsilon."
+		},
+		{
+			"group": "7",
+			"topic": "Basic Probability Math",
+			"q": "What is the difference between disjoint (mutually exclusive) and independent events?",
+			"a": "Disjoint events cannot occur at the same time, meaning P(A and B) = 0. Independent events do not influence each other's occurrence, meaning P(A and B) = P(A) * P(B)."
+		}
+	],
+	"proofs": [
+		{
+			"id": "clique-np-complete-prf",
+			"group": "8",
+			"title": "NP-Completeness Proof for the General Clique Problem",
+			"explanation": "Proving that finding whether a graph contains a clique of a given size is NP-complete by showing it is in NP and reducing 3SAT to it.",
+			"steps": [
+				"Verify that CLIQUE is in NP by taking a subgraph of vertices as a certificate and checking in polynomial time if all pairs are connected by an edge.",
+				"Map a 3SAT formula with m clauses to a graph where each literal becomes a vertex, grouping vertices into trios representing each clause.",
+				"Connect vertices with edges if they belong to different clauses and are not contradictory literals (e.g., x and not-x).",
+				"Observe that the 3SAT formula is satisfiable if and only if the constructed graph contains a clique of size m, completing the polynomial-time reduction."
+			]
+		},
+		{
+			"id": "k-clique-brute-force-prf",
+			"group": "8",
+			"title": "Decidability and Complexity of the Fixed k-Clique Problem",
+			"explanation": "Demonstrating the complexity bounds for finding a clique of a fixed, constant size k in a graph.",
+			"steps": [
+				"Formulate an algorithm that systematically enumerates all possible subsets of vertices of size k from a graph with n vertices.",
+				"Calculate the total number of subsets to check using the binomial coefficient n choose k, which simplifies to O(n^k) combinations.",
+				"For each subset, verify in O(k^2) constant time whether an edge exists between every pair of vertices in the subset.",
+				"Conclude that because k is a fixed constant, the overall runtime O(k^2 * n^k) is strictly polynomial, making the fixed k-clique problem fixed-parameter tractable."
+			]
+		}
+	],
+	"quiz": [
+		{
+			"group": "5",
+			"type": "single",
+			"q": "How do Cook reductions differ fundamentally from Karp (mapping) reductions?",
+			"options": [
+				"Cook reductions allow multiple, adaptive queries to an oracle and negation of the results, whereas Karp reductions allow only a single polynomial-time function mapping.",
+				"Cook reductions can only be applied to problems already known to be in P.",
+				"Karp reductions allow the algorithm to run in exponential time if the oracle returns false."
+			],
+			"correct": [0],
+			"feedback": "Cook reductions utilize an oracle machine model allowing multiple adaptive checks, while Karp reductions are restricted to a single many-one structural transformation function."
+		},
+		{
+			"group": "6",
+			"type": "single",
+			"q": "If an approximation scheme has a runtime of O(n^(1/epsilon)), which class does it belong to?",
+			"options": [
+				"FPTAS (Fully Polynomial-Time Approximation Scheme)",
+				"PTAS (Polynomial-Time Approximation Scheme)",
+				"It is an exact exponential-time algorithm"
+			],
+			"correct": [1],
+			"feedback": "It is a PTAS because the runtime is polynomial in n for any fixed constant epsilon, but it is not an FPTAS because the exponent grows as epsilon approaches zero."
+		},
+		{
+			"group": "7",
+			"type": "single",
+			"q": "If two events A and B are independent and both have non-zero probabilities, can they ever be disjoint?",
+			"options": [
+				"Yes, independence guarantees they will never happen together, which means they are disjoint.",
+				"No, because if they are independent, P(A and B) = P(A) * P(B) > 0, whereas disjoint events require P(A and B) = 0.",
+				"Only if the sample space is infinite."
+			],
+			"correct": [1],
+			"feedback": "Independent events with non-zero probabilities always have a joint probability greater than zero, meaning they must overlap and cannot be disjoint."
+		}
+	],
+	"matcher": [
+		{
+			"group": "5",
+			"item": "Clique Problem",
+			"type": "NP",
+			"desc": "Determining if a graph contains a complete subgraph of a specified size."
+		}
+	]
+}

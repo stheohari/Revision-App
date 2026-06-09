@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta author="Saul Theohari" />
+		<meta name="author" content="Saul Theohari" />
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Revision Suite</title>
@@ -70,6 +70,13 @@
 						class="px-3 py-2 rounded-lg text-xs font-medium transition nav-tab text-slate-400 hover:text-white"
 					>
 						Quiz
+					</button>
+					<button
+						onclick="switchTab('dataset')"
+						id="tab-dataset"
+						class="px-3 py-2 rounded-lg text-xs font-medium transition nav-tab text-slate-400 hover:text-white"
+					>
+						Dataset Viewer
 					</button>
 					<button
 						onclick="switchTab('upload')"
@@ -496,6 +503,71 @@
 				</div>
 			</section>
 
+			<section id="panel-dataset" class="tab-panel content-panel hidden">
+				<div class="text-center mb-6">
+					<h2 class="text-xl font-bold text-slate-200">Dataset Viewer</h2>
+					<p class="text-sm text-slate-400">Browse and manage all content for the active module</p>
+				</div>
+
+				<div class="border border-slate-700 rounded-2xl p-6 shadow-sm bg-slate-800">
+					<!-- Dataset Type Tabs -->
+					<div class="flex flex-wrap gap-2 mb-6 border-b border-slate-700 pb-4">
+						<button
+							onclick="switchDatasetTab('flashcards')"
+							id="dataset-tab-flashcards"
+							class="px-4 py-3 rounded-lg text-sm font-medium transition dataset-nav-tab bg-indigo-600 text-white"
+						>
+							Flashcards
+							<span id="dataset-fc-badge" class="ml-2 text-xs bg-slate-700 px-2 py-1 rounded-full">(0)</span>
+						</button>
+						<button
+							onclick="switchDatasetTab('matcher')"
+							id="dataset-tab-matcher"
+							class="px-4 py-3 rounded-lg text-sm font-medium transition dataset-nav-tab text-slate-400 hover:text-white"
+						>
+							Matcher
+							<span id="dataset-matcher-badge" class="ml-2 text-xs bg-slate-700 px-2 py-1 rounded-full">(0)</span>
+						</button>
+						<button
+							onclick="switchDatasetTab('quests')"
+							id="dataset-tab-quests"
+							class="px-4 py-3 rounded-lg text-sm font-medium transition dataset-nav-tab text-slate-400 hover:text-white"
+						>
+							Quests
+							<span id="dataset-quest-badge" class="ml-2 text-xs bg-slate-700 px-2 py-1 rounded-full">(0)</span>
+						</button>
+						<button
+							onclick="switchDatasetTab('quiz')"
+							id="dataset-tab-quiz"
+							class="px-4 py-3 rounded-lg text-sm font-medium transition dataset-nav-tab text-slate-400 hover:text-white"
+						>
+							Quiz
+							<span id="dataset-quiz-badge" class="ml-2 text-xs bg-slate-700 px-2 py-1 rounded-full">(0)</span>
+						</button>
+					</div>
+
+					<!-- Flashcards Tab Content -->
+					<div id="dataset-flashcards-panel" class="dataset-content-panel block gap-y-4">
+						<div id="dataset-flashcards" class="gap-y-4"></div>
+					</div>
+
+					<!-- Matcher Tab Content -->
+					<div id="dataset-matcher-panel" class="dataset-content-panel hidden gap-y-4">
+						<div id="dataset-matcher" class="gap-y-4"></div>
+					</div>
+
+					<!-- Quests Tab Content -->
+					<div id="dataset-quests-panel" class="dataset-content-panel hidden gap-y-4">
+						<div id="dataset-quests" class="gap-y-4"></div>
+					</div>
+
+					<!-- Quiz Tab Content -->
+					<div id="dataset-quiz-panel" class="dataset-content-panel hidden gap-y-4">
+						<div id="dataset-quiz" class="gap-y-4"></div>
+					</div>
+				</div>
+			</section>
+
 			<section id="panel-upload" class="tab-panel hidden">
 				<div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 shadow-sm mt-4">
 					<h2 class="text-sm font-semibold text-indigo-400 uppercase tracking-wider mb-2">
@@ -575,6 +647,24 @@
 							class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-slate-200 font-semibold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2"
 						>
 							Download Quiz Data
+						</button>
+					</div>
+				</div>
+				<div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 shadow-sm mt-4">
+					<h2 class="text-sm font-semibold text-rose-400 uppercase tracking-wider mb-2">
+						Clear Dataset
+					</h2>
+					<p class="text-xs text-slate-400 mb-4">
+						Remove all current dataset entries for this module.
+					</p>
+
+					<div class="grid grid-cols-1 sm:grid-cols-1 gap-3">
+						<button
+							onclick="clearModule()"
+							class="bg-rose-700 hover:bg-rose-600 hover:border border-rose-600 text-rose-200 font-semibold px-4 py-3 rounded-xl transition text-xs shadow-sm flex items-center justify-center gap-2"
+							confirm="Are you sure you want to clear all data for this module? This action cannot be undone."
+						>
+							Clear Module Data
 						</button>
 					</div>
 				</div>

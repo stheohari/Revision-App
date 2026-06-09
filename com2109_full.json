@@ -35,14 +35,14 @@
 		{
 			"group": "1",
 			"topic": "Lecture 1: Computational Problems [Card 6]",
-			"q": "What is a bipartite graph and its connection to 2-Coloring?",
-			"a": "A graph is bipartite if its vertices can be partitioned into two disjoint sets such that no two vertices within the same set share an edge. This structural configuration is exactly equivalent to being 2-colorable."
+			"q": "What is a bipartite graph and its connection to 2-Colouring?",
+			"a": "A graph is bipartite if its vertices can be partitioned into two disjoint sets such that no two vertices within the same set share an edge. This structural configuration is exactly equivalent to being 2-colourable."
 		},
 		{
 			"group": "1",
 			"topic": "Lecture 1: Computational Problems [Card 7]",
-			"q": "How can 2-Colorability be determined in linear time?",
-			"a": "By applying a standard Breadth-First Search (BFS) algorithm. We greedily assign alternating layer colors to unvisited vertices. If we detect any edge connecting vertices of the identical layer classification, a conflict exists and the graph is not 2-colorable."
+			"q": "How can 2-Colourability be determined in linear time?",
+			"a": "By applying a standard Breadth-First Search (BFS) algorithm. We greedily assign alternating layer colours to unvisited vertices. If we detect any edge connecting vertices of the identical layer classification, a conflict exists and the graph is not 2-colourable."
 		},
 		{
 			"group": "1",
@@ -137,8 +137,8 @@
 		{
 			"group": "3",
 			"topic": "Lecture 3: Complexity Class NP & Karp Reductions [Card 3]",
-			"q": "Contrast the verification and decision paths for 3-Coloring (3COL).",
-			"a": "Deciding 3COL requires searching an exponential number of color assignments. Verifying 3COL simply checks a given color mapping to ensure no adjacent vertices share a color, which takes linear time O(|V| + |E|)."
+			"q": "Contrast the verification and decision paths for 3-Colouring (3COL).",
+			"a": "Deciding 3COL requires searching an exponential number of colour assignments. Verifying 3COL simply checks a given colour mapping to ensure no adjacent vertices share a colour, which takes linear time O(|V| + |E|)."
 		},
 		{
 			"group": "3",
@@ -300,7 +300,7 @@
 			"group": "5",
 			"topic": "Lecture 5: Optimisation & Pseudo-Polynomial Time [Card 10]",
 			"q": "Name a problem that is strongly NP-hard.",
-			"a": "3-Coloring or Vertex Cover are strongly NP-hard because they lack numeric weight values; their hardness depends entirely on their graph structure."
+			"a": "3-Colouring or Vertex Cover are strongly NP-hard because they lack numeric weight values; their hardness depends entirely on their graph structure."
 		},
 		{
 			"group": "6",
@@ -612,7 +612,7 @@
 		},
 		{
 			"group": "1",
-			"item": "Graph 2-Coloring Language",
+			"item": "Graph 2-Colouring Language",
 			"type": "P",
 			"desc": "Directly solved deterministically using standard Breadth-First Search (BFS) to validate the absence of odd length cycle structures."
 		},
@@ -630,9 +630,9 @@
 		},
 		{
 			"group": "4",
-			"item": "Graph 3-Coloring Language",
+			"item": "Graph 3-Colouring Language",
 			"type": "NP",
-			"desc": "NP-Complete. Adding even one extra layer color completely removes the clean bipartite layer properties of BFS evaluation."
+			"desc": "NP-Complete. Adding even one extra layer colour completely removes the clean bipartite layer properties of BFS evaluation."
 		},
 		{
 			"group": "4",
@@ -682,7 +682,7 @@
 			"id": "bpt-graph",
 			"group": "1",
 			"title": "Bipartite Graph ⟺ No Odd Cycles",
-			"explanation": "An undirected graph G is bipartite (2-colorable) if and only if it contains no cycles of odd length.",
+			"explanation": "An undirected graph G is bipartite (2-colourable) if and only if it contains no cycles of odd length.",
 			"steps": [
 				"**Direction 1 (⟹):** Assume G is bipartite with vertex partitions L and R. Suppose G contains a cycle C = (v1, v2, ..., vk, v1). The vertices must alternate partitions: if v1 ∈ L, then v2 ∈ R, v3 ∈ L, and so on. For the final edge (vk, v1) to connect across partitions, vk must belong to R, which requires the path length k to be an even integer. Thus, no odd cycles can exist.",
 				"**Direction 2 (⟸):** Assume G contains no odd cycles. Pick an arbitrary starting vertex v and assign it to layer 0. Run a Breadth-First Search (BFS) traversal. For every vertex u, compute its shortest path distance d(v, u) from v. Partition vertices with even distances into set L, and vertices with odd distances into set R.",
@@ -813,7 +813,7 @@
 			"group": "1",
 			"type": "single",
 			"q": "Which graph property can be evaluated in deterministic linear time?",
-			"options": ["Hamiltonian Cycle", "Eulerian Tour", "3-Coloring", "Maximum Independent Set"],
+			"options": ["Hamiltonian Cycle", "Eulerian Tour", "3-Colouring", "Maximum Independent Set"],
 			"correct": [1],
 			"feedback": "Eulerian tours only require verifying that the graph is connected and all vertex degrees are even, which takes O(|V|+|E|) time."
 		},
@@ -822,13 +822,13 @@
 			"type": "single",
 			"q": "A graph G has an odd-length cycle. What is its exact chromatic profile bounds?",
 			"options": [
-				"It is 2-colorable",
+				"It is 2-colourable",
 				"It is bipartite",
-				"It requires at least 3 colors",
+				"It requires at least 3 colours",
 				"It cannot be connected"
 			],
 			"correct": [2],
-			"feedback": "A graph is bipartite (2-colorable) if and only if it contains no odd cycles. The presence of an odd cycle means it requires 3 or more colors."
+			"feedback": "A graph is bipartite (2-colourable) if and only if it contains no odd cycles. The presence of an odd cycle means it requires 3 or more colours."
 		},
 		{
 			"group": "1",
@@ -880,7 +880,7 @@
 		{
 			"group": "1",
 			"type": "single",
-			"q": "What is the worst-case runtime to check if a graph is 2-colorable using BFS?",
+			"q": "What is the worst-case runtime to check if a graph is 2-colourable using BFS?",
 			"options": ["O(V^3)", "O(2^V)", "O(V + E)", "O(E log V)"],
 			"correct": [2],
 			"feedback": "BFS traverses the entire graph structure in linear time O(|V| + |E|)."
@@ -1099,9 +1099,9 @@
 			"group": "3",
 			"type": "single",
 			"q": "Which problem can be verified in polynomial time but is not known to be in P?",
-			"options": ["Eulerian Tour", "2-Coloring", "3-Coloring", "Minimum Spanning Tree"],
+			"options": ["Eulerian Tour", "2-Colouring", "3-Colouring", "Minimum Spanning Tree"],
 			"correct": [2],
-			"feedback": "3-Coloring is an NP-complete problem; it is verifiable in polynomial time, but no polynomial-time decision algorithm is known."
+			"feedback": "3-Colouring is an NP-complete problem; it is verifiable in polynomial time, but no polynomial-time decision algorithm is known."
 		},
 		{
 			"group": "3",
@@ -1119,7 +1119,7 @@
 		{
 			"group": "3",
 			"type": "single",
-			"q": "The relation R_3COL = {(G, σ) : σ is a valid 3-coloring of G} defines what kind of problem?",
+			"q": "The relation R_3COL = {(G, σ) : σ is a valid 3-colouring of G} defines what kind of problem?",
 			"options": [
 				"Decision Problem",
 				"Search Problem",
@@ -1303,9 +1303,9 @@
 			"group": "5",
 			"type": "single",
 			"q": "Which of the following problems is strongly NP-hard?",
-			"options": ["Knapsack", "3-Coloring", "Subset Sum", "Pseudo-matching"],
+			"options": ["Knapsack", "3-Colouring", "Subset Sum", "Pseudo-matching"],
 			"correct": [1],
-			"feedback": "3-Coloring has no numeric parameters; its hardness is structural, making it strongly NP-hard."
+			"feedback": "3-Colouring has no numeric parameters; its hardness is structural, making it strongly NP-hard."
 		},
 		{
 			"group": "5",
@@ -1338,7 +1338,7 @@
 				"When P = NP",
 				"When the numbers are represented in binary"
 			],
-			"correct": [2],
+			"correct": [1],
 			"feedback": "If numeric inputs are bounded by poly(n), then the numeric value V matches poly(n), making an O(nV) algorithm run in true polynomial time."
 		},
 		{
