@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+.perspective {
+	perspective: 1000px;
+}
+.flip-card-inner {
+	transition: transform 0.6s;
+	transform-style: preserve-3d;
+}
+.flipped {
+	transform: rotateY(180deg);
+}
+.backface-hidden {
+	backface-visibility: hidden;
+}
+.rotate-y-180 {
+	transform: rotateY(180deg);
+}
+.checkbox-custom:checked + div {
+	background-color: #4f46e5;
+	border-color: #818cf8;
+	color: white;
+}

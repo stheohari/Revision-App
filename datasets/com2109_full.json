@@ -769,7 +769,7 @@
 		},
 		{
 			"id": "freivalds-proof",
-			"group": "8-10",
+			"group": "10",
 			"title": "Freivalds' Matrix Product Verification Correctness",
 			"explanation": "If A * B ≠ C, Freivalds' algorithm flags the inequality with a success probability of at least 1/2 using a random binary vector r ∈ {0,1}^n.",
 			"steps": [
@@ -796,7 +796,7 @@
 		},
 		{
 			"id": "lp-rounding-vertex-cover",
-			"group": "8-10",
+			"group": "10",
 			"title": "Factor-2 LP Rounding Approximation for Minimum Vertex Cover",
 			"explanation": "Rounding the optimal fractional solution of an LP relaxation for Minimum Vertex Cover yields a valid vertex cover whose size is at most twice the optimal integer solution (Sol ≤ 2 * OPT).",
 			"steps": [

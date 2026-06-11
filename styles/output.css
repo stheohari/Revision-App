@@ -480,9 +480,6 @@
   .cursor-pointer {
     cursor: pointer;
   }
-  .list-inside {
-    list-style-position: inside;
-  }
   .list-decimal {
     list-style-type: decimal;
   }
@@ -491,6 +488,9 @@
   }
   .flex-col {
     flex-direction: column;
+  }
+  .flex-row {
+    flex-direction: row;
   }
   .flex-wrap {
     flex-wrap: wrap;

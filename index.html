@@ -5,7 +5,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Revision Suite</title>
-		<link rel="stylesheet" href="./output.css" />
+		<link rel="stylesheet" href="./styles/output.css" />
 	</head>
 
 	<body class="bg-slate-900 text-slate-100 min-h-screen font-sans pb-12">
@@ -15,7 +15,7 @@
 			>
 				<div class="flex items-center justify-start gap-3">
 					<img
-						src="./logo.png"
+						src="./imgs/logo.png"
 						alt="App Logo"
 						class="w-12 h-12 rounded-full border border-slate-600"
 					/>
@@ -411,6 +411,21 @@
 					class="text-center p-8 bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl"
 				>
 					<h2 class="text-2xl font-bold text-slate-200 mb-2">Mock Examination Suite</h2>
+
+					<div id="lecture-filter-container" class="flex flex-row gap-2 justify-center items-center">
+						<label for="lecture-filter" class="text-sm font-medium text-slate-300"
+							>No. of Questions:</label
+						>
+						<select
+							id="question-count-selector"
+							onchange="updateQuestionCount()"
+							class="bg-slate-900 border border-slate-600 text-slate-100 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block p-2"
+						>
+						</select>
+					</div>
+
+					<br />
+
 					<button
 						onclick="startQuiz()"
 						class="bg-indigo-500 text-white font-bold px-8 py-3 rounded-xl hover:scale-105 transition shadow-lg text-sm tracking-wide uppercase"
@@ -518,7 +533,9 @@
 							class="px-4 py-3 rounded-lg text-sm font-medium transition dataset-nav-tab bg-indigo-600 text-white"
 						>
 							Flashcards
-							<span id="dataset-fc-badge" class="ml-2 text-xs bg-slate-700 px-2 py-1 rounded-full">(0)</span>
+							<span id="dataset-fc-badge" class="ml-2 text-xs bg-slate-700 px-2 py-1 rounded-full"
+								>(0)</span
+							>
 						</button>
 						<button
 							onclick="switchDatasetTab('matcher')"
@@ -526,7 +543,11 @@
 							class="px-4 py-3 rounded-lg text-sm font-medium transition dataset-nav-tab text-slate-400 hover:text-white"
 						>
 							Matcher
-							<span id="dataset-matcher-badge" class="ml-2 text-xs bg-slate-700 px-2 py-1 rounded-full">(0)</span>
+							<span
+								id="dataset-matcher-badge"
+								class="ml-2 text-xs bg-slate-700 px-2 py-1 rounded-full"
+								>(0)</span
+							>
 						</button>
 						<button
 							onclick="switchDatasetTab('quests')"
@@ -534,7 +555,11 @@
 							class="px-4 py-3 rounded-lg text-sm font-medium transition dataset-nav-tab text-slate-400 hover:text-white"
 						>
 							Quests
-							<span id="dataset-quest-badge" class="ml-2 text-xs bg-slate-700 px-2 py-1 rounded-full">(0)</span>
+							<span
+								id="dataset-quest-badge"
+								class="ml-2 text-xs bg-slate-700 px-2 py-1 rounded-full"
+								>(0)</span
+							>
 						</button>
 						<button
 							onclick="switchDatasetTab('quiz')"
@@ -542,7 +567,9 @@
 							class="px-4 py-3 rounded-lg text-sm font-medium transition dataset-nav-tab text-slate-400 hover:text-white"
 						>
 							Quiz
-							<span id="dataset-quiz-badge" class="ml-2 text-xs bg-slate-700 px-2 py-1 rounded-full">(0)</span>
+							<span id="dataset-quiz-badge" class="ml-2 text-xs bg-slate-700 px-2 py-1 rounded-full"
+								>(0)</span
+							>
 						</button>
 					</div>
 
@@ -678,6 +705,11 @@
 			</div>
 		</footer>
 
-		<script src="./script.js" />
+		<script src="./scripts/main.mjs"></script>
+        <script src="./scripts/flashcardScript.mjs"></script>
+        <script src="./scripts/matcherScript.mjs"></script>
+        <script src="./scripts/questScript.mjs"></script>
+        <script src="./scripts/quizScript.mjs"></script>
+        <script src="./scripts/datasetScript.mjs"></script>
 	</body>
 </html>
